@@ -1,6 +1,7 @@
 package com.musiccamp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.musiccamp.entities.UserLogin;
 
@@ -10,6 +11,7 @@ import com.musiccamp.entities.UserLogin;
  * @author Pavan Kumar Pedda Vakkalam
  *
  */
+@Repository
 public interface UserRepository extends JpaRepository<UserLogin, Integer>{
 
 	

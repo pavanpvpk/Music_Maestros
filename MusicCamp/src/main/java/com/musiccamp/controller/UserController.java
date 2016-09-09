@@ -30,6 +30,7 @@ import com.musiccamp.entities.UserLogin;
 public class UserController {
 
 	private static final Logger LOG=LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	private UserRepository use;
 	
