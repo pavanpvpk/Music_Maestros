@@ -8,5 +8,6 @@ import com.musiccamp.entities.Elective;;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Elective,String> {
-
+    
+	
 }

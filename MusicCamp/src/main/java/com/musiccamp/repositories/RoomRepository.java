@@ -8,5 +8,7 @@ import com.musiccamp.entities.Room;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room,String> {
+	
+	
 
 }
