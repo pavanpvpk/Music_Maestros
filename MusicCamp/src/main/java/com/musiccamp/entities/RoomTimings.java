@@ -28,7 +28,7 @@ public class RoomTimings implements Serializable {
 	@Id
 	@ManyToOne
 	@JoinColumn(name="course_name")
-	private Course coursenum;
+	private Elective coursenum;
 	
 	@Column(name="timings")
 	private String timings;
@@ -43,10 +43,10 @@ public class RoomTimings implements Serializable {
 	}
 	
 	
-	public Course getCoursenum() {
+	public Elective getCoursenum() {
 		return coursenum;
 	}
-	public void setCoursenum(Course coursenum) {
+	public void setCoursenum(Elective coursenum) {
 		this.coursenum = coursenum;
 	}
 	

@@ -12,29 +12,29 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="course")
-public class Course {
+@Table(name="Electives")
+public class Elective {
 	
 	
-	public Course() {
+	public Elective() {
 	}
 
 
 	@Id
-	@Column(name="course_name")
-	private String coursename;
+	@Column(name="elective_name")
+	private String electivename;
 	
-	@OneToMany(mappedBy = "coursenum", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "electivenum", cascade = CascadeType.ALL)
 	private Set<RoomTimings> roomtime=new HashSet<RoomTimings>();
 
 
-	public String getCoursename() {
-		return coursename;
+	public String getElectivename() {
+		return electivename;
 	}
 
 
 	public void setCoursename(String coursename) {
-		this.coursename = coursename;
+		this.electivename = coursename;
 	}
 
 	
