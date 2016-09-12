@@ -4,10 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity
@@ -20,15 +23,16 @@ public class RoomTimings implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="room_num")
+	@JoinColumn(name="roomNum",foreignKey=@ForeignKey(name="room_num"),referencedColumnName="room_num")
 	private Room roomnum;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="course_name")
-	private Elective coursenum;
+	@JoinColumn(name="electiveName",foreignKey=@ForeignKey(name="elective_name"),referencedColumnName="elective_name")
+	private Elective electivename;
 	
 	@Column(name="timings")
 	private String timings;
@@ -43,11 +47,11 @@ public class RoomTimings implements Serializable {
 	}
 	
 	
-	public Elective getCoursenum() {
-		return coursenum;
+	public Elective getElectivename() {
+		return electivename;
 	}
-	public void setCoursenum(Elective coursenum) {
-		this.coursenum = coursenum;
+	public void setElectivename(Elective electivename) {
+		this.electivename = electivename;
 	}
 	
 	public String getTimings() {

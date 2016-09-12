@@ -24,7 +24,7 @@ public class Elective {
 	@Column(name="elective_name")
 	private String electivename;
 	
-	@OneToMany(mappedBy = "electivenum", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "electivename", cascade = CascadeType.ALL)
 	private Set<RoomTimings> roomtime=new HashSet<RoomTimings>();
 
 
@@ -33,8 +33,8 @@ public class Elective {
 	}
 
 
-	public void setCoursename(String coursename) {
-		this.electivename = coursename;
+	public void setElectivename(String electivename) {
+		this.electivename = electivename;
 	}
 
 	
