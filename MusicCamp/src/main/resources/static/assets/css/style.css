@@ -188,3 +188,7 @@ img { max-width: 100%; }
 
 }
 
+.masterSchedule:hover .dropdown-menu{
+	display:block;
+}
+
