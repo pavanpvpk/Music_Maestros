@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 @Configuration
 public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 
-	//Creates a view names and maps with the html
+	//Creates view names and maps with the html file names
 	UserController uc;
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
