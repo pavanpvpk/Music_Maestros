@@ -192,3 +192,51 @@ img { max-width: 100%; }
 	display:block;
 }
 
+.uploadcontainer{
+	text-align: left
+	
+}
+.upload-drop-zone {
+  height: 100px;
+  border-width: 2px;
+  margin-bottom: 20px;
+  
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 100px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+.uploadelementcontainer{
+	float: left;
+	width: 50%;
+	position: left;
+}
+.dragfile{
+	float: right;
+	width: 50%;
+	position: right;
+}
+.panel{
+	background-color: transparent;
+	border: none;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: transparent;
+    
+}
+.navbar{
+	margin-bottom: 0;
+}
+.panelheading1{
+	border-color:transparent;
+}
