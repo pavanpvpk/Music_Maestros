@@ -237,6 +237,7 @@ img { max-width: 100%; }
 .navbar{
 	margin-bottom: 0;
 }
-.panelheading1{
+.panel-heading1{
 	border-color:transparent;
+	text-align: center;
 }
