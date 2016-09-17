@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="music_maestros" match-name="electives"/>
+  <table-filter match-catalog="music_maestros" match-name="room"/>
+  <table-filter match-catalog="music_maestros" match-name="room_timings"/>
+  <table-filter match-catalog="music_maestros" match-name="timings"/>
+</hibernate-reverse-engineering>

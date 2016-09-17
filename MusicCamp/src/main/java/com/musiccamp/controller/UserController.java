@@ -1,12 +1,19 @@
 package com.musiccamp.controller;
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,23 +38,22 @@ public class UserController {
 	@Autowired
 	private UserRepository use;
 	
-	
 @RequestMapping(method=RequestMethod.POST)
     public String checkAccount(@RequestParam("form-username") 
     Integer  username,@RequestParam("form-password") String password, Model model) {
-        
+	
 		try{
+			
 			
 			// Indirect from of select query
 			UserLogin users =use.findOne(username);
-
+						
 			if(username.equals(users.getUsername()) && 
 						password.equals(users.getPassword())){
 				
 				
 				if (users.getRole()==0){
 					LOG.info(username+" logged in successfully as admin");
-					model.addAttribute("username",username);
 					return "/adminhome";
 				
 					

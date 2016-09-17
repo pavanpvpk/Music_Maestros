@@ -97,6 +97,9 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-	
-	
+	<br></br>
+	<h1>Master Schedule</h1>
+<div th:each="room:${rooms}">
+<h2 th:text="${room.roomnum}"></h2>
+</div>
 </body>

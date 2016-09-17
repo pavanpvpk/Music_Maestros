@@ -38,11 +38,4 @@
 		<nature>org.hibernate.eclipse.console.hibernateNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>music_maestros.sql</name>
-			<type>1</type>
-			<location>C:/Program Files/MySQL/MySQL Server 5.6/bin/music_maestros.sql</location>
-		</link>
-	</linkedResources>
 </projectDescription>
