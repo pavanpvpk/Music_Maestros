@@ -119,4 +119,12 @@ public class RoomTimings implements java.io.Serializable {
 		this.timeSlot = timeSlot;
 	}
 
+	@Override
+	public String toString() {
+		return "RoomTimings [id=" + id + ", electives=" + electives + ", room=" + room + ", timings=" + timings
+				+ ", roomNum=" + roomNum + ", electiveName=" + electiveName + ", timeSlot=" + timeSlot + "]";
+	}
+	
+	
+
 }

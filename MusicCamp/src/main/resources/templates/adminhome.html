@@ -99,7 +99,9 @@
 	</nav>
 	<br></br>
 	<h1>Master Schedule</h1>
-<div th:each="room:${rooms}">
-<h2 th:text="${room.roomnum}"></h2>
+<div th:each="rttk:${rtk}">
+<h3 th:text="${rttk.roomNum}"></h3>
+<h3 th:text="${rttk.electiveName}"></h3>
+<h3 th:text="${rttk.timeSlot}"></h3>
 </div>
 </body>

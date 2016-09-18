@@ -20,8 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.musiccamp.repositories.ElectiveRepository;
 import com.musiccamp.repositories.RoomTimingsRepository;
 import com.musiccamp.repositories.UserRepository;
+import com.musiccamp.entities.Electives;
+import com.musiccamp.entities.RoomTimings;
+import com.musiccamp.entities.RoomTimingsId;
 import com.musiccamp.entities.UserLogin;
 
 /**
@@ -40,13 +44,19 @@ public class UserController {
 	@Autowired
 	private UserRepository use;
 	
+	@Autowired
+	private RoomTimingsRepository rtr;
+	
+	
 @RequestMapping(method=RequestMethod.POST)
     public String checkAccount(@RequestParam("form-username") 
-    Integer  username,@RequestParam("form-password") String password, Model model) {
+    Integer  username,@RequestParam("form-password") String password, ModelMap model) {
 	
 		try{
 			
-			
+	List<RoomTimings> rtg=rtr.findAll();
+	
+	model.put("rtk", rtg);	
 			
 			// Indirect from of select query
 			UserLogin users =use.findOne(username);

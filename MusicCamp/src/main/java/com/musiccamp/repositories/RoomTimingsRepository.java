@@ -7,4 +7,5 @@ import com.musiccamp.entities.RoomTimingsId;
 
 public interface RoomTimingsRepository extends JpaRepository<RoomTimings, RoomTimingsId>{
 
+	
 }
