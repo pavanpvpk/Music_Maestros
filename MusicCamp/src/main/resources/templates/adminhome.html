@@ -99,9 +99,28 @@
 	</nav>
 	<br></br>
 	<h1>Master Schedule</h1>
+	<table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Room #</th>
+                    <th>Course Name</th>
+                    <th>Timings</th>
+                </tr>
+                </thead>
+              <tbody>
+          <tr th:each="rttk:${rtk}">
+
+      <td th:text="${rttk.roomNum}"></td>
+      <td th:text="${rttk.electiveName}"></td>
+      <td th:text="${rttk.timeSlot}"></td>
+        </tr>  
+     </tbody>
+</table>
+
+<!--  	
 <div th:each="rttk:${rtk}">
 <h3 th:text="${rttk.roomNum}"></h3>
 <h3 th:text="${rttk.electiveName}"></h3>
 <h3 th:text="${rttk.timeSlot}"></h3>
-</div>
+</div> -->
 </body>
