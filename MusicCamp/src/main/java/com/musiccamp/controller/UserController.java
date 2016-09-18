@@ -79,9 +79,9 @@ public class UserController {
 				
 				else{
 					LOG.info("username "+username+" and password "+password.toString()+ " mismatch");
-					model.addAttribute("invaliduser",username);
+					model.addAttribute("invaliduser","Invalid Credentials");
 					System.out.println(model);
-					return "redirect:/login";
+					return "/login";
 				}	
 				
 				
@@ -89,18 +89,18 @@ public class UserController {
 			
 			else{
 				LOG.info("username "+username+" and password "+password.toString()+ " mismatch");
-				model.addAttribute("invaliduser",username);
+				model.addAttribute("invaliduser","Invalid Credentials");
 				System.out.println(model);
-				return "redirect:/login";
+				return "/login";
 			}	
 				
 		}
 			catch(Exception e){
 				
 				LOG.error(username +" Doesn't Exist in DB " +e.getMessage(),e);
-				model.addAttribute("invaliduser",username);
+				model.addAttribute("invaliduser","Invalid Credentials");
 				System.out.println(model);
-				return "redirect:/login";
+				return "/login";
 			}
 
 		
