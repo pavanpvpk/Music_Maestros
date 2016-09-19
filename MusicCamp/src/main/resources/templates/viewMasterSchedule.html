@@ -101,5 +101,24 @@
 
 
 	</nav>
+	<br/>
+	
+	<h1>Master Schedule</h1>
+	<table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Room #</th>
+                    <th>Course Name</th>
+                    <th>Timings</th>
+                </tr>
+                </thead>
+              <tbody>
+          <tr th:each="session:${rtk}">
+      <td th:text="${session.roomNum}"></td>
+      <td th:text="${session.electiveName}"></td>
+      <td th:text="${session.timeSlot}"></td>
+        </tr>  
+     </tbody>
+</table>
 
 </body>

@@ -57,7 +57,8 @@
                         		<div class="form-top-left">
                         			<h3>Login to view your Summer Schedule</h3>
                                   	<p>Enter your 919# and password to log on:</p>
-                                  	<p th:if="${invaliduser}" th:text="${invaliduser}"></p>
+                                  	<p th:text="${session.error}"></p>
+<!--                                   	<p th:if="${invaliduser}" th:text="${invaliduser}"></p> -->
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-key"></i>
