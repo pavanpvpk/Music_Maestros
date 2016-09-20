@@ -37,8 +37,7 @@
         th:href="@{assets/ico/apple-touch-icon-57-precomposed.png}"></link>
     </head>
     <body>
-         <!-- <img src="../static/assets/img/backgrounds/1.jpg" 
-   th:src="@{/assets/img/backgrounds/1.jpg}">  -->   
+         
         <!-- Top content -->
         <div class="top-content">
             <div class="inner-bg">
@@ -54,7 +53,7 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         	
-                        		<div class="form-top-left">
+                        		<div class="form-top-left" th:border="2" >
                         			<h3>Login to view your Summer Schedule</h3>
                                   	<p>Enter your 919# and password to log on:</p>
                                   	<p th:text="${session.error}"></p>
@@ -67,7 +66,7 @@
                             <div class="form-bottom">
                                   
 			                    <form role="form" action="/home"
-			                     method="post" class="login-form">
+			                     method="post" class="login-form" >
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">919#</label>
 			                        	<input type="text" name="form-username" placeholder="919#..." class="form-username form-control" id="form-username" required="required">
