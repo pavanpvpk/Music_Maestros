@@ -113,10 +113,10 @@
                 </tr>
                 </thead>
               <tbody>
-          <tr th:each="session:${rtk}">
-      <td th:text="${session.roomNum}"></td>
-      <td th:text="${session.electiveName}"></td>
-      <td th:text="${session.timeSlot}"></td>
+          <tr th:each="rttk:${rtk}">
+      <td th:text="${rttk.roomNum}"></td>
+      <td th:text="${rttk.electiveName}"></td>
+      <td th:text="${rttk.timeSlot}"></td>
         </tr>  
      </tbody>
 </table>

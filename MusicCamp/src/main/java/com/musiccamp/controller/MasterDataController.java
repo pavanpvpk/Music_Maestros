@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.musiccamp.entities.Room;
 import com.musiccamp.entities.RoomTimings;
@@ -17,6 +18,7 @@ import com.musiccamp.repositories.RoomTimingsRepository;
 import com.musiccamp.repositories.TimingRepository;
 
 @Controller
+@SessionAttributes("rtk")
 public class MasterDataController {
 	
 	@Autowired
@@ -39,8 +41,6 @@ public class MasterDataController {
 		model.put("alltimes", time);
 		model.put("allrooms", rl);
 		model.put("rtk", rtg);	
-		session.setAttribute("alltimes", time);
-		session.setAttribute("rtk", rtg);
 		
 		return "viewMasterSchedule";
 	}
