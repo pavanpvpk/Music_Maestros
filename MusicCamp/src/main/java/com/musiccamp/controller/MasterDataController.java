@@ -22,12 +22,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.musiccamp.entities.Room;
 import com.musiccamp.model.ElectiveRoomTimeModel;
-import com.musiccamp.model.RoomModel;
 import com.musiccamp.repositories.ERTRepository;
 import com.musiccamp.repositories.RoomRepository;
 
 
-// @Author - Pavan Kumar Pedda Vakkalam
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ **/
 @Controller
 public class MasterDataController {
 	

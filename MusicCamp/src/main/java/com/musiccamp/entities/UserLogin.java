@@ -13,6 +13,7 @@ import javax.persistence.Table;
  *Creates a table user_login in MYSQL without any need of writing a create table query
  */
 
+
 @Entity
 @Table(name="user_login") 
 public class UserLogin implements Serializable{

@@ -12,6 +12,11 @@ import com.musiccamp.entities.Timings;
 import com.musiccamp.entities.Electives;
 import com.musiccamp.entities.Room;
 
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ **/
 public interface ERTRepository extends JpaRepository<ElectiveRoomTimings, Integer> {
 
 	

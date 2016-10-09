@@ -8,6 +8,11 @@ import com.musiccamp.entities.Electives;
 import com.musiccamp.entities.Room;
 import com.musiccamp.entities.Timings;
 
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ **/
 public class ElectiveRoomTimeModel {
 
 	

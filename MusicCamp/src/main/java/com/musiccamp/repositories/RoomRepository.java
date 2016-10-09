@@ -7,6 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.musiccamp.entities.Room;
 
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ **/
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 
 	

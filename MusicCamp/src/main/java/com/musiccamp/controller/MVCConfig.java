@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
+
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ **/
 @Configuration
 public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 

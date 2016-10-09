@@ -7,6 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.musiccamp.entities.Timings;
 
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ **/
 public interface TimingRepository extends JpaRepository<Timings, Integer>  {
 	
 
