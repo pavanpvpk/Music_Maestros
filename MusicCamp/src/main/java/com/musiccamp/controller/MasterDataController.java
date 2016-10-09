@@ -40,7 +40,7 @@ public class MasterDataController {
 	@Autowired
 	private RoomRepository rrts;
 
-	@RequestMapping(value="/viewMasterData",method=RequestMethod.GET)
+	@RequestMapping(value="/viewMasterData",method=RequestMethod.POST)
 	public String viewMasterData(ModelMap model, HttpSession session){
 	
 		List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
@@ -76,6 +76,7 @@ public class MasterDataController {
 	Map<String,ElectiveRoomTimeModel> crsRmTmng1 = new TreeMap<String,ElectiveRoomTimeModel>();
 	Iterator<Entry<String, ElectiveRoomTimeModel>>  iterator= timemappings.entrySet().iterator();
 		
+	//Second Map for comparing the 2 maps and add ---, if electives aren't present in that slot
 	while(iterator.hasNext()){
 		Map.Entry<String, ElectiveRoomTimeModel> entry=iterator.next();
 		String timing= entry.getKey();
@@ -97,11 +98,8 @@ public class MasterDataController {
 			
 		}
 	}
-	
-	
-	
-	
-	List<Room> roomMap=rrts.findAll();
+
+	List<Room> roomMap=rrts.findAll(); 
 	
 	session.setAttribute("roomNames", roomMap);
 
