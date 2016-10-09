@@ -40,7 +40,7 @@ public class MasterDataController {
 	@Autowired
 	private RoomRepository rrts;
 
-	@RequestMapping(value="/viewMasterData",method=RequestMethod.POST)
+	@RequestMapping(value="/viewMasterData",method=RequestMethod.GET)
 	public String viewMasterData(ModelMap model, HttpSession session){
 	
 		List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
