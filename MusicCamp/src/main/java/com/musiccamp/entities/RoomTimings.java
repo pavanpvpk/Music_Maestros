@@ -1,15 +1,17 @@
-// default package
-// Generated Sep 17, 2016 3:06:32 PM by Hibernate Tools 4.3.1.Final
-
 package com.musiccamp.entities;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+// Generated Sep 21, 2016 10:34:07 AM by Hibernate Tools 4.3.1.Final
+
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,61 +21,38 @@ import javax.persistence.Table;
 @Table(name = "room_timings", catalog = "music_maestros")
 public class RoomTimings implements java.io.Serializable {
 
-	private RoomTimingsId id;
-	private Electives electives;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer rtId;
 	private Room room;
 	private Timings timings;
-	private String roomNum;
-	private String electiveName;
-	private String timeSlot;
+	private Set<ElectiveRoomTimings> electiveRoomTimingses = new HashSet<ElectiveRoomTimings>(0);
 
 	public RoomTimings() {
 	}
 
-	public RoomTimings(RoomTimingsId id, Electives electives, Room room, Timings timings, String timeSlot) {
-		this.id = id;
-		this.electives = electives;
+	public RoomTimings(Room room, Timings timings, Set<ElectiveRoomTimings> electiveRoomTimingses) {
 		this.room = room;
 		this.timings = timings;
-		this.timeSlot = timeSlot;
+		this.electiveRoomTimingses = electiveRoomTimingses;
 	}
 
-	public RoomTimings(RoomTimingsId id, Electives electives, Room room, Timings timings, String roomNum,
-			String electiveName, String timeSlot) {
-		this.id = id;
-		this.electives = electives;
-		this.room = room;
-		this.timings = timings;
-		this.roomNum = roomNum;
-		this.electiveName = electiveName;
-		this.timeSlot = timeSlot;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+
+	@Column(name = "rt_id", unique = true, nullable = false)
+	public Integer getRtId() {
+		return this.rtId;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({ @AttributeOverride(name = "roomId", column = @Column(name = "roomID", nullable = false)),
-			@AttributeOverride(name = "electiveId", column = @Column(name = "electiveID", nullable = false)),
-			@AttributeOverride(name = "timeId", column = @Column(name = "timeID", nullable = false)) })
-	public RoomTimingsId getId() {
-		return this.id;
-	}
-
-	public void setId(RoomTimingsId id) {
-		this.id = id;
+	public void setRtId(Integer rtId) {
+		this.rtId = rtId;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "electiveID", nullable = false, insertable = false, updatable = false)
-	public Electives getElectives() {
-		return this.electives;
-	}
-
-	public void setElectives(Electives electives) {
-		this.electives = electives;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "roomID", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "room_id")
 	public Room getRoom() {
 		return this.room;
 	}
@@ -83,7 +62,7 @@ public class RoomTimings implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "timeID", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "time_id")
 	public Timings getTimings() {
 		return this.timings;
 	}
@@ -92,39 +71,20 @@ public class RoomTimings implements java.io.Serializable {
 		this.timings = timings;
 	}
 
-	@Column(name = "roomNum")
-	public String getRoomNum() {
-		return this.roomNum;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "roomTimings")
+	public Set<ElectiveRoomTimings> getElectiveRoomTimingses() {
+		return this.electiveRoomTimingses;
 	}
 
-	public void setRoomNum(String roomNum) {
-		this.roomNum = roomNum;
+	public void setElectiveRoomTimingses(Set<ElectiveRoomTimings> electiveRoomTimingses) {
+		this.electiveRoomTimingses = electiveRoomTimingses;
 	}
 
-	@Column(name = "electiveName")
-	public String getElectiveName() {
-		return this.electiveName;
-	}
+//	@Override
+//	public String toString() {
+//		return  rtId.toString() + " " + room.toString() + " " +
+//timings.toString() + " " + electiveRoomTimingses.toString();
+//	}
 
-	public void setElectiveName(String electiveName) {
-		this.electiveName = electiveName;
-	}
-
-	@Column(name = "timeSlot", nullable = false)
-	public String getTimeSlot() {
-		return this.timeSlot;
-	}
-
-	public void setTimeSlot(String timeSlot) {
-		this.timeSlot = timeSlot;
-	}
-
-	@Override
-	public String toString() {
-		return "RoomTimings [id=" + id + ", electives=" + electives + ", room=" + room + ", timings=" + timings
-				+ ", roomNum=" + roomNum + ", electiveName=" + electiveName + ", timeSlot=" + timeSlot + "]";
-	}
 	
-	
-
 }

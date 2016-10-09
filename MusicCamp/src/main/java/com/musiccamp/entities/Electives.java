@@ -1,7 +1,6 @@
-// default package
-// Generated Sep 17, 2016 3:06:32 PM by Hibernate Tools 4.3.1.Final
-
 package com.musiccamp.entities;
+// Generated Sep 21, 2016 10:34:07 AM by Hibernate Tools 4.3.1.Final
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -20,16 +19,20 @@ import javax.persistence.Table;
 @Table(name = "electives", catalog = "music_maestros")
 public class Electives implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer electiveId;
 	private String electiveName;
-	private Set<RoomTimings> roomTimingses = new HashSet<RoomTimings>(0);
+	private Set<ElectiveRoomTimings> electiveRoomTimingses = new HashSet<ElectiveRoomTimings>(0);
 
 	public Electives() {
 	}
 
-	public Electives(String electiveName, Set<RoomTimings> roomTimingses) {
+	public Electives(String electiveName, Set<ElectiveRoomTimings> electiveRoomTimingses) {
 		this.electiveName = electiveName;
-		this.roomTimingses = roomTimingses;
+		this.electiveRoomTimingses = electiveRoomTimingses;
 	}
 
 	@Id
@@ -54,12 +57,20 @@ public class Electives implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "electives")
-	public Set<RoomTimings> getRoomTimingses() {
-		return this.roomTimingses;
+	public Set<ElectiveRoomTimings> getElectiveRoomTimingses() {
+		return this.electiveRoomTimingses;
 	}
 
-	public void setRoomTimingses(Set<RoomTimings> roomTimingses) {
-		this.roomTimingses = roomTimingses;
+	public void setElectiveRoomTimingses(Set<ElectiveRoomTimings> electiveRoomTimingses) {
+		this.electiveRoomTimingses = electiveRoomTimingses;
 	}
+
+	@Override
+	public String toString() {
+		return  electiveId.toString() + " " + electiveName.toString() + " "
+				+ electiveRoomTimingses.toString();
+	}
+	
+	
 
 }

@@ -104,19 +104,35 @@
 	<br/>
 	
 	<h1>Master Schedule</h1>
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped table-inverse table-responsive">
                 <thead>
                 <tr>
-                    <th>Room #</th>
-                    <th>Course Name</th>
-                    <th>Timings</th>
+                    <th align="left">Room # </th>
+                    <th th:each="roomID:${session.roomNames}" th:text="${roomID.roomName}"> </th>
                 </tr>
                 </thead>
               <tbody>
-          <tr th:each="rttk:${rtk}">
-      <td th:text="${rttk.roomNum}"></td>
-      <td th:text="${rttk.electiveName}"></td>
-      <td th:text="${rttk.timeSlot}"></td>
+          <tr th:each="timeID:${session.mastermap}">
+      	<td th:text="${timeID.key}" align="left"></td> 
+      	<td th:text="${timeID.value.ElectiveName[0]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[1]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[2]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[3]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[4]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[5]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[6]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[7]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[8]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[9]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[10]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[11]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[12]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[13]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[14]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[15]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[16]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[17]}"></td>
+      	<td th:text="${timeID.value.ElectiveName[18]}"></td>
         </tr>  
      </tbody>
 </table>

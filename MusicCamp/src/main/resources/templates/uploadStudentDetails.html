@@ -86,7 +86,7 @@
 							Schedule <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu ">
-							<li><a th:href="@{/viewMasterData}" >View Master Schedule</a></li>
+							<li><a href="viewMasterSchedule" >View Master Schedule</a></li>
 							<li><a href="editMasterSchedule">Edit Master Schedule</a></li>
 
 						</ul></li>
@@ -115,7 +115,7 @@
           <!-- Standard Form -->
           <div class="fileselect"></div>
           <h4>Select files from your computer</h4>
-          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+          <form action="UploadController" method="post" enctype="multipart/form-data" id="js-upload-form">
             <div class="form-inline">
               <div class="form-group">
                 <input type="file" name="files[]" method="get" onchange="validate_fileupload(this.value);"id="js-upload-files" multiple>

@@ -1,6 +1,6 @@
-// default package
-// Generated Sep 17, 2016 3:06:32 PM by Hibernate Tools 4.3.1.Final
 package com.musiccamp.entities;
+// Generated Sep 21, 2016 10:34:07 AM by Hibernate Tools 4.3.1.Final
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -19,9 +19,13 @@ import javax.persistence.Table;
 @Table(name = "room", catalog = "music_maestros")
 public class Room implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer roomId;
 	private String roomName;
-	private Set<RoomTimings> roomTimingses = new HashSet<RoomTimings>();
+	private Set<RoomTimings> roomTimingses = new HashSet<RoomTimings>(0);
 
 	public Room() {
 	}
@@ -65,4 +69,10 @@ public class Room implements java.io.Serializable {
 		this.roomTimingses = roomTimingses;
 	}
 
+	@Override
+	public String toString() {
+		return   roomName.toString();
+	}
+
+	
 }

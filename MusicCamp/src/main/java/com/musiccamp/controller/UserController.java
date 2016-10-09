@@ -25,16 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.musiccamp.repositories.ElectiveRepository;
-import com.musiccamp.repositories.RoomRepository;
-import com.musiccamp.repositories.RoomTimingsRepository;
-import com.musiccamp.repositories.TimingRepository;
+
 import com.musiccamp.repositories.UserRepository;
-import com.musiccamp.entities.Electives;
-import com.musiccamp.entities.Room;
-import com.musiccamp.entities.RoomTimings;
-import com.musiccamp.entities.RoomTimingsId;
-import com.musiccamp.entities.Timings;
 import com.musiccamp.entities.UserLogin;
 
 /**
@@ -64,7 +56,7 @@ public class UserController {
 	
 @RequestMapping(method=RequestMethod.POST)
     public String checkAccount(@RequestParam("form-username") 
-    Integer  username,@RequestParam("form-password") String password, ModelMap model,
+    Integer username,@RequestParam("form-password") String password, ModelMap model,
     HttpSession session) {
 	
 		try{
@@ -97,11 +89,11 @@ public class UserController {
 					return "/userhome";
 				}
 				
+				
 				else{
 					LOG.info("username "+username+" and password "+password.toString()+ " mismatch");
 					model.addAttribute("invaliduser","Invalid Credentials");
-					session.setAttribute("error", "Invalid Credentials");
-					System.out.println(model);
+					session.setAttribute("error", "Invalid Credentials: "+username);
 					return "redirect:/login";
 				}	
 				
@@ -111,8 +103,7 @@ public class UserController {
 			else{
 				LOG.info("username "+username+" and password "+password.toString()+ " mismatch");
 				model.addAttribute("invaliduser","Invalid Credentials");
-				session.setAttribute("error", "Invalid Credentials");
-				System.out.println(model);
+				session.setAttribute("error", "Invalid Credentials: "+username);
 				return "redirect:/login";
 			}	
 				
@@ -121,8 +112,8 @@ public class UserController {
 				
 				LOG.error(username +" Doesn't Exist in DB " +e.getMessage(),e);
 				model.addAttribute("invaliduser","Invalid Credentials");
-				session.setAttribute("error", "Invalid Credentials");
-				System.out.println(model);
+				session.setAttribute("error", "Invalid Credentials: "+username);
+				//session.setAttribute("username", username);
 				return "redirect:/login";
 			}
 
