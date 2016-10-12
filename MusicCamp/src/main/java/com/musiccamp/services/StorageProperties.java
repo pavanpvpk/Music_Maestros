@@ -12,7 +12,7 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "C:\\Users\\S525021\\Downloads\\Masters\\Sem4\\GDP\\Music_Maestros\\MusicCamp\\ExcelData\\";
+    private String location = "ExcelData\\"; 
 
     public String getLocation() {
         return location;
