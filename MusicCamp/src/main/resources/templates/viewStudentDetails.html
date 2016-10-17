@@ -96,7 +96,31 @@
 		</div>
 		<!-- /.container-fluid -->
 
-
 	</nav>
+	<br/>
+	<!-- Author--Manasa Bojja -->
+	<h1>Student Details</h1>
+	<table class="table table-responsive table-bordered">
+                <thead>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Name </th>
+                    <th>Grade</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+              <tbody>
+          <tr th:each="student:${session.details}">
+       		<td><a href="#" th:text="${student.studentId}"></a></td>
+      		<td th:text="${student.sname}"></td>
+      		<td th:text="${student.grade}"></td>
+      		<td th:text="${student.status}"></td>
+      	
+        </tr>  
+     </tbody>
+</table>
+	
+	
+	
 
 </body>
