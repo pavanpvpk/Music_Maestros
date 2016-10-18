@@ -10,11 +10,12 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
-        <property name="hibernate.validator.apply_to_ddl">false</property>
         <mapping class="com.musiccamp.entities.Electives" />
         <mapping class="com.musiccamp.entities.Room" />
         <mapping class="com.musiccamp.entities.RoomTimings" />
         <mapping class="com.musiccamp.entities.ElectiveRoomTimings" />
+        <mapping class="com.musiccamp.entities.Student" />
         <mapping class="com.musiccamp.entities.Timings" />
+        <mapping class="com.musiccamp.entities.UserLogin" />
     </session-factory>
 </hibernate-configuration>
