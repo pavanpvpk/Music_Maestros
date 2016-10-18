@@ -53,7 +53,7 @@ public class UploadController {
 	}
 	
 	StudentDataModel sdm=new StudentDataModel();
-   
+  
 	
 	private final StorageService storageService;
 
@@ -93,9 +93,11 @@ public class UploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
+    	
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
+        stp.setFilename(file.getOriginalFilename());
         viewStudentData();
         return "viewStudentDetails";
     }
@@ -111,7 +113,7 @@ public class UploadController {
        try
         {
             
-    	   FileInputStream file = new FileInputStream(new File("ExcelData\\data.xlsx"));
+    	   FileInputStream file = new FileInputStream(new File(stp.getLocation()+"//"+stp.getFilename()));
             //Create Workbook instance holding reference to .xlsx file
             XSSFWorkbook workbook = new XSSFWorkbook(file);
  
