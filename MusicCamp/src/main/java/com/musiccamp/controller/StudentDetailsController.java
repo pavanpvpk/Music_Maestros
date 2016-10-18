@@ -51,7 +51,15 @@ public class StudentDetailsController {
 		
 	}
 	
+	@RequestMapping(value="/studentData",method=RequestMethod.GET)
+	public String studentData(HttpSession session){
+	
+		List<Student> studentDetails =student.findAll();
 
+		  
+		return "studentData";
+		
+	}
 	
 
 }
