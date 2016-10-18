@@ -1,6 +1,7 @@
 package com.musiccamp.services;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 /**
  * 
  * @author Pushkar Kumar Kanikicherla & Pavan Kumar Pedda Vakkalam

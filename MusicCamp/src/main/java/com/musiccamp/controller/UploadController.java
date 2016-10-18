@@ -11,6 +11,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +42,16 @@ import com.musiccamp.services.StorageService;
 
 @Controller
 public class UploadController {
-
+	
+	
+	@Bean
+	CommandLineRunner init(StorageService storageService) {
+		return (args) -> {
+            storageService.deleteAll();
+            storageService.init();
+		};
+	}
+	
 	StudentDataModel sdm=new StudentDataModel();
    
 	
@@ -172,10 +185,12 @@ public class UploadController {
             
             
         } 
+      
         catch (Exception e) 
         {
             e.printStackTrace();
         }
+      
        return "viewStudentDetails";
 }
     }
