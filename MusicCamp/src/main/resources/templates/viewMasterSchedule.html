@@ -5,13 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
-<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+
+<!-- <script type="text/javascript" src="../static/assets/js/jquery-2.1.1.min.js"></script> -->
+<script type="text/javascript" src="../static/assets/bootstrap/js/jquery-3.1.1.min.js" 
+ th:src="@{../static/assets/bootstrap/js/jquery-3.1.1.min.js}"></script> 
+
+
+ <script type="text/javascript" src="../static/assets/bootstrap/js/bootstrap.min.js" 
+ th:src="@{../static/assets/bootstrap/js/bootstrap.min.js}"></script> 
 
 
 <!-- CSS -->
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"></link>
+	<link rel="stylesheet" href="../static/assets/css/style.css"
+	th:href="@{assets/css/style.css}"></link>
 <link rel="stylesheet"
 	href="../static/assets/css/bootstrap.min.css"
 	th:href="@{assets/css/bootstrap.min.css}"></link>
@@ -23,15 +31,14 @@
 	th:href="@{assets/font-awesome/css/font-awesome.min.css}"></link>
 <link rel="stylesheet" href="../static/assets/css/form-elements.css"
 	th:href="@{assets/css/form-elements.css}"></link>
-<link rel="stylesheet" href="../static/assets/css/style.css"
-	th:href="@{assets/css/style.css}"></link>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+       
 
 <!-- Favicon and touch icons -->
 <link rel="shortcut icon" href="../static/assets/ico/favicon.png"

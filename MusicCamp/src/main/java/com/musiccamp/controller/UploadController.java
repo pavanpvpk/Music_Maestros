@@ -11,6 +11,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -37,10 +41,13 @@ import com.musiccamp.services.StorageService;
  */
 
 @Controller
+@EnableConfigurationProperties(StorageProperties.class)
+@ComponentScan("com.musiccamp.services")
 public class UploadController {
-
+	
+	
 	StudentDataModel sdm=new StudentDataModel();
-   
+  
 	
 	private final StorageService storageService;
 
@@ -80,9 +87,12 @@ public class UploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
+    	storageService.deleteAll();
+    	storageService.init();
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
+        stp.setFilename(file.getOriginalFilename());
         viewStudentData();
         return "viewStudentDetails";
     }
@@ -98,7 +108,7 @@ public class UploadController {
        try
         {
             
-    	   FileInputStream file = new FileInputStream(new File("ExcelData\\data.xlsx"));
+    	   FileInputStream file = new FileInputStream(new File(stp.getLocation()+"//"+stp.getFilename()));
             //Create Workbook instance holding reference to .xlsx file
             XSSFWorkbook workbook = new XSSFWorkbook(file);
  
@@ -172,10 +182,12 @@ public class UploadController {
             
             
         } 
+      
         catch (Exception e) 
         {
             e.printStackTrace();
         }
+      
        return "viewStudentDetails";
 }
     }
