@@ -101,17 +101,36 @@
 	<!-- Author--Manasa Bojja -->
 	<h1>Student Details</h1>
 	<table class="table table-responsive table-bordered">
-                <thead>
                 <tr>
                     <th>Student Id</th>
                     <th>Name </th>
                     <th>Grade</th>
-                    <th>Status</th>
+                    <th>Track</th>
+                    <th>Primary Instrument</th>
+                    <th>Secondary Instrument</th>
+                    <th>Elective 1</th>
+                    <th>Elective 2</th>
+                    <th>Elective 3</th>
+                    <th>Elective 4</th>
+                    
                 </tr>
-                </thead>
-              <tbody>
+                 <tr th:each="studentData:${session.student}">
+                	<td th:text="${studentData.studentId}"></td>
+                	<td th:text="${studentData.sname}"></td>
+                	<td th:text="${studentData.grade}"></td>
+                	<td th:text="${studentData.track}"></td>
+                	<td th:text="${studentData.primaryInstrument}"></td>
+                	<td th:text="${studentData.secondaryInstrument}"></td>
+                	<td th:text="${studentData.elective1}"></td>
+                	<td th:text="${studentData.elective2}"></td>
+                	<td th:text="${studentData.elective3}"></td>
+                	<td th:text="${studentData.elective4}"></td>
+                	
+               </tr>
+             
+              
+             
         
-     </tbody>
 </table>
 	
 	
