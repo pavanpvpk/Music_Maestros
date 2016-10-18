@@ -41,16 +41,13 @@ import com.musiccamp.services.StorageService;
  */
 
 @Controller
+@EnableConfigurationProperties(StorageProperties.class)
+@ComponentScan("com.musiccamp.services")
 public class UploadController {
 	
 	
-	@Bean
-	CommandLineRunner init(StorageService storageService) {
-		return (args) -> {
-            storageService.deleteAll();
-            storageService.init();
-		};
-	}
+	
+	
 	
 	StudentDataModel sdm=new StudentDataModel();
   
@@ -93,7 +90,8 @@ public class UploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
-    	
+    	storageService.deleteAll();
+    	storageService.init();
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
