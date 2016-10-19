@@ -25,7 +25,7 @@ function validate_fileupload(filename)
 } 
 
 
-window.onload = function() 
-{
-document.getElementById("js-upload-submit").onclick = buttonClick;
-}; 
+//window.onload = function() 
+//{
+//document.getElementById("js-upload-submit").onclick = buttonClick;
+//}; 
