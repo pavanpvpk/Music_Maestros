@@ -6,5 +6,7 @@
   <table-filter match-catalog="music_maestros" match-name="electives"/>
   <table-filter match-catalog="music_maestros" match-name="room"/>
   <table-filter match-catalog="music_maestros" match-name="room_timings"/>
+  <table-filter match-catalog="music_maestros" match-name="student"/>
   <table-filter match-catalog="music_maestros" match-name="timings"/>
+  <table-filter match-catalog="music_maestros" match-name="user_login"/>
 </hibernate-reverse-engineering>
