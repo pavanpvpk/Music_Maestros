@@ -66,7 +66,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="viewStudentDetails">View Student Details <span class="sr-only">(current)</span></a></li>
+					<li><a th:href="@{/viewMasterData}">View Student Details <span class="sr-only">(current)</span></a></li>
 					<li><a href="uploadStudentDetails">Upload Student Details <span
 							class="sr-only">(current)</span></a></li>
 
@@ -111,25 +111,7 @@
               <tbody>
           <tr th:each="timeID:${session.mastermap}">
       	<td th:text="${timeID.key}" align="left"></td> 
-      	<td th:text="${timeID.value.ElectiveName[0]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[1]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[2]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[3]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[4]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[5]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[6]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[7]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[8]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[9]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[10]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[11]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[12]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[13]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[14]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[15]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[16]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[17]}" contenteditable="true"></td>
-      	<td th:text="${timeID.value.ElectiveName[18]}" contenteditable="true"></td>
+      <td th:each="index:${timeID.value.ElectiveName}" th:text="${index}">
         </tr>  
      </tbody>
 </table>
