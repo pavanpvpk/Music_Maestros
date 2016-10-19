@@ -243,3 +243,20 @@ img { max-width: 100%; }
 	border-color:transparent;
 	text-align: center;
 }
+
+.mainContent{
+	width:80%;
+	text-align:left;
+	margin: 0 auto;
+	margin-top:50px;
+	color:#000;
+}
+.description{
+	font-size:20px;
+}
+.innerOfferings{
+	display: inline-block;
+	width:33%;
+	float: left;
+	font-size: 18px;
+}
