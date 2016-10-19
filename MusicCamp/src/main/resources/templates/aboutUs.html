@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -7,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 
 
 <!-- CSS -->
@@ -67,26 +66,16 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="viewStudentDetails">View Student Details <span
+					<li><a href="studentSchedule"
+					>My Schedule <span class="sr-only">(current)</span></a></li>
+					<li><a href="aboutUs">About Us <span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="uploadStudentDetails">Upload Student Details
-							<span class="sr-only">(current)</span>
-					</a></li>
-
-					<li class="dropdown masterSchedule"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						data-toggle="collapse" data-target=".navbar-collapse">Master
-							Schedule <span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu ">
-							<li><a th:href="@{/viewMasterData}">View Master Schedule</a></li>
-							<li><a href="editMasterSchedule">Edit Master Schedule</a></li>
-
-						</ul></li>
-					<li><a href="#">Contact <span class="sr-only">(current)</span></a></li>
+					<li><a href="contact">Contact <span class="sr-only">(current)</span></a></li>
+					<li><a href="faq">FAQ's<span
+							class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Welcome Admin</a></li>
+					<li><a href="#">Welcome User</a></li>
 					<li class="dropdown">
 						<button type="button" class="btn btn-success btn-lg">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -98,55 +87,5 @@
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container-fluid -->
-
 	</nav>
-	<br />
-	<!-- Author--Manasa Bojja -->
-	<div class="bodyContent">
-		<h1>Student Details</h1>
-		<div class="studentDetails">
-			<div class="studentDetailsrow">
-				<div>
-					Student Id:<span th:text="${session.student.studentId}"></span>
-				</div>
-				<div>
-					Name:<span th:text="${session.student.sname}"></span>
-				</div>
-				<div>
-					Grade:<span th:text="${session.student.grade}"></span>
-				</div>
-				<div>
-					Track:<span th:text="${session.student.track}"></span>
-				</div>
-			</div>
-			<div class="studentDetailsrow">
-				<div class="elective">
-					Primary Instrument:<span
-						th:text="${session.student.primaryInstrument}"></span>
-				</div>
-				<div class="elective">
-					Secondary Instrument:<span></span>
-				</div>
-			</div>
-			<div class="studentDetailsrow">
-				<div class="elective">
-					Elective 1:<span th:text="${session.student.elective1}"></span>
-				</div>
-				<div class="elective">
-					Elective 2:<span th:text="${session.student.elective2}"></span>
-				</div>
-			</div>
-			<div class="studentDetailsrow">
-				<div class="elective">
-					Elective 3:<span th:text="${session.student.elective3}"></span>
-				</div>
-				<div class="elective">
-					Elective 4:<span th:text="${session.student.elective4}"></span>
-				</div>
-			</div>
-		</div>
-		<button class="generate">Generate Schedule</button>
-
-	</div>
-
 </body>

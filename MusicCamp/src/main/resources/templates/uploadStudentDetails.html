@@ -115,12 +115,44 @@
           <!-- Standard Form -->
           <div class="fileselect"></div>
           <h4>Select files from your computer</h4>
-          <form action="/viewStudentData" method="POST" enctype="multipart/form-data" id="js-upload-form">
+          <form name="submitsheet" action="/viewStudentData" method="POST" enctype="multipart/form-data" id="js-upload-form" onsubmit="return buttonClick()">
             <div class="form-inline">
               <div class="form-group">
-                <input type="file" name="file" id="inpfile" onchange="validate_fileupload(this.value);">
+                <input type="file" name="file" id="inpfile" method="POST" onchange="validate_fileupload(this.value);">
               </div>
-              <button onclick="buttonClick()" type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+              <button  onclick="buttonClick()"  type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+              <script>             
+              function buttonClick()
+{
+ nme= document.getElementById("inpfile").value;
+ 
+	 var file_extn = nme.split('.').pop();
+	 if(file_extn == "xlsx" || file_extn == "xls")
+	 {
+	 alert('This file can be uploaded');
+	 return true;
+	 } else if (file_extn == "") {
+		 alert('No file selected');
+		 return false;
+		 
+	 } else 	 {
+		 
+		 alert('Only files with .xlsx and .xls extensions are allowed');
+		 location.reload();
+		 return false;
+		 
+	 }
+ }
+ 
+
+function validate_fileupload(filename)
+{
+	filename = document.getElementById("inpfile").value;
+	var extn = filename.split('.').pop();
+	
+} 
+
+              </script>
             </div>
           </form>
           </div>

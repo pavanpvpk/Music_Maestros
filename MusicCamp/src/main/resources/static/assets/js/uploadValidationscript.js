@@ -1,9 +1,7 @@
 function buttonClick()
 {
 	alert('hi');
- nme= document.getElementById("test").value;
- //if(nme == "xlsx") {
-	// alert(nme);
+ nme= document.getElementById("inpfile").value;
 	 var file_extn = nme.split('.').pop();
 	 if(file_extn == "xlsx" || file_extn == "xls")
 	 {
@@ -21,12 +19,13 @@ function buttonClick()
 
 function validate_fileupload(filename)
 {
-	filename = document.getElementById("test").value;
+	filename = document.getElementById("inpfile").value;
 	var extn = filename.split('.').pop();
 	
 } 
 
-window.onload = function() 
-{
-document.getElementById("js-upload-submit").onclick = buttonClick;
-};
+
+//window.onload = function() 
+//{
+//document.getElementById("js-upload-submit").onclick = buttonClick;
+//}; 
