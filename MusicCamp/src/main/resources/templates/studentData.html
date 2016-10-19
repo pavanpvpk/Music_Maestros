@@ -67,9 +67,11 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="viewStudentDetails">View Student Details <span class="sr-only">(current)</span></a></li>
-					<li><a href="uploadStudentDetails">Upload Student Details <span
+					<li><a href="viewStudentDetails">View Student Details <span
 							class="sr-only">(current)</span></a></li>
+					<li><a href="uploadStudentDetails">Upload Student Details
+							<span class="sr-only">(current)</span>
+					</a></li>
 
 					<li class="dropdown masterSchedule"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
@@ -77,7 +79,7 @@
 							Schedule <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu ">
-							<li><a th:href="@{/viewMasterData}" >View Master Schedule</a></li>
+							<li><a th:href="@{/viewMasterData}">View Master Schedule</a></li>
 							<li><a href="editMasterSchedule">Edit Master Schedule</a></li>
 
 						</ul></li>
@@ -98,42 +100,53 @@
 		<!-- /.container-fluid -->
 
 	</nav>
-	<br/>
+	<br />
 	<!-- Author--Manasa Bojja -->
-	<h1>Student Details</h1>
-	<table class="table table-responsive table-bordered">
-                <tr>
-                    <th>Student Id</th>
-                    <th>Name </th>
-                    <th>Grade</th>
-                    <th>Track</th>
-                    <th>Primary Instrument</th>
-                    <th>Secondary Instrument</th>
-                    <th>Elective 1</th>
-                    <th>Elective 2</th>
-                    <th>Elective 3</th>
-                    <th>Elective 4</th>
-                    
-                </tr>
-                 <tr th:each="studentData:${session.student}">
-                	<td th:text="${studentData.studentId}"></td>
-                	<td th:text="${studentData.sname}"></td>
-                	<td th:text="${studentData.grade}"></td>
-                	<td th:text="${studentData.track}"></td>
-                	<td th:text="${studentData.primaryInstrument}"></td>
-                	<td th:text="${studentData.secondaryInstrument}"></td>
-                	<td th:text="${studentData.elective1}"></td>
-                	<td th:text="${studentData.elective2}"></td>
-                	<td th:text="${studentData.elective3}"></td>
-                	<td th:text="${studentData.elective4}"></td>
-                	
-               </tr>
-             
-              
-             
-        
-</table>
-	
-	
+	<div class="bodyContent">
+		<h1>Student Details</h1>
+		<div class="studentDetails">
+			<div class="studentDetailsrow">
+				<div>
+					Student Id:<span th:text="${session.student.studentId}"></span>
+				</div>
+				<div>
+					Name:<span th:text="${session.student.sname}"></span>
+				</div>
+				<div>
+					Grade:<span th:text="${session.student.grade}"></span>
+				</div>
+				<div>
+					Track:<span th:text="${session.student.track}"></span>
+				</div>
+			</div>
+			<div class="studentDetailsrow">
+				<div class="elective">
+					Primary Instrument:<span
+						th:text="${session.student.primaryInstrument}"></span>
+				</div>
+				<div class="elective">
+					Secondary Instrument:<span></span>
+				</div>
+			</div>
+			<div class="studentDetailsrow">
+				<div class="elective">
+					Elective 1:<span th:text="${session.student.elective1}"></span>
+				</div>
+				<div class="elective">
+					Elective 2:<span th:text="${session.student.elective2}"></span>
+				</div>
+			</div>
+			<div class="studentDetailsrow">
+				<div class="elective">
+					Elective 3:<span th:text="${session.student.elective3}"></span>
+				</div>
+				<div class="elective">
+					Elective 4:<span th:text="${session.student.elective4}"></span>
+				</div>
+			</div>
+		</div>
+		<button class="generate">Generate Schedule</button>
+
+	</div>
 
 </body>
