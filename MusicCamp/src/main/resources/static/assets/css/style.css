@@ -265,6 +265,42 @@ img { max-width: 100%; }
 	width: 90%;
 	margin: 0 auto;
 }
+.studentDetails{
+	text-align: left;
+}
+.studentDetailsrow{
+	clear: both;
+	padding-top: 40px;
+}
+.studentDetailsrow div{
+	display: inline-block;
+	font-size: 20px;
+	font-weight: 400;
+	margin-left: 10%;
+}
+.studentDetailsrow div span{
+	margin-left: 15px;
+}
+.studentDetailsrow .elective{
+	width: 40%;
+	margin-left: 0;
+}
+.studentDetails .studentDetailsrow:first-child div{
+	float: left;
+}
+.studentDetailsrow div:first-child{
+	margin-left: 0;
+}
+.generate{
+	border-radius:15px;
+	color:#fff;
+	background-color: #272364;
+	border:0;
+	margin-top: 40px;
+	font-weight: 500;
+	padding: 10px;
+	font-size: 20px;
+}
 
 .rtable {
   /*!
