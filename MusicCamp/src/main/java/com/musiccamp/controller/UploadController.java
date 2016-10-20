@@ -101,7 +101,7 @@ public class UploadController {
 				"You successfully uploaded " + file.getOriginalFilename() + "!");
 		stp.setFilename(file.getOriginalFilename());
 		viewStudentData();
-		return "viewStudentDetails";
+		return "viewStudentData";
 	}
 
 	@ExceptionHandler(StorageFileNotFoundException.class)
@@ -140,10 +140,10 @@ public class UploadController {
 						}
 						// Check the cell type and format accordingly
 						if (cell.getColumnIndex() == 0) {
-							sdm.setStudentName(new ArrayList<Double>());
-							sdm.getStudentName().add(cell.getNumericCellValue());
-							student.setSname(String.valueOf(cell.getNumericCellValue()));
-							System.out.println("Inserted student name: " + cell.getNumericCellValue());
+							sdm.setStudentName(new ArrayList<String>());
+							sdm.getStudentName().add(cell.getStringCellValue());
+							student.setSname(String.valueOf(cell.getStringCellValue()));
+							System.out.println("Inserted student name: " + cell.getStringCellValue());
 						} else if (cell.getColumnIndex() == 1) {
 							sdm.setStudentGrade(new ArrayList<Double>());
 							sdm.getStudentGrade().add(cell.getNumericCellValue());
@@ -201,6 +201,6 @@ public class UploadController {
 			e.printStackTrace();
 		}
 
-		return "viewStudentDetails";
+		return "viewStudentData";
 	}
 }

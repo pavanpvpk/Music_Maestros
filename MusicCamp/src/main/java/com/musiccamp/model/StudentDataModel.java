@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class StudentDataModel {
 
-	ArrayList<Double> studentName;
+	ArrayList<String> studentName;
 	ArrayList<Double> studentGrade;
 	ArrayList<String> track;
 	ArrayList<String> primaryInstrument;
@@ -24,7 +24,7 @@ public class StudentDataModel {
 	}
 
 
-	public StudentDataModel(ArrayList<Double> studentName, ArrayList<Double> studentGrade, ArrayList<String> track,
+	public StudentDataModel(ArrayList<String> studentName, ArrayList<Double> studentGrade, ArrayList<String> track,
 			ArrayList<String> primaryInstrument, ArrayList<String> secondaryInstrument, ArrayList<String> elective1,
 			ArrayList<String> elective2, ArrayList<String> elective3, ArrayList<String> elective4) {
 		
@@ -40,12 +40,12 @@ public class StudentDataModel {
 	}
 
 
-	public ArrayList<Double> getStudentName() {
+	public ArrayList<String> getStudentName() {
 		return studentName;
 	}
 
 
-	public void setStudentName(ArrayList<Double> studentName) {
+	public void setStudentName(ArrayList<String> studentName) {
 		this.studentName = studentName;
 	}
 
