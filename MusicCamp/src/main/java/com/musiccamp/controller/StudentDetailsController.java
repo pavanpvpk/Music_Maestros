@@ -38,7 +38,7 @@ public class StudentDetailsController {
 	private StudentRepository student;
 	
 	// To display list of students
-	@RequestMapping(value="/viewStudentDetails",method=RequestMethod.POST)
+	@RequestMapping(value="/viewStudentDetails",method=RequestMethod.GET)
 	public String viewStudentDetails(ModelMap model, HttpSession session){
 		
 		List<Student> studentDetails =student.findAll();
