@@ -26,5 +26,7 @@ public interface ERTRepository extends JpaRepository<ElectiveRoomTimings, Intege
 		+ "and rt.rtId=ert.roomTimings order by t.timeId") 
 
 List<Object[]> findAllTimings();
+
 	
 }
+

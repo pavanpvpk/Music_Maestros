@@ -10,7 +10,7 @@ import com.musiccamp.entities.Student;
 
 /**
  * 
- * @author Manasa Bojja
+ * @author Manasa Bojja  & Pushkar Kumar Kanikicherla
  *
  **/
 public interface StudentRepository extends JpaRepository<Student, Integer>{
@@ -18,7 +18,11 @@ public interface StudentRepository extends JpaRepository<Student, Integer>{
 	@Query("select s from Student s where s.studentId = ?1")
     Student find(Integer studentId);
 	
+	@Override
+	void deleteAll();
 	
+	@Override
+	<S extends Student> List<S> save(Iterable<S> arg0);
 	
 	
 }
