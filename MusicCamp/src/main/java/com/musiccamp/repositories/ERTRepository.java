@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import com.musiccamp.entities.ElectiveRoomTimings;
 import com.musiccamp.entities.RoomTimings;
 import com.musiccamp.entities.Timings;

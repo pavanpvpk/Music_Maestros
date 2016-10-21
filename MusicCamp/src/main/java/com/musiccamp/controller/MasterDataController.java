@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -34,6 +35,7 @@ import com.musiccamp.repositories.RoomRepository;
 @Controller
 @Scope(value="session")
 @SessionAttributes({"tablerooms","roomMap"})
+
 public class MasterDataController {
 	
 	@Autowired
@@ -101,14 +103,13 @@ public class MasterDataController {
 		}
 	}
 
+	
 	List<Room> roomMap=rrts.findAll(); 
 	
 
 		model.put("roomMap", roomMap);
 		model.put("tablerooms", crsRmTmng1);
 		
-
-
 
 		return "viewMasterSchedule";
 
