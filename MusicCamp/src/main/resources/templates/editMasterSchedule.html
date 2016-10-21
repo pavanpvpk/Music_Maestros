@@ -111,16 +111,16 @@
 					class=" table table-responsive table-bordered rtable responsive">
 					<thead>
 						<tr>
-							<th align="left">Room #</th>
-							<th th:each="roomID:${session.roomNames}"
+							<th>Room #</th>
+							<th th:each="roomID:${session.roomMap}"
 								th:text="${roomID.roomName}"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="timeID:${session.mastermap}">
-							<td th:text="${timeID.key}" align="left"></td>
+						<tr th:each="timeID:${session.tablerooms}">
+							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}">
+								th:text="${index}"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -129,16 +129,16 @@
 				<table class="table table-responsive table-bordered rtable">
 					<thead>
 						<tr>
-							<th align="left">Room #</th>
-							<th th:each="roomID:${session.roomNames}"
+							<th>Room #</th>
+							<th th:each="roomID:${session.roomMap}"
 								th:text="${roomID.roomName}"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="timeID:${session.mastermap}">
-							<td th:text="${timeID.key}" align="left"></td>
+						<tr th:each="timeID:${session.tablerooms}">
+							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}">
+								th:text="${index}"></td>
 						</tr>
 					</tbody>
 				</table>

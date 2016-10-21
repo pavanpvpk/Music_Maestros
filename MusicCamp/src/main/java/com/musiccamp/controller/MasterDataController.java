@@ -32,6 +32,8 @@ import com.musiccamp.repositories.RoomRepository;
  *
  **/
 @Controller
+@Scope(value="session")
+@SessionAttributes({"tablerooms","roomMap"})
 public class MasterDataController {
 	
 	@Autowired
@@ -41,7 +43,7 @@ public class MasterDataController {
 	private RoomRepository rrts;
 
 	@RequestMapping(value="/viewMasterData",method=RequestMethod.GET)
-	public String viewMasterData(ModelMap model, HttpSession session){
+	public String viewMasterData(ModelMap model){
 	
 		List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
 		List<String> roomIds= new ArrayList<String>();
@@ -101,11 +103,11 @@ public class MasterDataController {
 
 	List<Room> roomMap=rrts.findAll(); 
 	
-	session.setAttribute("roomNames", roomMap);
 
+		model.put("roomMap", roomMap);
 		model.put("tablerooms", crsRmTmng1);
 		
-		session.setAttribute("mastermap",crsRmTmng1);
+
 
 
 		return "viewMasterSchedule";
