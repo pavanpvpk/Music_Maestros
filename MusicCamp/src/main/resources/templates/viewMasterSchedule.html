@@ -110,24 +110,25 @@
 	</nav>
 	<br />
 	<div class="bodyContent">
-		<!-- Author--Pavan Kumar Pedda Vakkalam -->
+		<!-- Author Pavan Kumar Pedda Vakkalam -->
 		<h1>Master Schedule</h1>
 
 		<div class="table-wrapper">
 			<div class="scrollable">
-				<table class=" table table-responsive table-bordered rtable responsive">
+				<table
+					class=" table table-responsive table-bordered rtable responsive">
 					<thead>
 						<tr>
-							<th align="left">Room #</th>
+							<th>Room #</th>
 							<th th:each="roomID:${session.roomNames}"
 								th:text="${roomID.roomName}"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="timeID:${session.mastermap}">
-							<td th:text="${timeID.key}" align="left"></td>
+							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}">
+								th:text="${index}"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -136,16 +137,16 @@
 				<table class="table table-responsive table-bordered rtable">
 					<thead>
 						<tr>
-							<th align="left">Room #</th>
+							<th>Room #</th>
 							<th th:each="roomID:${session.roomNames}"
 								th:text="${roomID.roomName}"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="timeID:${session.mastermap}">
-							<td th:text="${timeID.key}" align="left"></td>
+							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}">
+								th:text="${index}"></td>
 						</tr>
 					</tbody>
 				</table>
