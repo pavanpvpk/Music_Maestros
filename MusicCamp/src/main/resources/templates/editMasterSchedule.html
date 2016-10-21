@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script src="../assets/js/jquery-1.11.1.min.js"
-        th:href="@{js/jquery-1.11.1.min.js}"></script>
+	th:href="@{js/jquery-1.11.1.min.js}"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"
-         th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
+	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
 
 
 <!-- CSS -->
@@ -68,9 +68,11 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a th:href="@{/viewMasterData}">View Student Details <span class="sr-only">(current)</span></a></li>
-					<li><a href="uploadStudentDetails">Upload Student Details <span
+					<li><a th:href="@{/viewMasterData}">View Student Details <span
 							class="sr-only">(current)</span></a></li>
+					<li><a href="uploadStudentDetails">Upload Student Details
+							<span class="sr-only">(current)</span>
+					</a></li>
 
 					<li class="dropdown masterSchedule"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
@@ -100,23 +102,49 @@
 
 
 	</nav>
-<h1>Master Schedule</h1>
-<form action="/editMasterData" method="get">
-	<table class="table table-responsive table-bordered">
-                <thead>
-                <tr>
-                    <th align="left">Room # </th>
-                    <th th:each="roomID:${session.roomNames}" th:text="${roomID.roomName}"> </th>
-                </tr>
-                </thead>
-                
-              <tbody>
-          <tr th:each="timeID:${session.mastermap}">
-      	<td th:text="${timeID.key}" align="left"></td> 
-      <td th:each="index:${timeID.value.ElectiveName}" th:text="${index}">
-        </tr>  
-     </tbody>
-</table>
-<input type="submit" name="Save Changes">
-</form>
+	<div class="bodyContent">
+	<h1>Master Schedule</h1>
+	<form action="/editMasterData" method="get">
+		<div class="table-wrapper">
+			<div class="scrollable">
+				<table
+					class=" table table-responsive table-bordered rtable responsive">
+					<thead>
+						<tr>
+							<th>Room #</th>
+							<th th:each="roomID:${session.roomMap}"
+								th:text="${roomID.roomName}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="timeID:${session.tablerooms}">
+							<td th:text="${timeID.key}"></td>
+							<td th:each="index:${timeID.value.ElectiveName}"
+								th:text="${index}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="pinned">
+				<table class="table table-responsive table-bordered rtable">
+					<thead>
+						<tr>
+							<th>Room #</th>
+							<th th:each="roomID:${session.roomMap}"
+								th:text="${roomID.roomName}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="timeID:${session.tablerooms}">
+							<td th:text="${timeID.key}"></td>
+							<td th:each="index:${timeID.value.ElectiveName}"
+								th:text="${index}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<input type="submit" name="Save Changes">
+	</form>
+	</div>
 </body>
