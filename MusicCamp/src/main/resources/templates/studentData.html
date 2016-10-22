@@ -113,19 +113,19 @@
 					Student Id:<span th:text="${session.student.studentId}"></span>
 				</div>
 				<div>
-					Name:<span th:text="${session.student.sname}"></span>
+					Name:<span th:text="${session.student.sname}"><input name="studentName"></span>
 				</div>
 				<div>
-					Grade:<span th:text="${session.student.grade}"></span>
+					Grade:<span th:name="studentGrade" th:text="${session.student.grade}"></span>
 				</div>
 				<div>
-					Track:<span th:text="${session.student.track}"></span>
+					Track:<span th:name="studentTrack" th:text="${session.student.track}"></span>
 				</div>
 			</div>
 			<div class="studentDetailsrow">
 				<div class="elective">
 					Primary Instrument:<span
-						th:text="${session.student.primaryInstrument}"></span>
+						th:name="primaryInst" th:text="${session.student.primaryInstrument}"></span>
 				</div>
 				<div class="elective">
 					Secondary Instrument:<span></span>
@@ -133,18 +133,18 @@
 			</div>
 			<div class="studentDetailsrow">
 				<div class="elective">
-					Elective 1:<span th:text="${session.student.elective1}"></span>
+					Elective 1:<span th:name="Elective1" th:text="${session.student.elective1}"></span>
 				</div>
 				<div class="elective">
-					Elective 2:<span th:text="${session.student.elective2}"></span>
+					Elective 2:<span th:name="Elective2" th:text="${session.student.elective2}"></span>
 				</div>
 			</div>
 			<div class="studentDetailsrow">
 				<div class="elective">
-					Elective 3:<span th:text="${session.student.elective3}"></span>
+					Elective 3:<span th:name="Elective3" th:text="${session.student.elective3}"></span>
 				</div>
 				<div class="elective">
-					Elective 4:<span th:text="${session.student.elective4}"></span>
+					Elective 4:<span th:name="Elective4" th:text="${session.student.elective4}"></span>
 				</div>
 			</div>
 		</div>

@@ -68,7 +68,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a th:href="@{/viewMasterData}">View Student Details <span
+					<li><a th:href="@{/viewStudentDetails}">View Student Details <span
 							class="sr-only">(current)</span></a></li>
 					<li><a href="uploadStudentDetails">Upload Student Details
 							<span class="sr-only">(current)</span>
@@ -118,9 +118,11 @@
 					</thead>
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
-							<td th:text="${timeID.key}"></td>
+                		<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
+								<td style="text-align: center" >
+                
 						</tr>
 					</tbody>
 				</table>
@@ -139,7 +141,8 @@
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
-						</tr>
+								
+						</tr>		
 					</tbody>
 				</table>
 			</div>
