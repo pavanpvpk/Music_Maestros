@@ -106,12 +106,6 @@
 	<!-- Author--Manasa Bojja -->
 	<div class="bodyContent">
 		<h1>Student Details</h1>
-
-		<form action="/schedulegen" method="get">
-		<div class="studentDetails">
-			<div class="studentDetailsrow">
-				<div >
-					Student Id:<span th:text="${session.student.studentId}"></span>
 		
 			<div class="studentDetails">
 				<div class="studentDetailsrow">
@@ -127,12 +121,7 @@
 					<div>
 						Track:<span th:text="${session.student.track}"></span>
 					</div>
-
 				</div>
-
-				<div>
-					Name:<span  th:text="${session.student.sname}"><input name="studentName"></span>
-
 				<div class="studentDetailsrow">
 					<div class="elective">
 						Primary Instrument:<span
@@ -168,5 +157,4 @@
 			
 		
 	</div>
-	
 </body>
