@@ -12,6 +12,15 @@
 	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
 
 
+
+<!-- For sorting table data: Manasa Bojja -->
+<script src="http://tablesorter.com/jquery-latest.js"
+	type="text/javascript"></script>
+<script src="http://tablesorter.com/__jquery.tablesorter.min.js"
+	type="text/javascript"></script>
+<script src="../assets/js/sort.js" th:href="@{js/sort.js}"></script>
+
+
 <!-- CSS -->
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"></link>
@@ -25,6 +34,7 @@
 	th:href="@{assets/css/form-elements.css}"></link>
 <link rel="stylesheet" href="../static/assets/css/style.css"
 	th:href="@{assets/css/style.css}"></link>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +60,7 @@
 	th:href="@{assets/ico/apple-touch-icon-57-precomposed.png}"></link>
 </head>
 
-<body>
+<body class="PageType">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -81,7 +91,8 @@
 							Schedule <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu ">
-							<li><a th:href="viewMasterSchedule">View Master Schedule</a></li>
+							<li><a th:href="viewMasterSchedule">View Master
+									Schedule</a></li>
 							<li><a href="editMasterSchedule">Edit Master Schedule</a></li>
 
 						</ul></li>
@@ -103,78 +114,10 @@
 
 	</nav>
 	<br />
-	<!-- Author--Manasa Bojja -->
+	
 	<div class="bodyContent">
-		<h1>Student Details</h1>
-
-		<form action="/schedulegen" method="get">
-		<div class="studentDetails">
-			<div class="studentDetailsrow">
-				<div >
-					Student Id:<span th:text="${session.student.studentId}"></span>
 		
-			<div class="studentDetails">
-				<div class="studentDetailsrow">
-					<div>
-						Student Id:<span id="studentId" th:text="${session.student.studentId}"></span>
-					</div>
-					<div>
-						Name:<span th:text="${session.student.sname}"></span>
-					</div>
-					<div>
-						Grade:<span th:text="${session.student.grade}"></span>
-					</div>
-					<div>
-						Track:<span th:text="${session.student.track}"></span>
-					</div>
 
-				</div>
 
-				<div>
-					Name:<span  th:text="${session.student.sname}"><input name="studentName"></span>
-
-				<div class="studentDetailsrow">
-					<div class="elective">
-						Primary Instrument:<span
-							th:text="${session.student.primaryInstrument}"></span>
-					</div>
-					<div class="elective">
-						Secondary Instrument:<span th:text="${session.student.secondaryInstrument}"></span>
-					</div>
-				</div>
-				<div class="studentDetailsrow">
-					<div class="elective">
-						Elective 1:<span th:text="${session.student.elective1}"></span>
-					</div>
-					<div class="elective">
-						Elective 2:<span th:text="${session.student.elective2}"></span>
-					</div>
-				</div>
-				<div class="studentDetailsrow">
-					<div class="elective">
-						Elective 3:<span th:text="${session.student.elective3}"></span>
-					</div>
-					<div class="elective">
-						Elective 4:<span th:text="${session.student.elective4}"></span>
-					</div>
-				</div>
-			</div>
-			<a th:href="@{/generateSchedule?(sid=${session.student.studentId},
-			name=${session.student.sname},grade=${session.student.grade},
-			track=${session.student.track},priInstrument=${session.student.primaryInstrument},secInstrument=${session.student.secondaryInstrument},
-			elec1=${session.student.elective1},elec2=${session.student.elective2},
-			elec3=${session.student.elective3},elec4=${session.student.elective4})}">
-				<input type="submit" value="Generate Schedule" class="generate"></a>
-			
-		
 	</div>
-	<script type="text/javascript">
-		$(function() {
-			$('#generateSchedule').submit(function(){
-				var text1 = $("#studentId").text();
-				alert(text1);
-			});
-		});
-	</script>
-
 </body>

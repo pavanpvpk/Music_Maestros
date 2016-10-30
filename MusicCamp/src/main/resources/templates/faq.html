@@ -6,10 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script src="../assets/js/jquery-1.11.1.min.js"
-        th:href="@{js/jquery-1.11.1.min.js}"></script>
+	th:href="@{js/jquery-1.11.1.min.js}"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"
-         th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
-
+	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
+<script src="../assets/js/jquery-ui.min.js"
+	th:href="@{js/jquery-ui.min.js}"></script>
 
 <!-- CSS -->
 <link rel="stylesheet"
@@ -17,6 +18,9 @@
 <link rel="stylesheet"
 	href="../static/assets/bootstrap/css/bootstrap.min.css"
 	th:href="@{assets/bootstrap/css/bootstrap.min.css}"></link>
+<link rel="stylesheet"
+	href="../static/assets/bootstrap/css/jquery-ui.min.css"
+	th:href="@{assets/bootstrap/css/jquery-ui.min.css}"></link>
 <link rel="stylesheet"
 	href="../static/assets/font-awesome/css/font-awesome.min.css"
 	th:href="@{assets/font-awesome/css/font-awesome.min.css}"></link>
@@ -61,20 +65,18 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="adminhome">Home</a>
+				<a class="navbar-brand" href="userhome">Home</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="studentSchedule"
-					>My Schedule <span class="sr-only">(current)</span></a></li>
-					<li><a href="aboutUs">About Us <span
+					<li><a href="studentSchedule">My Schedule <span
 							class="sr-only">(current)</span></a></li>
+					<li><a href="aboutUs">About Us <span class="sr-only">(current)</span></a></li>
 					<li><a href="contact">Contact <span class="sr-only">(current)</span></a></li>
-					<li><a href="faq">FAQ's<span
-							class="sr-only">(current)</span></a></li>
+					<li><a href="faq">FAQ's<span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome User</a></li>
@@ -90,28 +92,76 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-	<div class="mainContent">
-	<p class="description">
-	Q) When will registration be available?
-	</p>
-	<p>
-      Answer. Online registration for the 2016 Northwest Summer Music Camp is up and running!
-	</p>
-	<p class ="description">
-	Q) 	Do I need to pay the full camp fee all at one time?
-	</p>
-	<p>
-	  Answer. NO! You may pay a deposit, and make multiple payments towards your camp balance.  Once you begin the online registration process, you will see our payment options. 
-	          OR...you may pay the entire amount during your online registration.
-	</p>
-	<p class="description">
-	Q) I submitted my application in a long time ago and haven't heard anything back yet. What should I do?
-	 </p>
-	 <p>
-	  Answer. It is possible that your application has not yet been processed. 
-	          We get hundreds of applications back within a week the opening of the registration site, and process hundreds of applications each year!
-	          At the height of the application time for camp, from March 1st until April 15th, we may not process all the applications until about three weeks after the postmark. 
-	          Take note of the date you sent your application, and if it has been four weeks since you sent it in, please feel free to give us a call. We thank you for your patience.
-	  </p>
-	  </div>
+	<div class="bodyContent">
+		<div id="accordion">
+			<h3>When will registration be available?</h3>
+			<div>
+				<p>Online registration for the 2016 Northwest Summer Music Camp
+					is up and running!</p>
+			</div>
+			<h3>Do I need to pay the full camp fee all at one time?</h3>
+			<div>
+				<p>NO! You may pay a deposit, and make multiple payments towards
+					your camp balance. Once you begin the online registration process,
+					you will see our payment options. OR...you may pay the entire
+					amount during your online registration.</p>
+			</div>
+			<h3>What is the deadline to apply for Summer Music Camp?</h3>
+			<div>
+				<p>While there is not deadline for application, we encourage you
+					to apply as soon as possible, especially if you play a popular
+					instrument such as flute, trumpet, or saxophone.</p>
+			</div>
+			<h3>Do I need to send an audition CD or tape?</h3>
+			<div>
+				<p>No.</p>
+			</div>
+			<h3>Will I need to audition for ensemble placement when I arrive
+				for Camp?</h3>
+			<div>
+				<p></p>
+			</div>
+			<h3>How is my enrollment into camp determined?</h3>
+			<div>
+				<p>Students are accepted into Summer Music Camp on a first come,
+					first served basis.</p>
+			</div>
+			<h3>What happens if there isn't room for me in Summer Music Camp
+				by the time my application is processed?</h3>
+			<div>
+				<p>You will be placed on our waiting list, and your payment will
+					be refunded entirely if we are unable to include you for this
+					summer’s camp. You can find more information about the waiting list
+					below.</p>
+			</div>
+			<h3>I submitted my application in a long time ago and haven't
+				heard anything back yet. What should I do?</h3>
+			<div>
+				<p>It is possible that your application has not yet been
+					processed. We get hundreds of applications back within a week the
+					opening of the registration site, and process hundreds of
+					applications each year! At the height of the application time for
+					camp, from March 1st until April 15th, we may not process all the
+					applications until about three weeks after the postmark. Take note
+					of the date you sent your application, and if it has been four
+					weeks since you sent it in, please feel free to give us a call. We
+					thank you for your patience.</p>
+			</div>
+			<h3>What band level should I sign up for?</h3>
+			<div>
+				<p>Your band placement will be determined by your audition
+					results. It’s possible for students in ANY grade level to make
+					Symphonic Band, but that group will consist mostly of high school
+					students. Similarly, the Concert Band will consist mainly of
+					students just leaving 6th through 9th grade band.</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function() {
+			$("#accordion").accordion({
+				heightStyle : "content"
+			});
+		});
+	</script>
 </body>
