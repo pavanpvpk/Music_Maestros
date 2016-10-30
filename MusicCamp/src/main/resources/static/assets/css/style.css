@@ -428,3 +428,9 @@ table.responsive td, table.responsive th { position: relative; white-space: nowr
 table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
 .pinned table tr th,.pinned table tr td{ display: none;}
 .pinned table tr th:first-child,.pinned table tr td:first-child{ display: block; border-bottom: 0; border-left: 0;}
+
+#accordion{
+	text-align: left;
+	width: 70%;
+	margin: 0 auto;
+}
