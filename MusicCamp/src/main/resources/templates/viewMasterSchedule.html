@@ -120,12 +120,12 @@
 					<thead>
 						<tr>
 							<th>Room #</th>
-							<th th:each="roomID:${session.roomNames}"
+							<th th:each="roomID:${session.roomMap}"
 								th:text="${roomID.roomName}"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="timeID:${session.mastermap}">
+						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
@@ -138,12 +138,12 @@
 					<thead>
 						<tr>
 							<th>Room #</th>
-							<th th:each="roomID:${session.roomNames}"
+							<th th:each="roomID:${session.roomMap}"
 								th:text="${roomID.roomName}"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="timeID:${session.mastermap}">
+						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>

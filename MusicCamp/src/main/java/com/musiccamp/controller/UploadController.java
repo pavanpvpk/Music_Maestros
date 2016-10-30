@@ -63,34 +63,7 @@ public class UploadController {
 		this.storageService = storageService;
 	}
 
-	// @RequestMapping("/")
-	// public String listUploadedFiles(Model model) throws IOException {
-	//
-	// model.addAttribute("files", storageService
-	// .loadAll()
-	// .map(path ->
-	// MvcUriComponentsBuilder
-	// .fromMethodName(UploadController.class, "serveFile",
-	// path.getFileName().toString())
-	// .build().toString())
-	// .collect(Collectors.toList()));
-	//
-	// return "uploadForm";
-	// }
-
-	// @RequestMapping("/files/{filename:.+}")
-	// @ResponseBody
-	// public ResponseEntity<Resource> serveFile(@PathVariable String filename)
-	// {
-	//
-	// Resource file = storageService.loadAsResource(filename);
-	// return ResponseEntity
-	// .ok()
-	// .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;
-	// filename=\""+file.getFilename()+"\"")
-	// .body(file);
-	// }
-
+	
 	@RequestMapping(value = "/viewStudentData", method = RequestMethod.POST)
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
