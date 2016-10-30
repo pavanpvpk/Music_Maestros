@@ -109,11 +109,11 @@
 		<form action="/schedulegen" method="get">
 		<div class="studentDetails">
 			<div class="studentDetailsrow">
-				<div>
+				<div >
 					Student Id:<span th:text="${session.student.studentId}"></span>
 				</div>
 				<div>
-					Name:<span th:text="${session.student.sname}"><input name="studentName"></span>
+					Name:<span  th:text="${session.student.sname}"><input name="studentName"></span>
 				</div>
 				<div>
 					Grade:<span th:name="studentGrade" th:text="${session.student.grade}"></span>
