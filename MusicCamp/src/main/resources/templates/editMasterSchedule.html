@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script src="../assets/js/jquery-1.11.1.min.js"
-	th:src="@{js/jquery-1.11.1.min.js}" type="text/javascript"></script>
+	th:href="@{js/jquery-1.11.1.min.js}"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"
-	th:src="@{js/bootstrap.min.js}" type="text/javascript"></script>
+	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
 <script src="../assets/bootstrap/js/editmaster.js"
-	th:src="@{js/editmaster.js}" type="text/javascript"></script>
+	th:href="@{js/editmaster.js}" type="text/javascript"></script>
 
 
 <!-- CSS -->
@@ -70,8 +70,9 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a th:href="@{/viewStudentDetails}">View Student Details <span
-							class="sr-only">(current)</span></a></li>
+					<li><a th:href="@{/viewStudentDetails}">View Student
+							Details <span class="sr-only">(current)</span>
+					</a></li>
 					<li><a href="uploadStudentDetails">Upload Student Details
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -105,7 +106,7 @@
 
 	</nav>
 	<div class="bodyContent">
-	<h1>Master Schedule</h1>
+		<h1>Master Schedule</h1>
 		<div class="table-wrapper">
 			<div class="scrollable">
 				<table
@@ -119,10 +120,10 @@
 					</thead>
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
-                		<td th:text="${timeID.key}"></td>
-							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}"></td>
-                <td th:label="edit"><button onclick="addAttribute()" class="btn-primary">Edit</button></td>
+							<td th:text="${timeID.key}"></td>
+							<td contenteditable="false"
+								th:each="index:${timeID.value.ElectiveName}" th:text="${index}"></td>
+							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -141,13 +142,33 @@
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
-							<td th:label="edit"><button onclick="addAttribute()" class="btn-primary">Edit</button></td>
-								
-						</tr>		
+
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 		<input type="submit" value="Save Changes">
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.editbtn').click(function () {
+		        var currentTD = $(this).parents('tr').find('td');
+		        if ($(this).html() == 'Edit') {
+		            currentTD = $(this).parents('tr').find('td');
+		            $.each(currentTD, function () {
+		                $(this).prop('contenteditable', true)
+		            });
+		        } else {
+		           $.each(currentTD, function () {
+		                $(this).prop('contenteditable', false)
+		            });
+		        }
+
+		        $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+
+		    });
+
+		});
+	</script>
 </body>
