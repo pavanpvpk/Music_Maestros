@@ -6,9 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script src="../assets/js/jquery-1.11.1.min.js"
-	th:href="@{js/jquery-1.11.1.min.js}"></script>
+	th:src="@{js/jquery-1.11.1.min.js}" type="text/javascript"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"
-	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
+	th:src="@{js/bootstrap.min.js}" type="text/javascript"></script>
+<script src="../assets/bootstrap/js/editmaster.js"
+	th:src="@{js/editmaster.js}" type="text/javascript"></script>
 
 
 <!-- CSS -->
@@ -104,7 +106,6 @@
 	</nav>
 	<div class="bodyContent">
 	<h1>Master Schedule</h1>
-	<form action="/editMasterData" method="get">
 		<div class="table-wrapper">
 			<div class="scrollable">
 				<table
@@ -121,8 +122,7 @@
                 		<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
-								<td style="text-align: center" >
-                
+                <td th:label="edit"><button onclick="addAttribute()" class="btn-primary">Edit</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -141,13 +141,13 @@
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
+							<td th:label="edit"><button onclick="addAttribute()" class="btn-primary">Edit</button></td>
 								
 						</tr>		
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<input type="submit" name="Save Changes">
-	</form>
+		<input type="submit" value="Save Changes">
 	</div>
 </body>
