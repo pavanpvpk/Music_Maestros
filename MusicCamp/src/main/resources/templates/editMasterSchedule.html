@@ -120,7 +120,7 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
                 		<td th:text="${timeID.key}"></td>
-							<td type="hidden" th:class="electivecall"th:each="index:${timeID.value.ElectiveName}"
+							<td th:class="electivecall"th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
                 <td th:label="edit"><button onclick="addAttribute()" class="btn-primary">Edit</button></td>
 						</tr>
