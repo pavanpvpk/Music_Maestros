@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
@@ -120,7 +120,7 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
                 		<td th:text="${timeID.key}"></td>
-							<td th:each="index:${timeID.value.ElectiveName}"
+							<td type="hidden" th:class="electivecall"th:each="index:${timeID.value.ElectiveName}"
 								th:text="${index}"></td>
                 <td th:label="edit"><button onclick="addAttribute()" class="btn-primary">Edit</button></td>
 						</tr>
@@ -151,3 +151,4 @@
 		<input type="submit" value="Save Changes">
 	</div>
 </body>
+</html>

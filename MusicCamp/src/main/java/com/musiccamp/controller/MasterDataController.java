@@ -114,4 +114,10 @@ public class MasterDataController {
 		return "viewMasterSchedule";
 
 	}
+	
+	@RequestMapping("/editschedule")
+	public String editMasterData(){
+		
+		return "";
+	}
 }

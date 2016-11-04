@@ -3,10 +3,10 @@
  */
 
 function addAttribute() {
-var card = $('#card').closest("tr").parent('td').find('input[name=name]').val();
+var card = $('.electivecall').closest("tr").parent('td').find('input[name=name]').val();
 $.ajax({
     type:"GET",
-    url: contexPath + "/getUpdatableCard",
+    url: "http://localhost:8080/MusicCamp/editschedule",
     data:"card=" + card,
     dataType:'json',
     contentType : "application/json",
