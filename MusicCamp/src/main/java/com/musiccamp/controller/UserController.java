@@ -35,7 +35,7 @@ import com.musiccamp.entities.UserLogin;
  *
  */
 
-@Scope("session")
+@Scope(value="session")
 @Controller
 @RequestMapping("/home")
 @SessionAttributes({"username"})
