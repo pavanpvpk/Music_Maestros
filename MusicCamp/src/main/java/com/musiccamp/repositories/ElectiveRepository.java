@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.musiccamp.entities.Electives;
+import java.lang.Integer;
+import java.util.List;
 
 
 /**
@@ -14,6 +16,6 @@ import com.musiccamp.entities.Electives;
  **/
 public interface ElectiveRepository extends JpaRepository<Electives, Integer> {
 	
-	
+
 
 }

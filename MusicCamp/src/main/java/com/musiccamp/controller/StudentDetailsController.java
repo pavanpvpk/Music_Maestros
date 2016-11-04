@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.musiccamp.entities.Student;
+import com.musiccamp.repositories.ElectiveRepository;
 import com.musiccamp.repositories.StudentRepository;
 
 /**
@@ -36,6 +37,9 @@ public class StudentDetailsController {
 	
 	@Autowired
 	private StudentRepository student;
+	
+	@Autowired
+	private ElectiveRepository electiveids;
 	
 	// To display list of students
 	@RequestMapping(value="/viewStudentDetails",method=RequestMethod.GET)
@@ -54,7 +58,7 @@ public class StudentDetailsController {
 	@RequestMapping(value="/studentData",method=RequestMethod.GET)
 	public String studentData(HttpSession session,
 			@RequestParam(value="id", required = true) Integer argName){
-	    System.out.println("***********"+argName);
+	   // System.out.println("***********"+argName);
 		
 	    Student studentInfo =  student.find(argName);
 	    session.setAttribute("student", studentInfo);
@@ -74,10 +78,12 @@ public class StudentDetailsController {
 			@RequestParam(value="elec2") String elec2,
 			@RequestParam(value="elec3") String elec3,
 			@RequestParam(value="elec4") String elec4){
-	    System.out.println("***********"+argName);
+	    System.out.println("***********"+name);
+	    
+	  
 		
-	    Student studentInfo =  student.find(argName);
-	    session.setAttribute("student", studentInfo);
+//	    Student studentInfo =  student.find(argName);
+//	    session.setAttribute("student", studentInfo);
 	    
 		return "generateSchedule";
 		
