@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.musiccamp.Exceptions.CellDataEmptyException;
 import com.musiccamp.Exceptions.StorageFileNotFoundException;
 import com.musiccamp.entities.Student;
 import com.musiccamp.model.StudentDataModel;
@@ -82,6 +83,7 @@ public class UploadController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@ExceptionHandler(CellDataEmptyException.class)
 	public String viewStudentData() {
 
 		try {
@@ -107,12 +109,23 @@ public class UploadController {
 
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
+				
+				
 					if (cell.getRowIndex() >= 1) {
-						if (cell != null && cell.getCellType() != Cell.CELL_TYPE_BLANK) {
+				
+				
+						 if (cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK) {
+							 String data = cell.getStringCellValue();
+						    throw new CellDataEmptyException("Data is empty");
+						    
+						 }
+					     if (cell != null && cell.getCellType() != Cell.CELL_TYPE_BLANK) {
 							isEmptyRow = false;
 						}
 						// Check the cell type and format accordingly
+						try{
 						if (cell.getColumnIndex() == 0) {
+							
 							sdm.setStudentName(new ArrayList<String>());
 							sdm.getStudentName().add(cell.getStringCellValue());
 							student.setSname(String.valueOf(cell.getStringCellValue()));
@@ -159,7 +172,12 @@ public class UploadController {
 							System.out.println("Inserted student Elective4: " + cell.getStringCellValue());
 						}
 						student.setStatus("Not Scheduled");
-					}
+						}
+						catch(CellDataEmptyException e){
+							e.printStackTrace();
+						}
+						}
+						
 				}
 				if (!isEmptyRow) {
 					students.add(student);
