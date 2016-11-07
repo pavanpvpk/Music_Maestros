@@ -1,4 +1,4 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8"></meta>
@@ -79,10 +79,11 @@ s<!DOCTYPE html>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome User</a></li>
 					<li class="dropdown">
-						<button type="button" class="btn btn-success btn-lg">
+						<a href="logout"><button type="button" class="btn btn-success btn-lg">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							Logout
 						</button>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -90,6 +91,29 @@ s<!DOCTYPE html>
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-</body>
+	
+	<div class="bodyContent">
+	<h1>Student Details</h1>
+	<table class="table table-responsive table-bordered" id="myTable">
+                <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Location  </th>
+                    <th>Timings</th>
+                   </tr>
+                </thead>
+              <tbody>
+          <tr th:each="studentschedule:${session.scheduleList}">
+         
+       			<td th:text="${studentschedule.courseName}"></td>
+      		<td th:text="${studentschedule.roomName}"></td>
+      		<td th:text="${studentschedule.timings}"></td>
+        </tr>  
+     </tbody>
+</table>
 
+
+</div>
+	
+</body>
 </html>
