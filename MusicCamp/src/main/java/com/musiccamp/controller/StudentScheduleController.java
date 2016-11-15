@@ -54,18 +54,18 @@ public class StudentScheduleController {
 	private TimingRepository timingRepository;
 	
 	
-	@RequestMapping(value="/studentSchedule",method=RequestMethod.GET)
+	@RequestMapping(value="/generateSchedule",method=RequestMethod.GET)
 	
-	public String Schedulegen(ModelMap model,HttpSession session){
+	public String Schedulegen(ModelMap model,HttpSession session, @RequestParam("sid") Integer username){
 		
-		System.out.println(session.getAttribute("username"));
+		//System.out.println(session.getAttribute("sid"));
 		//System.out.println(studentName);
-		Integer username =null;
-		if(session != null) {
-		 username = (Integer)session.getAttribute("username");
-		}
+		//Integer username =null;
+//		if(session != null) {
+//		 username = (Integer)session.getAttribute("sid");
+//		}
 		
-		Student student = studentRepo.find(524980); 
+		Student student = studentRepo.find(username); 
 		
 		
 		List<String> electiveNames = java.util.Collections.checkedList(new ArrayList<String>(), String.class);
@@ -85,7 +85,7 @@ public class StudentScheduleController {
 				studentElectives.add(elective);
 			}
 		}
-		
+		//ok till here
 		System.out.println(studentElectives.size());
 		List<ElectiveRoomTimings> allERTimings = ertRepository.findAll();
 		List<ElectiveRoomTimings> studentERTimings = new ArrayList<ElectiveRoomTimings>(); 

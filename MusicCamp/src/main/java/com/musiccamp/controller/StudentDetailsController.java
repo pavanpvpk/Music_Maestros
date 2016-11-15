@@ -66,26 +66,5 @@ public class StudentDetailsController {
 		
 	}
 	
-	@RequestMapping(value="/generateSchedule",method=RequestMethod.GET)
-	public String generateSchedule(HttpSession session,
-			@RequestParam(value="sid", required = true) Integer argName,
-			@RequestParam(value="name") String name,
-			@RequestParam(value="grade") String grade,
-			@RequestParam(value="track") String track,
-			@RequestParam(value="priInstrument") String priInstrument,
-			@RequestParam(value="secInstrument") String secInstrument,
-			@RequestParam(value="elec1") String elec1,
-			@RequestParam(value="elec2") String elec2,
-			@RequestParam(value="elec3") String elec3,
-			@RequestParam(value="elec4") String elec4){
-	    System.out.println("***********"+name);
-	    
-	  
-		
-//	    Student studentInfo =  student.find(argName);
-//	    session.setAttribute("student", studentInfo);
-	    
-		return "generateSchedule";
-		
-	}
+	
 }

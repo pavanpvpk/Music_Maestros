@@ -15,15 +15,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
+import com.musiccamp.entities.Electives;
 import com.musiccamp.entities.Room;
 import com.musiccamp.model.ElectiveRoomTimeModel;
 import com.musiccamp.repositories.ERTRepository;
+import com.musiccamp.repositories.ElectiveRepository;
 import com.musiccamp.repositories.RoomRepository;
 
 
@@ -34,7 +36,7 @@ import com.musiccamp.repositories.RoomRepository;
  **/
 @Controller
 @Scope(value="session")
-@SessionAttributes({"tablerooms","roomMap"})
+@SessionAttributes({"tablerooms","roomMap","dropdowndata"})
 
 public class MasterDataController {
 	
@@ -44,7 +46,10 @@ public class MasterDataController {
 	@Autowired
 	private RoomRepository rrts;
 
-	@RequestMapping(value="/viewMasterData",method=RequestMethod.GET)
+	@Autowired
+	private ElectiveRepository ers;
+	
+	@RequestMapping(value={"/viewMasterData"},method=RequestMethod.GET)
 	public String viewMasterData(ModelMap model){
 	
 		List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
@@ -63,6 +68,7 @@ public class MasterDataController {
 				
 			}
 			
+			
 			else{
 				ertm=new ElectiveRoomTimeModel();
 				ertm.setRoomNum(new ArrayList<String>());
@@ -71,7 +77,7 @@ public class MasterDataController {
 				ertm.getElectiveName().add((String) tabledata[3]);
 				timemappings.put((String)tabledata[1], ertm);
 			}
-
+			
 	}
 		
 		roomIds=rrts.findbyRoomName(); //invoke HQL of RoomRepository
@@ -106,18 +112,27 @@ public class MasterDataController {
 	
 	List<Room> roomMap=rrts.findAll(); 
 	
-
 		model.put("roomMap", roomMap);
 		model.put("tablerooms", crsRmTmng1);
+	
+		if(model.containsAttribute("dropdowndata")){
+			
+			return "editMasterSchedule";
+		}
 		
-
 		return "viewMasterSchedule";
 
 	}
 	
-	@RequestMapping("/editschedule")
-	public String editMasterData(){
+	
+	
+	@RequestMapping(value="/editMasterSchedule",method=RequestMethod.GET)
+	public void editMasterData(ModelMap model){
 		
-		return "";
+		List<Electives> electivedropdown=ers.findAll();
+		
+		model.put("dropdowndata", ers);
+		viewMasterData(model);
+		
 	}
 }

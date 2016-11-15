@@ -129,7 +129,7 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}"></td>
+							    th:text="${index}"></td>
 						</tr>
 					</tbody>
 				</table>

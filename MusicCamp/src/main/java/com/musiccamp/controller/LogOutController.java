@@ -1,5 +1,9 @@
 package com.musiccamp.controller;
 
+
+
+
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
@@ -14,10 +18,13 @@ public class LogOutController {
 
 	
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
-	public String logout(ModelMap model,HttpSession session){
+	public String logout(ModelMap model,HttpSession session) {
 		
 		session =null;
 		return "redirect:/login";
 
 	}
+	
+	
+    
 }
