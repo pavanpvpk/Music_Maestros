@@ -105,7 +105,7 @@
 
 
 	</nav>
-	<div class="bodyContent">
+	<div class="bodyContent masterSchedule">
 		<h1>Master Schedule</h1>
 		<div class="table-wrapper">
 			<div class="scrollable">
@@ -163,8 +163,16 @@
 		           $.each(currentTD, function () {
 		                $(this).prop('contenteditable', false)
 		            });
+		           var address = [];
+		           $(this).closest('tr').find('td').not(':last').each(function() {
+		           		var textval = $(this).text();
+		           		address.push(textval);
+		           });
+		           $('.scrollable thead tr').find('th').each(function() {
+		           		var textval = $(this).text();
+		           		address.push(textval);
+		           });
 		        }
-
 		        $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
 
 		    });

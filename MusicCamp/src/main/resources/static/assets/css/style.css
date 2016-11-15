@@ -434,3 +434,13 @@ table.responsive th:first-child, table.responsive td:first-child, table.responsi
 	width: 70%;
 	margin: 0 auto;
 }
+
+.editbtn{
+	border-width: 1px;
+	line-height: 18px;
+}
+.masterSchedule{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 90%;
+	color: #000;
+}

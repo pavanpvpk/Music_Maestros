@@ -16,3 +16,4 @@ $.ajax({
         alert(textStatus + ': ' + errorThrown);
         }
 });
+}
