@@ -91,13 +91,11 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome Admin</a></li>
-					<li class="dropdown">
-						<a href="logout"><button type="button" class="btn btn-success btn-lg">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							Logout
-						</button>
-						</a>
-					</li>
+					<li class="dropdown"><a href="logout"><button
+								type="button" class="btn btn-success btn-lg">
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								Logout
+							</button> </a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -122,11 +120,15 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
-							<td> <select class="col-lg-3" th:object="${elect}" > 
-							<option value="0">Select Electives</option> 
-						    <option th:each="elect : ${dropdowndata}"  
-							 th:value="${elect.electiveName}" th:text="${elect.electiveName}"></option></select> </td> 
 
+							<td th:each="index:${timeID.value.ElectiveName}">
+								<select class="" th:object="${elect}">
+									<option value="0">Select Electives</option>
+									<option th:each="elect : ${dropdowndata}"
+										th:value="${elect.electiveName}"
+										th:text="${elect.electiveName}"></option>
+								</select>
+							</td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 						</tr>
 					</tbody>
@@ -144,10 +146,8 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
-							<td> <select class="col-lg-3" th:object="${elect}" > 
-							<option value="0">Select Electives</option> 
-						    <option th:each="elect : ${dropdowndata}"  
-							 th:value="${elect.electiveName}" th:text="${elect.electiveName}"></option></select> </td>
+							<td th:each="index:${timeID.value.ElectiveName}"
+								-								th:text="${index}"></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
@@ -155,36 +155,44 @@
 				</table>
 			</div>
 		</div>
-		
+
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.editbtn').click(function () {
-		        var currentTD = $(this).parents('tr').find('td');
-		        if ($(this).html() == 'Edit') {
-		            currentTD = $(this).parents('tr').find('td');
-		            $.each(currentTD, function () {
-		                $(this).prop('contenteditable', true)
-		            });
-		        } else {
-		           $.each(currentTD, function () {
-		                $(this).prop('contenteditable', false)
-		            });
-		           var address = [];
-		           $(this).closest('tr').find('td').not(':last').each(function() {
-		           		var textval = $(this).text();
-		           		address.push(textval);
-		           });
-		           $('.scrollable thead tr').find('th').each(function() {
-		           		var textval = $(this).text();
-		           		address.push(textval);
-		           });
-		        }
-		        $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+		$(document).ready(
+				function() {
+					$('.editbtn').click(
+							function() {
+								var currentTD = $(this).parents('tr')
+										.find('td');
+								if ($(this).html() == 'Edit') {
+									currentTD = $(this).parents('tr')
+											.find('td');
+									$.each(currentTD, function() {
+										$(this).prop('contenteditable', true)
+									});
+								} else {
+									$.each(currentTD, function() {
+										$(this).prop('contenteditable', false)
+									});
+									var address = [];
+									$(this).closest('tr').find('td').not(
+											':last').each(function() {
+										var textval = $(this).text();
+										address.push(textval);
+									});
+									$('.scrollable thead tr').find('th').each(
+											function() {
+												var textval = $(this).text();
+												address.push(textval);
+											});
+								}
+								$(this).html(
+										$(this).html() == 'Edit' ? 'Save'
+												: 'Edit')
 
-		    });
+							});
 
-		});
+				});
 	</script>
 
 </body>
