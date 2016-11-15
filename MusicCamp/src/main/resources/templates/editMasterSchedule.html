@@ -122,12 +122,11 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
-<!-- 							<td> <select class="form-control" th:field="{session.dropdowndata.electiveName}" id="dropOperator"> -->
-<!-- 							<option value="0" th:text="Select Electives" ></option> -->
-<!-- 							<option th:each="operator : ${session.dropdowndata}"  -->
-<!-- 							th:value="" th:text="${operator.electiveName}"></option></select> </td> -->
-<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}"></td>
+							<td> <select class="col-lg-3" th:object="${elect}" > 
+							<option value="0">Select Electives</option> 
+						    <option th:each="elect : ${dropdowndata}"  
+							 th:value="${elect.electiveName}" th:text="${elect.electiveName}"></option></select> </td> 
+
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 						</tr>
 					</tbody>
@@ -145,15 +144,18 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
-							<td th:each="index:${timeID.value.ElectiveName}"
-								th:text="${index}"></td>
+							<td> <select class="col-lg-3" th:object="${elect}" > 
+							<option value="0">Select Electives</option> 
+						    <option th:each="elect : ${dropdowndata}"  
+							 th:value="${elect.electiveName}" th:text="${elect.electiveName}"></option></select> </td>
+							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<input type="submit" value="Save Changes">
+		
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {

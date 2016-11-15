@@ -130,8 +130,9 @@ public class MasterDataController {
 	public void editMasterData(ModelMap model){
 		
 		List<Electives> electivedropdown=ers.findAll();
-		
-		model.put("dropdowndata", ers);
+		List<Electives> elect=new ArrayList<>();
+		model.addAttribute("elect",elect);
+		model.addAttribute("dropdowndata", electivedropdown);
 		viewMasterData(model);
 		
 	}
