@@ -196,10 +196,10 @@ public class UploadController {
 			studentRepository.save(students);
 			
 			}
-			catch(Exception eData)
+			catch(Exception e1)
 			{
 				
-				System.out.println(eData.getMessage());
+				System.out.println(e1.getMessage());
 				//LOG.error(" Data Error in uploaded Excel File " +eData.getMessage(),eData);
 				return "uploadStudentDetails";
 			}
