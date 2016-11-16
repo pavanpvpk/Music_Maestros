@@ -178,12 +178,13 @@
 										$(this).prop('contenteditable', false)
 									});
 
-									var address = [];
-
+									var electives = [];
+									var rooms = [];
+									electives.push($(this).closest('tr').find('td:first').text());
 									$(this).closest('tr').find('td').not(
-											':last').each(function() {
-										var textval = $(this).text();
-										address.push(textval);
+											':last,:first').each(function() {
+										var textval = $(this).find('option:selected').text();
+										electives.push(textval);
 
 									});
 
@@ -192,9 +193,11 @@
 									$('.scrollable thead tr').find('th').each(
 											function() {
 												var textval = $(this).text();
-												address.push(textval);
+												rooms.push(textval);
 
 											});
+									alert(electives);
+									alert(rooms);
 
 								}
 								$(this).html(
