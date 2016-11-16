@@ -120,18 +120,10 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
-							<td th:each="index:${timeID.value.ElectiveName}"><select
-								class="enable" th:object="${elect}" disabled="disabled">
-
-<<<<<<< HEAD
 							<td th:each="index:${timeID.value.ElectiveName}">
-								<select th:object="${elect}">
-									<option th:selected="${index}" th:value="${index}">Select Electives</option>
-=======
-									<option value="0" th:text="${index}"></option>
-
->>>>>>> branch 'master' of https://github.com/pavanpvpk/Music_Maestros
-									<option th:each="elect : ${dropdowndata}"
+							<select class="enable" th:object="${elect}" disabled="disabled">
+							<option value="0" th:text="${index}"></option>
+							<option th:each="elect : ${dropdowndata}"
 										th:value="${elect.electiveName}"
 										th:text="${elect.electiveName}"></option>
 							</select></td>
