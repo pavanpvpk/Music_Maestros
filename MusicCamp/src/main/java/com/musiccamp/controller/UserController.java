@@ -38,7 +38,7 @@ import com.musiccamp.entities.UserLogin;
 @Scope(value="session")
 @Controller
 @RequestMapping("/home")
-@SessionAttributes({"username"})
+@SessionAttributes({"username","validuser"})
 public class UserController {
 
 	private static final Logger LOG=LoggerFactory.getLogger(UserController.class);
@@ -80,6 +80,7 @@ public class UserController {
 				
 				if (users.getRole()==0){
 					LOG.info(username+" logged in successfully as admin");
+					session.setAttribute("validuser", username);
 					return "/adminhome";
 				
 					
