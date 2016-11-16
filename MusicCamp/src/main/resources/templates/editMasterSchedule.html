@@ -163,19 +163,20 @@
 					$('.editbtn').click(
 							function() {
 
-								$('.enable').prop('disabled', false)
+								
 								var currentTD = $(this).parents('tr')
 										.find('td');
 								if ($(this).html() == 'Edit') {
 									currentTD = $(this).parents('tr')
 											.find('td');
 									$.each(currentTD, function() {
-
-										$(this).prop('contenteditable', true)
+										$(this).find('.enable').prop('disabled', false);
+										$(this).prop('contenteditable', true);
 									});
 								} else {
 									$.each(currentTD, function() {
-										$(this).prop('contenteditable', false)
+										$(this).prop('contenteditable', false);
+										$('.enable').prop('disabled', true);
 									});
 
 									var electives = [];

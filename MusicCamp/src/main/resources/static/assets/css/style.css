@@ -444,3 +444,6 @@ table.responsive th:first-child, table.responsive td:first-child, table.responsi
 	font-size: 90%;
 	color: #000;
 }
+.navbar-right li.dropdown a{
+	padding: 0;
+}
