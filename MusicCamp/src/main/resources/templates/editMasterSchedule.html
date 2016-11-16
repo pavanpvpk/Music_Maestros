@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -159,57 +158,61 @@
 
 	</div>
 	<script type="text/javascript">
-              $(document).ready(
-                     function() {
-                          $('.editbtn').click(
-                                  function() {
-										$('.enable').prop('disabled', false)
-                                         var currentTD = $(this).parents('tr')
-                                                          .find('td');
-                                                       if ($(this).html() == 'Edit') {
-                                                              currentTD = $(this).parents('tr')
-                                                                           .find('td');
-                                                              $.each(currentTD, function() {
+		$(document).ready(
+				function() {
+					$('.editbtn').click(
+							function() {
+								$('.enable').prop('disabled', false)
+								var currentTD = $(this).parents('tr')
+										.find('td');
+								if ($(this).html() == 'Edit') {
+									currentTD = $(this).parents('tr')
+											.find('td');
+									$.each(currentTD, function() {
 
-                                                                     $(this).prop('contenteditable', true)
-                                                              });
-                                                       } else {
-                                                              $.each(currentTD, function() {
-                                                                     $(this).prop('contenteditable', false)
-                                                              });
+										$(this).prop('contenteditable', true)
+									});
+								} else {
+									$.each(currentTD, function() {
+										$(this).prop('contenteditable', false)
+									});
 
-                                                              var electives = [];
-                                                              var rooms = [];
-                                                              electives.push($(this).closest('tr').find('td:first').text());
-                                                              $(this).closest('tr').find('td').not(
-                                                                            ':last,:first').each(function() {
-                                                                     var textval = $(this).find('option:selected').text();
-                                                                     electives.push(textval);
+									var electives = [];
+									var rooms = [];
+									electives.push($(this).closest('tr').find(
+											'td:first').text());
+									$(this).closest('tr').find('td').not(
+											':last,:first').each(
+											function() {
+												var textval = $(this).find(
+														'option:selected')
+														.text();
+												electives.push(textval);
 
-                                                              });
+											});
 
-                                                              //added by Manasa
+									//added by Manasa
 
-                                                              $('.scrollable thead tr').find('th').each(
-                                                                           function() {
-                                                                                  var textval = $(this).text();
-                                                                                  rooms.push(textval);
+									$('.scrollable thead tr').find('th').each(
+											function() {
+												var textval = $(this).text();
+												rooms.push(textval);
 
-                                                                           });
-                                                              alert(electives);
-                                                              alert(rooms);
+											});
+									alert(electives);
+									alert(rooms);
 
-                                                       }
-                                                       $(this).html(
-                                                                     $(this).html() == 'Edit' ? 'Save'
-                                                                                  : 'Edit')
+								}
+								$(this).html(
+										$(this).html() == 'Edit' ? 'Save'
+												: 'Edit')
 
-                                                       //added by Manasa
+								//added by Manasa
 
-                                                });
+							});
 
-                           });
-       </script>
+				});
+	</script>
 
 </body>
 </html>
