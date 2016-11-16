@@ -122,11 +122,13 @@
 							<td th:text="${timeID.key}"></td>
 
 							<td th:each="index:${timeID.value.ElectiveName}">
-								<select th:object="${elect}">
-									<option value="0">Select Electives</option>
-									<option th:each="elect : ${dropdowndata}"
+								<select class="enable" th:object="${elect}"  disabled="disabled">
+									
+									<option value="0" th:text="${index}"></option>
+									
+									<option  th:each="elect : ${dropdowndata}"
 										th:value="${elect.electiveName}"
-										th:text="${elect.electiveName}"></option>
+										th:text="${elect.electiveName}" ></option>
 								</select>
 							</td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
@@ -153,7 +155,7 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</div> 
 		</div>
 
 	</div>
