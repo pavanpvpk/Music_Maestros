@@ -208,6 +208,7 @@ public class UploadController {
 		catch (Exception e) 
 		{
 			e.printStackTrace();
+			
 		}
        
 		return "viewStudentData";
