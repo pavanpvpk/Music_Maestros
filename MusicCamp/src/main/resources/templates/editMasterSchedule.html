@@ -178,17 +178,16 @@
 									$.each(currentTD, function() {
 										$(this).prop('contenteditable', false)
 									});
+									
 									var address = [];
 									
 									$(this).closest('tr').find('td').not(
 											':last').each(function() {
 										var textval = $(this).text();
 										address.push(textval);
-										//alert("Hello"+address[0]);
-
+										
 
 									});
-									
 									
 									//added by Manasa
 									
@@ -196,7 +195,7 @@
 											function() {
 												var textval = $(this).text();
 												address.push(textval);
-												//alert("Hi"+address[1]);
+												
 											});
 									
 								}
