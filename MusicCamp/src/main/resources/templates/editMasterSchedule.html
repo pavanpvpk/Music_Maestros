@@ -118,19 +118,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="timeID:${session.tablerooms}" >
+						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
+							<td th:each="index:${timeID.value.ElectiveName}"><select
+								class="enable" th:object="${elect}" disabled="disabled">
 
-							<td th:each="index:${timeID.value.ElectiveName}">
-								<select class="enable" th:object="${elect}"  disabled="disabled">
-									
 									<option value="0" th:text="${index}"></option>
-									
-									<option  th:each="elect : ${dropdowndata}"
+
+									<option th:each="elect : ${dropdowndata}"
 										th:value="${elect.electiveName}"
-										th:text="${elect.electiveName}" ></option>
-								</select>
-							</td>
+										th:text="${elect.electiveName}"></option>
+							</select></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 						</tr>
 					</tbody>
@@ -149,13 +147,13 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-																th:text="${index}"></td>
+								-                                                      th:text="${index}"></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
 					</tbody>
 				</table>
-			</div> 
+			</div>
 		</div>
 
 	</div>
@@ -164,34 +162,46 @@
 				function() {
 					$('.editbtn').click(
 							function() {
+
+								$('.enable').prop('disabled', false)
 								var currentTD = $(this).parents('tr')
 										.find('td');
 								if ($(this).html() == 'Edit') {
 									currentTD = $(this).parents('tr')
 											.find('td');
 									$.each(currentTD, function() {
+
 										$(this).prop('contenteditable', true)
 									});
 								} else {
 									$.each(currentTD, function() {
 										$(this).prop('contenteditable', false)
 									});
+
 									var address = [];
+
 									$(this).closest('tr').find('td').not(
 											':last').each(function() {
 										var textval = $(this).text();
 										address.push(textval);
+
 									});
+
+									//added by Manasa
+
 									$('.scrollable thead tr').find('th').each(
 											function() {
 												var textval = $(this).text();
 												address.push(textval);
+
 											});
-									alert(address);
+
 								}
 								$(this).html(
 										$(this).html() == 'Edit' ? 'Save'
 												: 'Edit')
+
+								//added by Manasa
 
 							});
 
@@ -200,3 +210,4 @@
 
 </body>
 </html>
+
