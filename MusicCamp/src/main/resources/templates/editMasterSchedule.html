@@ -118,11 +118,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="timeID:${session.tablerooms}">
+						<tr th:each="timeID:${session.tablerooms}" >
 							<td th:text="${timeID.key}"></td>
 
 							<td th:each="index:${timeID.value.ElectiveName}">
-								<select class="" th:object="${elect}">
+								<select th:object="${elect}">
 									<option value="0">Select Electives</option>
 									<option th:each="elect : ${dropdowndata}"
 										th:value="${elect.electiveName}"
@@ -147,7 +147,7 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								-								th:text="${index}"></td>
+																th:text="${index}"></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
@@ -185,6 +185,7 @@
 												var textval = $(this).text();
 												address.push(textval);
 											});
+									alert(address);
 								}
 								$(this).html(
 										$(this).html() == 'Edit' ? 'Save'
