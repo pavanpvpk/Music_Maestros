@@ -11,6 +11,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -50,6 +52,7 @@ import com.musiccamp.services.StorageService;
 @EnableConfigurationProperties(StorageProperties.class)
 @ComponentScan("com.musiccamp.services")
 public class UploadController {
+	private static final Logger LOG=LoggerFactory.getLogger(UploadController.class);
 	@Autowired
 	StudentRepository studentRepository;
 
@@ -66,7 +69,7 @@ public class UploadController {
 
 	
 	@RequestMapping(value = "/viewStudentData", method = RequestMethod.POST)
-	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+	public void handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
 		storageService.deleteAll();
 		storageService.init();
@@ -75,7 +78,7 @@ public class UploadController {
 				"You successfully uploaded " + file.getOriginalFilename() + "!");
 		stp.setFilename(file.getOriginalFilename());
 		viewStudentData();
-		return "viewStudentData";
+		//return "viewStudentData";
 	}
 
 	@ExceptionHandler(StorageFileNotFoundException.class)
@@ -84,6 +87,7 @@ public class UploadController {
 	}
 
 	@ExceptionHandler(CellDataEmptyException.class)
+	
 	public String viewStudentData() {
 
 		try {
@@ -100,6 +104,7 @@ public class UploadController {
 			List<Student> students = new ArrayList<>();
 			Student student = null;
 			boolean isEmptyRow = true;
+			String Page;
 			while (rowIterator.hasNext()) {
 				Row row = rowIterator.next();
 				isEmptyRow = true;
@@ -187,11 +192,25 @@ public class UploadController {
 			// file.close();
 			System.out.println(students.size());
 			studentRepository.deleteAll();
+			try{
 			studentRepository.save(students);
-		} catch (Exception e) {
+			
+			}
+			catch(Exception e1)
+			{
+				
+				System.out.println(e1.getMessage());
+				//LOG.error(" Data Error in uploaded Excel File " +eData.getMessage(),eData);
+				return "uploadStudentDetails";
+			}
+			//return "viewStudentData";
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
+			
 		}
-
+       
 		return "viewStudentData";
 	}
 }
