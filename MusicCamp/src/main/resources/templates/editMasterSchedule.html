@@ -147,7 +147,7 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								-                                                      th:text="${index}"></td>
+								-    th:text="${index}"></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
@@ -162,8 +162,6 @@
 				function() {
 					$('.editbtn').click(
 							function() {
-
-								
 								var currentTD = $(this).parents('tr')
 										.find('td');
 								if ($(this).html() == 'Edit') {
@@ -186,7 +184,6 @@
 											':last,:first').each(function() {
 										var textval = $(this).find('option:selected').text();
 										electives.push(textval);
-
 									});
 
 									//added by Manasa
@@ -214,4 +211,3 @@
 
 </body>
 </html>
-
