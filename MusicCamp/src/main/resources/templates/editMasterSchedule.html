@@ -160,6 +160,20 @@
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
+					$('select').on('change', function() {
+						var timing = $(this).closest('tr').find('td:first').text();
+						var elective = $(this).val();
+						var position = $(this).closest('td').index(); 
+						position += 1;
+						var roomno = $('.scrollable table thead tr th:nth-child('+position+')').text();
+						alert(timing);
+						alert(elective);
+						alert(roomno);
+					  //alert( $(this).closest('tr').find('td:first').text() );
+					  //alert( $(this).val() );
+					  //alert($(this).closest('td').index());
+					  //alert($('.scrollable table thead tr th:nth-child('+position+')').text());
+					})
 					$('.editbtn').click(
 							function() {
 								var currentTD = $(this).parents('tr')
@@ -194,8 +208,8 @@
 												rooms.push(textval);
 
 											});
-									alert(electives);
-									alert(rooms);
+									//alert(electives);
+									//alert(rooms);
 
 								}
 								$(this).html(
