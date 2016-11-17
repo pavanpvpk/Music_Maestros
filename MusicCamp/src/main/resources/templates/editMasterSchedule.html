@@ -160,10 +160,10 @@
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
-					var previous;
+					var oldelective;
 					$('select').focus(function () {
 				        // Store the current value on focus, before it changes
-				        previous = this.value;
+				        oldelective = this.value;
 				    	}).change(function() {
 				    		var timing = $(this).closest('tr').find('td:first').text();
 							var elective = $(this).val();
@@ -182,7 +182,8 @@
 								
 							       type: "POST",
 							 	   url: "/editTable",
-							       data: {elective: elective,
+							       data: {oldelective:oldelective,
+								       	  elective: elective,
 								       	  timing: timing,
 								       	  room:roomno},
 							       success: function(data){

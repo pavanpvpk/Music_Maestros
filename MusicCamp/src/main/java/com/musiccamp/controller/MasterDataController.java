@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 
-
+import org.neo4j.cypher.internal.compiler.v2_1.perty.docbuilders.toStringDocBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -166,9 +166,11 @@ public class MasterDataController {
 	}
 	
 	@RequestMapping(value="/editTable",method=RequestMethod.POST)
-	public String getData(@RequestParam("elective") String electiveName,
+	public String getData(@RequestParam("oldelective") String oldelective,
+						  @RequestParam("elective") String electiveName,
 						  @RequestParam("timing") String timeslot,
 						  @RequestParam("room") String roomNo){
+		System.out.println(oldelective);
 		System.out.println(electiveName);
 		System.out.println(roomNo);
 		System.out.println(timeslot);
@@ -177,26 +179,23 @@ public class MasterDataController {
 		int roomID=rrts.findbyroomName(roomNo);
 	
 		int timeId=trts.findbytimeslot(timeslot);
-		int electiveID=ers.findbyelectiveID(electiveName);
+		int oldelectiveID=ers.findbyelectiveID(oldelective);
+		int newelectiveID=ers.findbyelectiveID(electiveName);
 		int rtId=rts.findrtID(roomID, timeId);
 		
-		boolean rtIdFinal=erts.findElectivertID(electiveID, rtId);
+		Integer ertIdFinal=erts.findElectivertID(oldelectiveID, rtId);
 		
-		if(!rtIdFinal){
+		if(!(ertIdFinal==null)){
 			
-			System.out.println("No Entry exists: Make a new Insert?");
-			
-		}
-		else{
-			
-			
+			erts.UpdatertID(newelectiveID,ertIdFinal);
 			
 		}
+		
+		
 		System.out.println(roomID);
 		System.out.println(timeId);
-		System.out.println(electiveID);
 		System.out.println(rtId);
-		
+		System.out.println(ertIdFinal);
 		
 		
 		return "editMasterSchedule";
