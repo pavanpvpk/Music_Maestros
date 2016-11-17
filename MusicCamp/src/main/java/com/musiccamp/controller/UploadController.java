@@ -89,7 +89,7 @@ public class UploadController {
 	@ExceptionHandler(CellDataEmptyException.class)
 	
 	public String viewStudentData() {
-
+		List<Student> students = new ArrayList<>();
 		try {
 
 			FileInputStream file = new FileInputStream(new File(stp.getLocation() + "//" + stp.getFilename()));
@@ -101,7 +101,7 @@ public class UploadController {
 
 			// Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
-			List<Student> students = new ArrayList<>();
+		//	List<Student> students = new ArrayList<>();
 			Student student = null;
 			boolean isEmptyRow = true;
 			String Page;
@@ -192,25 +192,27 @@ public class UploadController {
 			// file.close();
 			System.out.println(students.size());
 			studentRepository.deleteAll();
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			
+		}
+		
 			try{
 			studentRepository.save(students);
 			
 			}
 			catch(Exception e1)
 			{
-				
+			   System.out.println("Hello");
 				System.out.println(e1.getMessage());
 				//LOG.error(" Data Error in uploaded Excel File " +eData.getMessage(),eData);
-				return "uploadStudentDetails";
+				return "redirect:/uploadStudentDetails";
 			}
-			//return "viewStudentData";
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			
-		}
+			return "viewStudentData";
+	
        
-		return "viewStudentData";
+		//return "viewStudentData";
 	}
 }
