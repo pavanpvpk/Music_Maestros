@@ -45,12 +45,22 @@ public class StudentDetailsController {
 	@RequestMapping(value="/viewStudentDetails",method=RequestMethod.GET)
 	public String viewStudentDetails(ModelMap model, HttpSession session){
 		
-		List<Student> studentDetails =student.findAll();
+		if(!(session.getAttribute("validuser")==null)){
+			
+			List<Student> studentDetails =student.findAll();
 
-		 session.setAttribute("details", studentDetails);
+			 session.setAttribute("details", studentDetails);
 
-		  
-		return "viewStudentDetails";
+			  
+			return "viewStudentDetails";
+			
+		}
+		else{
+			
+			return "login";
+		}
+
+		
 		
 	}
 	
@@ -60,11 +70,16 @@ public class StudentDetailsController {
 			@RequestParam(value="id", required = true) Integer argName){
 	   // System.out.println("***********"+argName);
 		
+		if(!(session.getAttribute("validuser")==null)){
+			
 	    Student studentInfo =  student.find(argName);
 	    session.setAttribute("student", studentInfo);
 		return "studentData";
 		
 	}
+		else{
+			return "login";
+		}
 	
-	
+	}
 }

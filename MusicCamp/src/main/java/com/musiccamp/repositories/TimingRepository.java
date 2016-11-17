@@ -18,4 +18,6 @@ public interface TimingRepository extends JpaRepository<Timings, Integer>  {
 	@Query(value="select timeSlot from Timings")
 	List<Timings> findOnlyTimings();
 	
+	@Query(value="select t.timeId from Timings t where t.timeSlot=?1")
+	public int findbytimeslot(String timeslot);
 }

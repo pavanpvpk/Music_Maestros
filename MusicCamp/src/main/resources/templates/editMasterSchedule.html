@@ -120,16 +120,15 @@
 					<tbody>
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
-							<td th:each="index:${timeID.value.ElectiveName}">
-								<select class="enable" th:object="${elect}"  disabled="disabled">
-									
-									<option value="0" th:text="${index}"></option>
-									
+							<td th:each="index:${timeID.value.ElectiveName}"><select
+								class="enable" th:object="${elect}" disabled="disabled">
+
+									<option th:value="${index}" th:text="${index}"></option>
+
 									<option  th:each="elect : ${dropdowndata}"
 										th:value="${elect.electiveName}"
-										th:text="${elect.electiveName}" ></option>
-								</select>
-							</td>
+										th:text="${elect.electiveName}"></option>
+							</select></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 						</tr>
 					</tbody>
@@ -148,75 +147,116 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								-								th:text="${index}"></td>
+								  th:text="${index}"></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
 					</tbody>
 				</table>
-			</div> 
+			</div>
 		</div>
 
 	</div>
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
+					var oldelective;
+					$('select').focus(function () {
+				        // Store the current value on focus, before it changes
+				        oldelective = this.value;
+				    	}).change(function() {
+				    		var timing = $(this).closest('tr').find('td:first').text();
+							var elective = $(this).val();
+							var position = $(this).closest('td').index(); 
+							//alert(previous);
+							//previous = this.value;
+							position += 1;
+							var roomno = $('.scrollable table thead tr th:nth-child('+position+')').text();
+	 						//alert(previous);
+							//alert(timing);
+	 						//alert(elective);
+	 						//alert(roomno);
+	 						
+
+							$.ajax({
+								
+							       type: "POST",
+							 	   url: "/editTable",
+							       data: {oldelective:oldelective,
+								       	  elective: elective,
+								       	  timing: timing,
+								       	  room:roomno},
+							       success: function(data){
+
+							       console.log("success",data);
+							       },
+							       error: function(e){
+							       console.log('Error: ' + e);
+							       
+						
+							       }
+						
+							  });
+					
+				    	});
+						
+
+						
+					 //alert( $(this).closest('tr').find('td:first').text() );
+					 //alert( $(this).val() );
+					 //alert($(this).closest('td').index());
+					 //alert($('.scrollable table thead tr th:nth-child('+position+')').text());
+					//})
 					$('.editbtn').click(
 							function() {
-								
-								$('.enable').prop('disabled',false)
 								var currentTD = $(this).parents('tr')
 										.find('td');
 								if ($(this).html() == 'Edit') {
 									currentTD = $(this).parents('tr')
 											.find('td');
 									$.each(currentTD, function() {
-										
-										$(this).prop('contenteditable', true)
+										$(this).find('.enable').prop('disabled', false);
+										$(this).prop('contenteditable', true);
 									});
 								} else {
 									$.each(currentTD, function() {
-										$(this).prop('contenteditable', false)
+										$(this).prop('contenteditable', false);
+										$('.enable').prop('disabled', true);
 									});
-									var address = [];
-									
-									$(this).closest('tr').find('td').not(
-											':last').each(function() {
-										var textval = $(this).text();
-										address.push(textval);
-										//alert("Hello"+address[0]);
 
+// 									var electives = [];
+// 									var rooms = [];
+									
+// 									electives.push($(this).closest('tr').find('td:first').text());
+// 									$(this).closest('tr').find('td').not(
+// 											':last,:first').each(function() {
+										
 
-									});
-									
-									
+// 											var textval = $(this).find('option:selected').text();
+// 											electives.push(textval);
+												
+										
+// 									});
+
 									//added by Manasa
-									
-									$('.scrollable thead tr').find('th').each(
+
+									/*$('.scrollable thead tr').find('th').each(
 											function() {
 												var textval = $(this).text();
-												address.push(textval);
-												//alert("Hi"+address[1]);
+												rooms.push(textval);
+
 											});
+									alert(electives);
+									alert(rooms);*/
 									
 								}
+
+								
 								$(this).html(
 										$(this).html() == 'Edit' ? 'Save'
 												: 'Edit')
 
-						//added by Manasa
-						
-												
-												
-												
-												
-												
-												
-												
-												
-												
-												
-												
+
 							});
 
 				});
