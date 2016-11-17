@@ -173,16 +173,17 @@
 						$.ajax({
 							
 						       type: "POST",
-						       contentType: "text/plain",
-						       dataType: "text/plain",
-						       url: "/editTable",
-						       data: "elective="+elective,
+						 	   url: "/editTable",
+						       data: {elective: elective,
+							       	  timing: timing,
+							       	  room:roomno},
 						       success: function(data){
 
-						       console.log("success",elective);
+						       console.log("success",data);
 						       },
 						       error: function(e){
-						       alert('Error: ' + e);
+						       console.log('Error: ' + e);
+						       
 					
 						       }
 					
@@ -212,19 +213,19 @@
 										$('.enable').prop('disabled', true);
 									});
 
-									/*var electives = [];
-									var rooms = [];
+// 									var electives = [];
+// 									var rooms = [];
 									
-									electives.push($(this).closest('tr').find('td:first').text());
-									$(this).closest('tr').find('td').not(
-											':last,:first').each(function() {
+// 									electives.push($(this).closest('tr').find('td:first').text());
+// 									$(this).closest('tr').find('td').not(
+// 											':last,:first').each(function() {
 										
 
-											var textval = $(this).find('option:selected').text();
-											electives.push(textval);
+// 											var textval = $(this).find('option:selected').text();
+// 											electives.push(textval);
 												
 										
-									});*/
+// 									});
 
 									//added by Manasa
 
@@ -236,7 +237,7 @@
 											});
 									alert(electives);
 									alert(rooms);*/
-
+									
 								}
 
 								

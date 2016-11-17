@@ -156,10 +156,9 @@ public class MasterDataController {
 	}
 	
 	@RequestMapping(value="/editTable",method=RequestMethod.POST)
-	@ResponseBody
-	public String getData(@RequestParam("electives") String electiveName,
-							@RequestParam("rooms=") String roomNo,
-							@RequestParam("&timings=") String timeslot){
+	public String getData(@RequestParam("elective") String electiveName,
+						  @RequestParam("timing") String timeslot,
+						  @RequestParam("room") String roomNo){
 		System.out.println(electiveName);
 		System.out.println(roomNo);
 		System.out.println(timeslot);
@@ -167,6 +166,6 @@ public class MasterDataController {
 		
 		//List<Electives> electiveIDs=ers.findbyelectiveID(electivelist);
 		
-		return "adminhome";
+		return "";
 	}
 }
