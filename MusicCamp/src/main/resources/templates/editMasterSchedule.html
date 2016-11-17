@@ -182,16 +182,16 @@
 									currentTD = $(this).parents('tr')
 											.find('td');
 									$.each(currentTD, function() {
-										$(this).find('.enable').prop('disabled', false);
+										//$(this).find('.enable').prop('disabled', false);
 										$(this).prop('contenteditable', true);
 									});
 								} else {
 									$.each(currentTD, function() {
-										$(this).prop('contenteditable', false);
+										//$(this).prop('contenteditable', false);
 										$('.enable').prop('disabled', true);
 									});
 
-									var electives = [];
+									/*var electives = [];
 									var rooms = [];
 									
 									electives.push($(this).closest('tr').find('td:first').text());
@@ -203,18 +203,18 @@
 											electives.push(textval);
 												
 										
-									});
+									});*/
 
 									//added by Manasa
 
-									$('.scrollable thead tr').find('th').each(
+									/*$('.scrollable thead tr').find('th').each(
 											function() {
 												var textval = $(this).text();
 												rooms.push(textval);
 
 											});
-									//alert(electives);
-									//alert(rooms);
+									alert(electives);
+									alert(rooms);*/
 
 								}
 
