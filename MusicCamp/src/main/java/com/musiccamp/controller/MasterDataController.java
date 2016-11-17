@@ -150,9 +150,12 @@ public class MasterDataController {
 			model.addAttribute("dropdowndata", electivedropdown);
 			viewMasterData(model,session);
 		}
-		
-		
-		
-		
+
+	}
+	
+	@RequestMapping(value="/editTable",method=RequestMethod.POST)
+	public String getData(){
+		System.out.println("Hi I am in");
+		return "adminhome";
 	}
 }
