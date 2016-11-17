@@ -29,6 +29,11 @@ public interface ERTRepository extends JpaRepository<ElectiveRoomTimings, Intege
 
 List<Object[]> findAllTimings();
 
+@Query(value="select ert.rt_id from elective_room_timings ert where ert.elective_id=?1 and "
+		+ "ert.rt_id=?2",nativeQuery=true)
+boolean findElectivertID(int electiveID, int rtId);
+
+
 	
 }
 

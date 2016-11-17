@@ -16,8 +16,8 @@ import java.util.List;
  **/
 public interface ElectiveRepository extends JpaRepository<Electives, Integer> {
 	
-//
-//	@Query(value="select e.electiveName from Electives e where e.electiveName= +")
-//	public List<Electives> findbyelectiveID(String electivenName);
+
+	@Query(value="select e.electiveId from Electives e where e.electiveName=?1")
+	public int findbyelectiveID(String electivenName);
 
 }
