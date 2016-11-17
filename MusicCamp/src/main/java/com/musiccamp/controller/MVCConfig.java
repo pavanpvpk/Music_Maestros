@@ -37,6 +37,8 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 	registry.addViewController("/contact").setViewName("contact");
 	registry.addViewController("/faq").setViewName("faq");
 	registry.addViewController("/schedulegen").setViewName("gensuccess");
+	registry.addViewController("/register").setViewName("register");
+
 	}
 	
 	
