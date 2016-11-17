@@ -19,6 +19,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.musiccamp.entities.Electives;
@@ -154,8 +156,17 @@ public class MasterDataController {
 	}
 	
 	@RequestMapping(value="/editTable",method=RequestMethod.POST)
-	public String getData(){
-		System.out.println("Hi I am in");
+	@ResponseBody
+	public String getData(@RequestParam("electives") String electiveName,
+							@RequestParam("rooms=") String roomNo,
+							@RequestParam("&timings=") String timeslot){
+		System.out.println(electiveName);
+		System.out.println(roomNo);
+		System.out.println(timeslot);
+		
+		
+		//List<Electives> electiveIDs=ers.findbyelectiveID(electivelist);
+		
 		return "adminhome";
 	}
 }

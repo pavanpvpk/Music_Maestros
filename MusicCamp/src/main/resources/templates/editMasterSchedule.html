@@ -147,7 +147,7 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"
-								   th:text="${index}"></td>
+								  th:text="${index}"></td>
 							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
 
 						</tr>
@@ -166,13 +166,34 @@
 						var position = $(this).closest('td').index(); 
 						position += 1;
 						var roomno = $('.scrollable table thead tr th:nth-child('+position+')').text();
-						alert(timing);
-						alert(elective);
-						alert(roomno);
-					  //alert( $(this).closest('tr').find('td:first').text() );
-					  //alert( $(this).val() );
-					  //alert($(this).closest('td').index());
-					  //alert($('.scrollable table thead tr th:nth-child('+position+')').text());
+// 						alert(timing);
+// 						alert(elective);
+// 						alert(roomno);
+
+						$.ajax({
+							
+						       type: "POST",
+						       contentType: "text/plain",
+						       dataType: "text/plain",
+						       url: "/editTable",
+						       data: "elective="+elective,
+						       success: function(data){
+
+						       console.log("success",elective);
+						       },
+						       error: function(e){
+						       alert('Error: ' + e);
+					
+						       }
+					
+						       });
+				
+
+						
+					 //alert( $(this).closest('tr').find('td:first').text() );
+					 //alert( $(this).val() );
+					 //alert($(this).closest('td').index());
+					 //alert($('.scrollable table thead tr th:nth-child('+position+')').text());
 					})
 					$('.editbtn').click(
 							function() {
@@ -182,12 +203,12 @@
 									currentTD = $(this).parents('tr')
 											.find('td');
 									$.each(currentTD, function() {
-										//$(this).find('.enable').prop('disabled', false);
+										$(this).find('.enable').prop('disabled', false);
 										$(this).prop('contenteditable', true);
 									});
 								} else {
 									$.each(currentTD, function() {
-										//$(this).prop('contenteditable', false);
+										$(this).prop('contenteditable', false);
 										$('.enable').prop('disabled', true);
 									});
 
@@ -218,23 +239,6 @@
 
 								}
 
-								$.ajax({
-									
-										        type: "POST",
-										        url: "/editTable",
-										        data: "electives="+electives + "&rooms=" +rooms,
-										        success: function(response){
-
-										        $('#info').html(response);
-										        $('#name').val('');
-										        $('#education').val('');
-										        },
-										        error: function(e){
-										        alert('Error: ' + e);
-									
-										        }
-									
-										        });
 								
 								$(this).html(
 										$(this).html() == 'Edit' ? 'Save'
