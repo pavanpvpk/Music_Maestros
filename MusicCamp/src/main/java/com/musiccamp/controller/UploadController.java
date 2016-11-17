@@ -53,6 +53,7 @@ import com.musiccamp.services.StorageService;
 @ComponentScan("com.musiccamp.services")
 public class UploadController {
 	private static final Logger LOG=LoggerFactory.getLogger(UploadController.class);
+	private boolean flag = false;
 	@Autowired
 	StudentRepository studentRepository;
 
@@ -69,7 +70,8 @@ public class UploadController {
 
 	
 	@RequestMapping(value = "/viewStudentData", method = RequestMethod.POST)
-	public void handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+	//@RequestMapping(method = RequestMethod.POST)
+	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
 		storageService.deleteAll();
 		storageService.init();
@@ -77,8 +79,18 @@ public class UploadController {
 		redirectAttributes.addFlashAttribute("message",
 				"You successfully uploaded " + file.getOriginalFilename() + "!");
 		stp.setFilename(file.getOriginalFilename());
-		viewStudentData();
-		//return "viewStudentData";
+		boolean dataPageVal = viewStudentData();
+		if(dataPageVal == true){
+			return "viewStudentData";
+		}
+		else{
+			
+			return "uploadStudentDetails";
+		}
+	}
+	//@RequestMapping(value = "/uploadStudentDetails", method = RequestMethod.POST)
+	public String handleFailedData(){
+		return "redirect:/uploadStudentDetails";
 	}
 
 	@ExceptionHandler(StorageFileNotFoundException.class)
@@ -88,8 +100,13 @@ public class UploadController {
 
 	@ExceptionHandler(CellDataEmptyException.class)
 	
-	public String viewStudentData() {
+	public boolean viewStudentData() {
 		List<Student> students = new ArrayList<>();
+//		if(flag = true)
+//		{
+//			return "redirect:/uploadStudentDetails";
+//		}
+		//else{
 		try {
 
 			FileInputStream file = new FileInputStream(new File(stp.getLocation() + "//" + stp.getFilename()));
@@ -192,27 +209,34 @@ public class UploadController {
 			// file.close();
 			System.out.println(students.size());
 			studentRepository.deleteAll();
+			studentRepository.save(students);
+			return true;
 		}
+		
 		catch (Exception e) 
 		{
 			e.printStackTrace();
-			
+			return false;
 		}
-		
-			try{
-			studentRepository.save(students);
+		//}
+//			try{
+//			studentRepository.save(students);
+//			
+//			}
+//			catch(Exception e1)
+//			{
+//				flag = true;
+//				//viewStudentData();
+//				handleFailedData();
+//			   System.out.println("Hello");
+//				System.out.println(e1.getMessage());
+//				//LOG.error(" Data Error in uploaded Excel File " +eData.getMessage(),eData);
+//				return "redirect:/uploadStudentDetails";
+//			}
 			
-			}
-			catch(Exception e1)
-			{
-			   System.out.println("Hello");
-				System.out.println(e1.getMessage());
-				//LOG.error(" Data Error in uploaded Excel File " +eData.getMessage(),eData);
-				return "redirect:/uploadStudentDetails";
-			}
-			return "viewStudentData";
 	
-       
+		
 		//return "viewStudentData";
 	}
+
 }
