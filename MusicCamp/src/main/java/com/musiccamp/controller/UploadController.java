@@ -85,7 +85,7 @@ public class UploadController {
 		}
 		else{
 			
-			return "uploadStudentDetails";
+			return "uploadStudentFailed";
 		}
 	}
 	//@RequestMapping(value = "/uploadStudentDetails", method = RequestMethod.POST)
