@@ -18,4 +18,9 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 	@Query(value="select distinct(r.roomName) from Room r")
 	List<String> findbyRoomName();
 	
+	@Query(value="select r.roomId from Room r where r.roomName=?1")
+	public int findbyroomName(String roomName);
+
+
+	
 }

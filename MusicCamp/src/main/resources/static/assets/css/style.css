@@ -428,7 +428,7 @@ table.responsive td, table.responsive th { position: relative; white-space: nowr
 table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
 .pinned table tr th,.pinned table tr td{ display: none;}
 .pinned table tr th:first-child,.pinned table tr td:first-child{ display: block; border-bottom: 0; border-left: 0;}
-
+.pinned table tr td{ padding: 9px 8px;}
 #accordion{
 	text-align: left;
 	width: 70%;
@@ -438,6 +438,7 @@ table.responsive th:first-child, table.responsive td:first-child, table.responsi
 .editbtn{
 	border-width: 1px;
 	line-height: 18px;
+	border-radius: 5px;
 }
 .masterSchedule{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;

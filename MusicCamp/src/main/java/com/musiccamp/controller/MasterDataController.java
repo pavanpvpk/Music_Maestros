@@ -25,10 +25,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.musiccamp.entities.Electives;
 import com.musiccamp.entities.Room;
+import com.musiccamp.entities.RoomTimings;
+import com.musiccamp.entities.Timings;
 import com.musiccamp.model.ElectiveRoomTimeModel;
 import com.musiccamp.repositories.ERTRepository;
 import com.musiccamp.repositories.ElectiveRepository;
+import com.musiccamp.repositories.RTRepository;
 import com.musiccamp.repositories.RoomRepository;
+import com.musiccamp.repositories.TimingRepository;
 
 
 /**
@@ -46,10 +50,16 @@ public class MasterDataController {
 	private ERTRepository erts;
 	
 	@Autowired
+	private TimingRepository trts;
+	
+	@Autowired
 	private RoomRepository rrts;
 
 	@Autowired
 	private ElectiveRepository ers;
+	
+	@Autowired
+	private RTRepository rts;
 	
 	@RequestMapping(value={"/viewMasterData"},method=RequestMethod.GET)
 	public String viewMasterData(ModelMap model,HttpSession session){
@@ -164,8 +174,31 @@ public class MasterDataController {
 		System.out.println(timeslot);
 		
 		
-		//List<Electives> electiveIDs=ers.findbyelectiveID(electivelist);
+		int roomID=rrts.findbyroomName(roomNo);
+	
+		int timeId=trts.findbytimeslot(timeslot);
+		int electiveID=ers.findbyelectiveID(electiveName);
+		int rtId=rts.findrtID(roomID, timeId);
 		
-		return "";
+		boolean rtIdFinal=erts.findElectivertID(electiveID, rtId);
+		
+		if(!rtIdFinal){
+			
+			System.out.println("No Entry exists: Make a new Insert?");
+			
+		}
+		else{
+			
+			
+			
+		}
+		System.out.println(roomID);
+		System.out.println(timeId);
+		System.out.println(electiveID);
+		System.out.println(rtId);
+		
+		
+		
+		return "editMasterSchedule";
 	}
 }
