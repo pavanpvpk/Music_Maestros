@@ -40,8 +40,10 @@ public int findElectivertID(int electiveID, int rtId);
 @Query(value="update elective_room_timings ert set ert.elective_id=?1 where ert.ert_id=?2",nativeQuery=true)
 public void UpdatertID(int newElectiveID,Integer ertId);
 
-
-
+@Transactional
+@Modifying
+@Query(value="insert into elective_room_timings(elective_id,rt_id) values (?1,?2)",nativeQuery=true)
+public void InsertertID(int newelectiveID,int rtId);
 	
 }
 

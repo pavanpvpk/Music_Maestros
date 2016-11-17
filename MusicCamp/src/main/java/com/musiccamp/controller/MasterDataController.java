@@ -177,25 +177,43 @@ public class MasterDataController {
 		
 		
 		int roomID=rrts.findbyroomName(roomNo);
-	
 		int timeId=trts.findbytimeslot(timeslot);
-		int oldelectiveID=ers.findbyelectiveID(oldelective);
-		int newelectiveID=ers.findbyelectiveID(electiveName);
 		int rtId=rts.findrtID(roomID, timeId);
-		
-		Integer ertIdFinal=erts.findElectivertID(oldelectiveID, rtId);
-		
-		if(!(ertIdFinal==null)){
+		if(!(oldelective.isEmpty()||oldelective.equals("---"))){
 			
-			erts.UpdatertID(newelectiveID,ertIdFinal);
+			int oldelectiveID=ers.findbyelectiveID(oldelective);
+			int newelectiveID=ers.findbyelectiveID(electiveName);
+			
+			Integer ertIdFinal=erts.findElectivertID(oldelectiveID, rtId);
+			if(!(ertIdFinal==null)){
+				
+				erts.UpdatertID(newelectiveID,ertIdFinal);
+				
+			}
+			
+			System.out.println(roomID);
+			System.out.println(timeId);
+			System.out.println(rtId);
+			System.out.println(ertIdFinal);
+		}
+		
+		else{
+			
+			int oldelectiveID=ers.findbyelectiveID(oldelective);
+			int newelectiveID=ers.findbyelectiveID(electiveName);
+			
+			System.out.println(rtId);
+			System.out.println(oldelectiveID);
+			System.out.println(newelectiveID);
+
+			erts.InsertertID(newelectiveID, rtId);
 			
 		}
 		
 		
-		System.out.println(roomID);
-		System.out.println(timeId);
-		System.out.println(rtId);
-		System.out.println(ertIdFinal);
+		
+		
+		
 		
 		
 		return "editMasterSchedule";
