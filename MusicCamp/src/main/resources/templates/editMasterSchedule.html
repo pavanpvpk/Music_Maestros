@@ -125,7 +125,7 @@
 
 									<option value="0" th:text="${index}"></option>
 
-									<option th:each="elect : ${dropdowndata}"
+									<option  th:each="elect : ${dropdowndata}"
 										th:value="${elect.electiveName}"
 										th:text="${elect.electiveName}"></option>
 							</select></td>
@@ -179,11 +179,16 @@
 
 									var electives = [];
 									var rooms = [];
+									
 									electives.push($(this).closest('tr').find('td:first').text());
 									$(this).closest('tr').find('td').not(
 											':last,:first').each(function() {
-										var textval = $(this).find('option:selected').text();
-										electives.push(textval);
+										
+
+											var textval = $(this).find('option:selected').text();
+											electives.push(textval);
+												
+										
 									});
 
 									//added by Manasa
@@ -198,6 +203,25 @@
 									alert(rooms);
 
 								}
+
+								$.ajax({
+									
+										        type: "POST",
+										        url: "/editTable",
+										        data: "electives="+electives + "&rooms=" +rooms,
+										        success: function(response){
+
+										        $('#info').html(response);
+										        $('#name').val('');
+										        $('#education').val('');
+										        },
+										        error: function(e){
+										        alert('Error: ' + e);
+									
+										        }
+									
+										        });
+								
 								$(this).html(
 										$(this).html() == 'Edit' ? 'Save'
 												: 'Edit')
