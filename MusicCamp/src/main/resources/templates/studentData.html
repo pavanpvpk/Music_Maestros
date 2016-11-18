@@ -109,7 +109,6 @@
 	<!-- Author--Manasa Bojja -->
 	<div class="bodyContent">
 		<h1>Student Details</h1>
-		
 			<div class="studentDetails">
 				<div class="studentDetailsrow">
 					<div>
@@ -136,7 +135,13 @@
 				</div>
 				<div class="studentDetailsrow">
 					<div class="elective">
-						Elective 1:<span th:text="${session.student.elective1}"></span>
+						
+						Elective 1:<select class="enable" name="elective1">
+									<option  th:each="elect : ${session.electives}"
+										th:value="${elect.electiveName}"
+										th:text="${elect.electiveName}"
+										th:selected="${ elect.electiveName == session.student.elective1} "></option>
+									</select>
 					</div>
 					<div class="elective">
 						Elective 2:<span th:text="${session.student.elective2}"></span>
@@ -144,7 +149,13 @@
 				</div>
 				<div class="studentDetailsrow">
 					<div class="elective">
-						Elective 3:<span th:text="${session.student.elective3}"></span>
+						Elective 3:<select class="enable" >
+									<option  th:each="elect : ${session.electives}"
+										th:value="${elect.electiveName}"
+										th:text="${elect.electiveName}"
+										th:selected="${ elect.electiveName == session.student.elective3} "></option>
+									</select>
+						<span th:text="${session.student.elective3}"></span>			
 					</div>
 					<div class="elective">
 						Elective 4:<span th:text="${session.student.elective4}"></span>
@@ -154,10 +165,10 @@
 			<a th:href="@{/generateSchedule?(sid=${session.student.studentId},
 			name=${session.student.sname},grade=${session.student.grade},
 			track=${session.student.track},priInstrument=${session.student.primaryInstrument},secInstrument=${session.student.secondaryInstrument},
-			elec1=${session.student.elective1},elec2=${session.student.elective2},
+			elec1=${session.student.elective1},
+			elec2=${session.student.elective2},
 			elec3=${session.student.elective3},elec4=${session.student.elective4})}">
 				<input type="submit" value="Generate Schedule" class="generate"></a>
-			
 		
 	</div>
 </body>

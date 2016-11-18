@@ -54,7 +54,7 @@ public class StudentScheduleController {
 	private TimingRepository timingRepository;
 	
 	
-	@RequestMapping(value="/generateSchedule",method=RequestMethod.GET)
+	@RequestMapping(value="/studentSchedule",method=RequestMethod.GET)
 	
 	public String Schedulegen(ModelMap model,HttpSession session, @RequestParam("sid") Integer username){
 		
