@@ -29,7 +29,7 @@ import com.musiccamp.repositories.UserRepository;
 @SessionAttributes({ "username", "validuser" })
 public class ValidateRegisterController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ValidateRegisterController.class);
 
 	@Autowired
 	private StudentRepository student;
