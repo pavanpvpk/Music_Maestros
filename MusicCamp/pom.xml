@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.musicmaestros</groupId>
-	<artifactId>GDP</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<artifactId>MusicCamp</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
 
 	<name>MusicCamp</name>
 	<description>MusicCamp GDP</description>
@@ -22,7 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-	</properties>
+		<start-class>com.musiccamp.MusicCampApplication</start-class>
+		</properties>
 
 	<dependencies>
 		<dependency>
@@ -66,21 +67,22 @@
     <dependency>
    <groupId>net.sourceforge.nekohtml</groupId>
    <artifactId>nekohtml</artifactId>
+   <version>1.9.15</version>
 </dependency>
-    <dependency>
-    	<groupId>org.scala-lang</groupId>
-    	<artifactId>scala-library</artifactId>
-    	<version>2.11.0</version>
-    </dependency>
+<!--     <dependency> -->
+<!--     	<groupId>org.scala-lang</groupId> -->
+<!--     	<artifactId>scala-library</artifactId> -->
+<!--     	<version>2.11.0</version> -->
+<!--     </dependency> -->
     <dependency>
     	<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-starter-integration</artifactId>
     </dependency>
 
-    <dependency>
-    	<groupId>org.hibernate</groupId>
-    	<artifactId>hibernate-jpamodelgen</artifactId>
-    </dependency>
+<!--     <dependency> -->
+<!--     	<groupId>org.hibernate</groupId> -->
+<!--     	<artifactId>hibernate-jpamodelgen</artifactId> -->
+<!--     </dependency> -->
     
     <dependency>
            <groupId>org.apache.poi</groupId>
@@ -92,20 +94,26 @@
     	<artifactId>spring-boot-configuration-processor</artifactId>
     	<optional>true</optional>
     </dependency>
+<!--     <dependency> -->
+<!--     	<groupId>org.neo4j</groupId> -->
+<!--     	<artifactId>neo4j-cypher-compiler-2.1</artifactId> -->
+<!--     	<version>2.1.8</version> -->
+<!--     </dependency> -->
     <dependency>
-    	<groupId>org.neo4j</groupId>
-    	<artifactId>neo4j-cypher-compiler-2.1</artifactId>
-    	<version>2.1.8</version>
-    </dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+	<finalName>MusicCamp</finalName>
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.springframework.boot</groupId> -->
+<!-- 				<artifactId>spring-boot-maven-plugin</artifactId> -->
+<!-- 			</plugin> -->
+<!-- 		</plugins> -->
 	</build>
 
 

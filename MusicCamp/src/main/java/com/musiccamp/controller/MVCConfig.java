@@ -4,6 +4,7 @@ package com.musiccamp.controller;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -26,6 +27,9 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 	registry.addViewController("/login").setViewName("login");
+	registry.addViewController( "/" ).setViewName( "forward:/login.html" );
+    registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
+    super.addViewControllers( registry );
 	registry.addViewController("/adminhome").setViewName("adminhome");
 	registry.addViewController("/userhome").setViewName("userhome");
 	registry.addViewController("/viewStudentDetails").setViewName("viewStudentDetails");
@@ -40,8 +44,15 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 	registry.addViewController("/register").setViewName("register");
 	registry.addViewController("/addAdministrators").setViewName("addAdministrators");
 
+	super.addViewControllers( registry );
 
 	}
 	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		// TODO Auto-generated method stub
+		registry.addResourceHandler("/*");
+		super.addResourceHandlers(registry);
+	}
 	
 }

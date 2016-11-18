@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,6 +42,7 @@ import com.musiccamp.services.MasterDataService;
  *
  **/
 @Controller
+@Component
 @Scope(value="session")
 @SessionAttributes({"tablerooms","roomMap","dropdowndata"})
 
