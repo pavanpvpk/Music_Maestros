@@ -47,30 +47,31 @@ public class ValidateRegisterController {
 
 			Student stud = student.findOne(username);
 			UserLogin existingUser = userRepository.findOne(username);
-			if (password.equals(confirmpassword)) {
-				if (username.equals(stud.getStudentId()) && existingUser==null) {
-					System.out.println("success");
-					UserLogin user = new UserLogin(username, password, 1);
-					insertUser(user);
-					redirectView = "redirect:/login";
-				}else if(username.equals(stud.getStudentId()) && existingUser!=null){
-					session.setAttribute("error", "You have already registered");
-					redirectView = "redirect:/login";
-					
+
+			if (existingUser == null) {
+				if (username.equals(stud.getStudentId())) {
+					if (password.equals(confirmpassword)) {
+						UserLogin user = new UserLogin(username, password, 1);
+						insertUser(user);
+						redirectView = "redirect:/login";
+					} else {
+						session.setAttribute("errorMessage", "Passwords doesn't match");
+						redirectView = "redirect:/register";
+					}
+				} else {
+					session.setAttribute("errorMessage", "Invalid Credentials");
+					redirectView = "redirect:/register";
 				}
-				
+
 			} else {
 
-				session.setAttribute("error", "Passwords doesn't match");
-				redirectView = "redirect:/register";
-
+				session.setAttribute("error", "You have already registered");
+				redirectView = "redirect:/login";
 			}
-
 		} catch (Exception e) {
 			LOG.error(username + " Doesn't Exist in DB " + e.getMessage(), e);
-			model.addAttribute("invaliduser", "Invalid Credentials");
-			session.setAttribute("error", "Invalid Credentials: " + username);
-			// session.setAttribute("username", username);
+			//model.addAttribute("invaliduser", "Invalid Credentials");
+			session.setAttribute("errorMessage", "Invalid Credentials");
 			redirectView = "redirect:/register";
 
 		}
