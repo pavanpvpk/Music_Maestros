@@ -181,6 +181,12 @@ img { max-width: 100%; }
 @media (max-width: 767px) {
 	
 	.inner-bg { padding: 60px 0 110px 0; }
+	.navbar-default .navbar-nav>li>a{
+		text-align: left;
+	}
+	.masterSchedule:hover .dropdown-menu{
+		width: 100%;
+	}
 
 }
 
