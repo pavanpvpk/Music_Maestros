@@ -10,12 +10,11 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 
-import org.neo4j.cypher.internal.compiler.v2_1.perty.docbuilders.toStringDocBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +32,7 @@ import com.musiccamp.repositories.ElectiveRepository;
 import com.musiccamp.repositories.RTRepository;
 import com.musiccamp.repositories.RoomRepository;
 import com.musiccamp.repositories.TimingRepository;
+import com.musiccamp.services.MasterDataService;
 
 
 /**
@@ -61,6 +61,14 @@ public class MasterDataController {
 	@Autowired
 	private RTRepository rts;
 	
+	private final MasterDataService masterdataservice;
+	
+	@Autowired
+	public MasterDataController(MasterDataService msd){
+		
+		this.masterdataservice=msd;
+	}
+	
 	@RequestMapping(value={"/viewMasterData"},method=RequestMethod.GET)
 	public String viewMasterData(ModelMap model,HttpSession session){
 	
@@ -68,73 +76,72 @@ public class MasterDataController {
 		
 		if(!(session.getAttribute("validuser")==null)){
 			
-			List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
-			List<String> roomIds= new ArrayList<String>();
-			TreeMap<String,ElectiveRoomTimeModel> timemappings=new TreeMap<>();
-			ElectiveRoomTimeModel ertm=new ElectiveRoomTimeModel();
-			for(Object[] tabledata:tabview ){
-
-				
-				ertm.setTimeslots((String)tabledata[1]);
-				
-				if((ertm=(ElectiveRoomTimeModel) timemappings.get(tabledata[1]))!=null){
-					
-					ertm.getRoomNum().add((String) tabledata[2]);
-					ertm.getElectiveName().add((String) tabledata[3]);
-					
-				}
-				
-				
-				else{
-					ertm=new ElectiveRoomTimeModel();
-					ertm.setRoomNum(new ArrayList<String>());
-					ertm.setElectiveName(new ArrayList<String>());
-					ertm.getRoomNum().add((String)tabledata[2]);
-					ertm.getElectiveName().add((String) tabledata[3]);
-					timemappings.put((String)tabledata[1], ertm);
-				}
-				
-		}
 			
-			roomIds=rrts.findbyRoomName(); //invoke HQL of RoomRepository
-			
-			
-		Map<String,ElectiveRoomTimeModel> crsRmTmng1 = new TreeMap<String,ElectiveRoomTimeModel>();
-		Iterator<Entry<String, ElectiveRoomTimeModel>>  iterator= timemappings.entrySet().iterator();
-			
-		//Second Map for comparing the 2 maps and add ---, if electives aren't present in that slot
-		while(iterator.hasNext()){
-			Map.Entry<String, ElectiveRoomTimeModel> entry=iterator.next();
-			String timing= entry.getKey();
-			ElectiveRoomTimeModel courseRoomValue= entry.getValue();
-			ElectiveRoomTimeModel tempCourseRoom= new ElectiveRoomTimeModel();
-			tempCourseRoom.setRoomNum(new ArrayList<String>());
-			tempCourseRoom.setElectiveName(new ArrayList<String>());
-			for(String roomId:roomIds){				
-				if(!courseRoomValue.getRoomNum().contains(roomId)){
-					tempCourseRoom.getRoomNum().add(roomId);
-					tempCourseRoom.getElectiveName().add("---");
-					crsRmTmng1.put(timing, tempCourseRoom);
-				}
-				else{
-					tempCourseRoom.getRoomNum().add(roomId);
-					tempCourseRoom.getElectiveName().add(courseRoomValue.getElectiveName().get(courseRoomValue.getRoomNum().indexOf(roomId)));
-					crsRmTmng1.put(timing, tempCourseRoom);
-				}
-				
-			}
-		}
-
+//			
+//			List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
+//			List<String> roomIds= new ArrayList<String>();
+//			TreeMap<String,ElectiveRoomTimeModel> timemappings=new TreeMap<>();
+//			ElectiveRoomTimeModel ertm=new ElectiveRoomTimeModel();
+//			for(Object[] tabledata:tabview ){
+//
+//				
+//				ertm.setTimeslots((String)tabledata[1]);
+//				
+//				if((ertm=(ElectiveRoomTimeModel) timemappings.get(tabledata[1]))!=null){
+//					
+//					ertm.getRoomNum().add((String) tabledata[2]);
+//					ertm.getElectiveName().add((String) tabledata[3]);
+//					
+//				}
+//				
+//				
+//				else{
+//					ertm=new ElectiveRoomTimeModel();
+//					ertm.setRoomNum(new ArrayList<String>());
+//					ertm.setElectiveName(new ArrayList<String>());
+//					ertm.getRoomNum().add((String)tabledata[2]);
+//					ertm.getElectiveName().add((String) tabledata[3]);
+//					timemappings.put((String)tabledata[1], ertm);
+//				}
+//				
+//		}
+//			
+//			roomIds=rrts.findbyRoomName(); //invoke HQL of RoomRepository
+//			
+//			
+//		Map<String,ElectiveRoomTimeModel> crsRmTmng1 = new TreeMap<String,ElectiveRoomTimeModel>();
+//		Iterator<Entry<String, ElectiveRoomTimeModel>>  iterator= timemappings.entrySet().iterator();
+//			
+//		//Second Map for comparing the 2 maps and add ---, if electives aren't present in that slot
+//		while(iterator.hasNext()){
+//			Map.Entry<String, ElectiveRoomTimeModel> entry=iterator.next();
+//			String timing= entry.getKey();
+//			ElectiveRoomTimeModel courseRoomValue= entry.getValue();
+//			ElectiveRoomTimeModel tempCourseRoom= new ElectiveRoomTimeModel();
+//			tempCourseRoom.setRoomNum(new ArrayList<String>());
+//			tempCourseRoom.setElectiveName(new ArrayList<String>());
+//			for(String roomId:roomIds){				
+//				if(!courseRoomValue.getRoomNum().contains(roomId)){
+//					tempCourseRoom.getRoomNum().add(roomId);
+//					tempCourseRoom.getElectiveName().add("---");
+//					crsRmTmng1.put(timing, tempCourseRoom);
+//				}
+//				else{
+//					tempCourseRoom.getRoomNum().add(roomId);
+//					tempCourseRoom.getElectiveName().add(courseRoomValue.getElectiveName().get(courseRoomValue.getRoomNum().indexOf(roomId)));
+//					crsRmTmng1.put(timing, tempCourseRoom);
+//				}
+//				
+//			}
+//		}
+//
+//		
+//		List<Room> roomMap=rrts.findAll(); 
+//		
+//			model.put("roomMap", roomMap);
+//			model.put("tablerooms", crsRmTmng1);
 		
-		List<Room> roomMap=rrts.findAll(); 
-		
-			model.put("roomMap", roomMap);
-			model.put("tablerooms", crsRmTmng1);
-		
-			if(model.containsAttribute("dropdowndata")){
-				
-				return "editMasterSchedule";
-			}
+			masterdataservice.MasterLogic(model,session);
 			
 			return "viewMasterSchedule";
 		}
@@ -147,20 +154,26 @@ public class MasterDataController {
 
 	}
 	
-	
-	
+
 	@RequestMapping(value="/editMasterSchedule",method=RequestMethod.GET)
-	public void editMasterData(ModelMap model, HttpSession session){
+	public String editMasterData(ModelMap model,HttpSession session){
 		
 		session.getAttribute("username");
 		
 		if(!(session.getAttribute("validuser")==null)){
 			
-			List<Electives> electivedropdown=ers.findAll();
-			List<Electives> elect=new ArrayList<>();
-			model.addAttribute("elect",elect);
-			model.addAttribute("dropdowndata", electivedropdown);
-			viewMasterData(model,session);
+//			List<Electives> electivedropdown=ers.findAll();
+//			List<Electives> elect=new ArrayList<>();
+//			model.addAttribute("elect",elect);
+//			model.addAttribute("dropdowndata", electivedropdown);
+			
+			masterdataservice.MasterLogic(model,session);
+			
+			return "editMasterSchedule";
+			
+		}
+		else{
+			return "login";
 		}
 
 	}
@@ -209,12 +222,6 @@ public class MasterDataController {
 			erts.InsertertID(newelectiveID, rtId);
 			
 		}
-		
-		
-		
-		
-		
-		
 		
 		return "editMasterSchedule";
 	}
