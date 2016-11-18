@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * 
- * @author Pavan Kumar Pedda Vakkalam
+ * @author Pavan Kumar Pedda Vakkalam and Manasa Bojja
  *
  **/
 @Configuration
@@ -38,6 +38,8 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 	registry.addViewController("/faq").setViewName("faq");
 	registry.addViewController("/schedulegen").setViewName("gensuccess");
 	registry.addViewController("/register").setViewName("register");
+	registry.addViewController("/addAdministrators").setViewName("addAdministrators");
+
 
 	}
 	
