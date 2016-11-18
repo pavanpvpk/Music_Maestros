@@ -75,71 +75,6 @@ public class MasterDataController {
 		
 		
 		if(!(session.getAttribute("validuser")==null)){
-			
-			
-//			
-//			List<Object[]> tabview=erts.findAllTimings(); //invoke HQL -SpringDATA
-//			List<String> roomIds= new ArrayList<String>();
-//			TreeMap<String,ElectiveRoomTimeModel> timemappings=new TreeMap<>();
-//			ElectiveRoomTimeModel ertm=new ElectiveRoomTimeModel();
-//			for(Object[] tabledata:tabview ){
-//
-//				
-//				ertm.setTimeslots((String)tabledata[1]);
-//				
-//				if((ertm=(ElectiveRoomTimeModel) timemappings.get(tabledata[1]))!=null){
-//					
-//					ertm.getRoomNum().add((String) tabledata[2]);
-//					ertm.getElectiveName().add((String) tabledata[3]);
-//					
-//				}
-//				
-//				
-//				else{
-//					ertm=new ElectiveRoomTimeModel();
-//					ertm.setRoomNum(new ArrayList<String>());
-//					ertm.setElectiveName(new ArrayList<String>());
-//					ertm.getRoomNum().add((String)tabledata[2]);
-//					ertm.getElectiveName().add((String) tabledata[3]);
-//					timemappings.put((String)tabledata[1], ertm);
-//				}
-//				
-//		}
-//			
-//			roomIds=rrts.findbyRoomName(); //invoke HQL of RoomRepository
-//			
-//			
-//		Map<String,ElectiveRoomTimeModel> crsRmTmng1 = new TreeMap<String,ElectiveRoomTimeModel>();
-//		Iterator<Entry<String, ElectiveRoomTimeModel>>  iterator= timemappings.entrySet().iterator();
-//			
-//		//Second Map for comparing the 2 maps and add ---, if electives aren't present in that slot
-//		while(iterator.hasNext()){
-//			Map.Entry<String, ElectiveRoomTimeModel> entry=iterator.next();
-//			String timing= entry.getKey();
-//			ElectiveRoomTimeModel courseRoomValue= entry.getValue();
-//			ElectiveRoomTimeModel tempCourseRoom= new ElectiveRoomTimeModel();
-//			tempCourseRoom.setRoomNum(new ArrayList<String>());
-//			tempCourseRoom.setElectiveName(new ArrayList<String>());
-//			for(String roomId:roomIds){				
-//				if(!courseRoomValue.getRoomNum().contains(roomId)){
-//					tempCourseRoom.getRoomNum().add(roomId);
-//					tempCourseRoom.getElectiveName().add("---");
-//					crsRmTmng1.put(timing, tempCourseRoom);
-//				}
-//				else{
-//					tempCourseRoom.getRoomNum().add(roomId);
-//					tempCourseRoom.getElectiveName().add(courseRoomValue.getElectiveName().get(courseRoomValue.getRoomNum().indexOf(roomId)));
-//					crsRmTmng1.put(timing, tempCourseRoom);
-//				}
-//				
-//			}
-//		}
-//
-//		
-//		List<Room> roomMap=rrts.findAll(); 
-//		
-//			model.put("roomMap", roomMap);
-//			model.put("tablerooms", crsRmTmng1);
 		
 			masterdataservice.MasterLogic(model,session);
 			
@@ -161,11 +96,6 @@ public class MasterDataController {
 		session.getAttribute("username");
 		
 		if(!(session.getAttribute("validuser")==null)){
-			
-//			List<Electives> electivedropdown=ers.findAll();
-//			List<Electives> elect=new ArrayList<>();
-//			model.addAttribute("elect",elect);
-//			model.addAttribute("dropdowndata", electivedropdown);
 			
 			masterdataservice.MasterLogic(model,session);
 			
