@@ -46,15 +46,19 @@ public class ValidateRegisterController {
 		try {
 
 			Student stud = student.findOne(username);
+			UserLogin existingUser = userRepository.findOne(username);
 			if (password.equals(confirmpassword)) {
-				if (username.equals(stud.getStudentId())) {
+				if (username.equals(stud.getStudentId()) && existingUser==null) {
 					System.out.println("success");
-
 					UserLogin user = new UserLogin(username, password, 1);
 					insertUser(user);
-
 					redirectView = "redirect:/login";
+				}else if(username.equals(stud.getStudentId()) && existingUser!=null){
+					session.setAttribute("error", "You have already registered");
+					redirectView = "redirect:/login";
+					
 				}
+				
 			} else {
 
 				session.setAttribute("error", "Passwords doesn't match");
