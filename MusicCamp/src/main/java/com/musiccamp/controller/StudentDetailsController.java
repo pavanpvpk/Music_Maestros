@@ -108,6 +108,7 @@ public class StudentDetailsController {
 //	    Student studentInfo =  student.find(argName);
 //	    session.setAttribute("student", studentInfo);
 	    
+	    
 		return "redirect: /viewStudentDetails";
 		
 	}

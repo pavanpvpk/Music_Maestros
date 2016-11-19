@@ -88,6 +88,7 @@ public class UserController {
 				else if( users.getRole()==1){
 					LOG.info(username+" logged in successfully as user");
 					model.addAttribute("username",username);
+					session.setAttribute("validuser", username);
 					return "/userhome";
 				}
 				

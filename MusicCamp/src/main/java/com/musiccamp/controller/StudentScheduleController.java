@@ -56,7 +56,7 @@ public class StudentScheduleController {
 	
 	@RequestMapping(value="/studentSchedule",method=RequestMethod.GET)
 	
-	public String Schedulegen(ModelMap model,HttpSession session, @RequestParam("sid") Integer username){
+	public String Schedulegen(ModelMap model,HttpSession session){
 		
 		//System.out.println(session.getAttribute("sid"));
 		//System.out.println(studentName);
@@ -65,10 +65,13 @@ public class StudentScheduleController {
 //		 username = (Integer)session.getAttribute("sid");
 //		}
 		
-		Student student = studentRepo.find(username); 
+		Student student = studentRepo.find((Integer)session.getAttribute("validuser")); 
 		
+		System.out.println(student.getStudentId());
 		
+		System.out.println(student.getElective1());
 		List<String> electiveNames = java.util.Collections.checkedList(new ArrayList<String>(), String.class);
+		
 		
 		if(student.getElective1()!=null&&(!student.getElective1().isEmpty())) electiveNames.add(student.getElective1());
 		

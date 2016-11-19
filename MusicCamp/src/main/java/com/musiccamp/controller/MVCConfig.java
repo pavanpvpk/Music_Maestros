@@ -27,9 +27,6 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 	registry.addViewController("/login").setViewName("login");
-	registry.addViewController( "/" ).setViewName( "forward:/login.html" );
-    registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
-    super.addViewControllers( registry );
 	registry.addViewController("/adminhome").setViewName("adminhome");
 	registry.addViewController("/userhome").setViewName("userhome");
 	registry.addViewController("/viewStudentDetails").setViewName("viewStudentDetails");
@@ -48,11 +45,11 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 
 	}
 	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// TODO Auto-generated method stub
-		registry.addResourceHandler("/*");
-		super.addResourceHandlers(registry);
-	}
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		// TODO Auto-generated method stub
+//		registry.addResourceHandler("/*");
+//		super.addResourceHandlers(registry);
+//	}
 	
 }

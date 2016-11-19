@@ -34,13 +34,9 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 @ComponentScan({"com.musiccamp.controller"})//Scans this package for all the Spring Controllers
 @PropertySource("classpath:application.properties") // Reads database properties and other stuff from application.properties
 //@EnableConfigurationProperties(StorageProperties.class)
-public class MusicCampApplication extends SpringBootServletInitializer{
+public class MusicCampApplication {
 	
 	
-	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(MusicCampApplication.class);
-    }
 	
 	
 	public static void main(String[] args) {
