@@ -67,7 +67,7 @@ public class StudentScheduleController {
 		//System.out.println(studentName);
 		//Integer username =null;
 //		if(session != null) {
-//		 username = (Integer)session.getAttribute("sid");
+//		username = (Integer)session.getAttribute("sid");
 //		}
 		
 		try{
@@ -87,7 +87,7 @@ public class StudentScheduleController {
 			
 			List<Electives> allElectives = electivesRepo.findAll();
 			List<Electives> studentElectives = new ArrayList<Electives>(); 
-			for (Electives elective	 : allElectives) {
+			for (Electives elective	: allElectives) {
 				if(electiveNames.contains(elective.getElectiveName())) {
 					studentElectives.add(elective);
 				}
@@ -156,7 +156,7 @@ public class StudentScheduleController {
 		catch(NullPointerException ne){
 			
 			LOG.info("SessionTimeOut: ",(Integer)session.getAttribute("validuser") );
-			session.setAttribute("loginexpired", "Unfortunately, your session has been expired. please login again!");
+			session.setAttribute("loginexpired", "something's gone wrong!");
 			return "login";
 		}
 		

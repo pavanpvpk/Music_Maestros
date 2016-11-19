@@ -38,7 +38,7 @@ import com.musiccamp.entities.UserLogin;
 @Scope(value="session")
 @Controller
 @RequestMapping("/home")
-@SessionAttributes({"username","validuser"})
+@SessionAttributes({"validuser"})
 public class UserController {
 
 	private static final Logger LOG=LoggerFactory.getLogger(UserController.class);
