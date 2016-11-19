@@ -75,7 +75,7 @@ public class Student implements java.io.Serializable {
 
 	@Column(name = "grade", nullable = false)
 	public String getGrade() {
-		return this.grade;
+		return this.grade.substring(0, grade.indexOf("."));
 	}
 
 	public void setGrade(String grade) {

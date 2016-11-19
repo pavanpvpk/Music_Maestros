@@ -96,7 +96,7 @@
 	<table class="table table-responsive table-bordered" id="myTable">
                 <thead>
                 <tr>
-                    <th>Course Name</th>
+                    <th>Elective Name</th>
                     <th>Location  </th>
                     <th>Timings</th>
                    </tr>
@@ -104,13 +104,24 @@
               <tbody>
           <tr th:each="studentschedule:${session.scheduleList}">
          
-       			<td th:text="${studentschedule.courseName}"></td>
+       		<td th:text="${studentschedule.courseName}"></td>
       		<td th:text="${studentschedule.roomName}"></td>
       		<td th:text="${studentschedule.timings}"></td>
         </tr>  
      </tbody>
+ 
 </table>
-
+ <br/> <br/>
+ 
+ <table  class="table table-responsive table-bordered fa-align-center" id="myTable2">
+                <thead>
+                <tr>
+                    <th>Grade</th>
+                    <th>Location  </th>
+                    <th>Timings</th>
+                   </tr>
+                </thead>
+ </table>
 
 </div>
 	
