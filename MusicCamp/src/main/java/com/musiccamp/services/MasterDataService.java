@@ -22,6 +22,12 @@ import com.musiccamp.repositories.ERTRepository;
 import com.musiccamp.repositories.ElectiveRepository;
 import com.musiccamp.repositories.RoomRepository;
 
+/**
+ * 
+ * @author Pavan Kumar Pedda Vakkalam
+ *
+ */
+
 @Service
 public class MasterDataService {
 	

@@ -75,11 +75,18 @@ public class Student implements java.io.Serializable {
 
 	@Column(name = "grade", nullable = false)
 	public String getGrade() {
-		return this.grade.substring(0, grade.indexOf("."));
+		return this.grade;
 	}
 
 	public void setGrade(String grade) {
-		this.grade = grade;
+		if(grade.contains(".")){
+			
+			this.grade = grade.substring(0, grade.indexOf("."));
+		}
+		
+		else{
+			this.grade=grade;
+		}
 	}
 
 	@Column(name = "track", nullable = false)
