@@ -6,15 +6,51 @@ public class StudentScheduleModel {
 	private String courseName;//elective names
 	private String timings;
 	private String roomName;
-	public StudentScheduleModel(String username, String courseName, String timings, String roomName) {
-		super();
+	private String track;
+	private String grade;
+	private String primaryInstrument;
+	private String secondaryInstrument;
+	
+	
+	public StudentScheduleModel(String username, String courseName, String timings, String roomName, String track,
+			String grade, String primaryInstrument, String secondaryInstrument) {
 		this.username = username;
 		this.courseName = courseName;
 		this.timings = timings;
 		this.roomName = roomName;
+		this.track = track;
+		this.grade = grade;
+		this.primaryInstrument = primaryInstrument;
+		this.secondaryInstrument = secondaryInstrument;
 	}
+	
 	public StudentScheduleModel() {
 		super();
+	}
+	
+	public String getTrack() {
+		return track;
+	}
+	public void setTrack(String track) {
+		this.track = track;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public String getPrimaryInstrument() {
+		return primaryInstrument;
+	}
+	public void setPrimaryInstrument(String primaryInstrument) {
+		this.primaryInstrument = primaryInstrument;
+	}
+	public String getSecondaryInstrument() {
+		return secondaryInstrument;
+	}
+	public void setSecondaryInstrument(String secondaryInstrument) {
+		this.secondaryInstrument = secondaryInstrument;
 	}
 	public String getUsername() {
 		return username;

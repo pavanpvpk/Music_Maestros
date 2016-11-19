@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.musiccamp.entities.ElectiveRoomTimings;
 import com.musiccamp.entities.Electives;
@@ -57,7 +58,7 @@ public class StudentScheduleController {
 	@Autowired
 	private TimingRepository timingRepository;
 	
-	
+	List<StudentScheduleModel> studentScheduleList = new ArrayList<StudentScheduleModel>();
 	@RequestMapping(value="/studentSchedule",method=RequestMethod.GET)
 	
 	public String Schedulegen(ModelMap model,HttpSession session){
@@ -72,9 +73,7 @@ public class StudentScheduleController {
 		try{
 			Student student = studentRepo.find((Integer)session.getAttribute("validuser")); 
 			
-			System.out.println(student.getStudentId());
-			
-			System.out.println(student.getElective1());
+		
 			List<String> electiveNames = java.util.Collections.checkedList(new ArrayList<String>(), String.class);
 			
 			
@@ -131,14 +130,23 @@ public class StudentScheduleController {
 					}
 				}
 			}
-			List<StudentScheduleModel> studentScheduleList = new ArrayList<StudentScheduleModel>();
+			
 			for(int i=0;i<studentElectives.size();i++) {
 				StudentScheduleModel ssm =new StudentScheduleModel();
 				ssm.setCourseName(studentElectives.get(i).getElectiveName());
 				ssm.setRoomName(studentRooms.get(i).getRoomName());
 				ssm.setTimings(studentTimings.get(i).getTimeSlot());
+				
 				studentScheduleList.add(ssm);
 				}
+			
+			StudentScheduleModel ssm =new StudentScheduleModel();
+			ssm.setGrade(student.getGrade());
+			ssm.setPrimaryInstrument(student.getPrimaryInstrument());
+			ssm.setSecondaryInstrument(student.getSecondaryInstrument());
+			ssm.setTrack(student.getTrack());
+			
+			session.setAttribute("Secondaryschedule", ssm);
 			
 			session.setAttribute("scheduleList", studentScheduleList);
 			return "studentSchedule";

@@ -117,10 +117,21 @@
                 <thead>
                 <tr>
                     <th>Grade</th>
-                    <th>Location  </th>
-                    <th>Timings</th>
+                    <th>Track</th>
+                    <th>Primary Instrument</th>
+                    <th>Secondary Instrument</th>
                    </tr>
                 </thead>
+               <tbody>
+               <tr th:each="secondaryschedule:${session.Secondaryschedule}">
+         
+       		<td th:text="${secondaryschedule.grade}"></td>
+       		<td th:text="${secondaryschedule.track}"></td>
+      		<td th:text="${secondaryschedule.primaryInstrument}"></td>
+       		<td th:text="${secondaryschedule.secondaryInstrument}"></td>
+        </tr>  
+               
+               </tbody> 
  </table>
 
 </div>
