@@ -1,12 +1,15 @@
 package com.musiccamp.controller;
 
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -34,6 +37,7 @@ import com.musiccamp.repositories.TimingRepository;
 @Scope(value="session")
 public class StudentScheduleController {
 	
+	private static final Logger LOG=LoggerFactory.getLogger(StudentScheduleController.class);
 	@Autowired
 	private StudentRepository studentRepo;
 
@@ -65,77 +69,88 @@ public class StudentScheduleController {
 //		 username = (Integer)session.getAttribute("sid");
 //		}
 		
-		Student student = studentRepo.find((Integer)session.getAttribute("validuser")); 
-		
-		System.out.println(student.getStudentId());
-		
-		System.out.println(student.getElective1());
-		List<String> electiveNames = java.util.Collections.checkedList(new ArrayList<String>(), String.class);
-		
-		
-		if(student.getElective1()!=null&&(!student.getElective1().isEmpty())) electiveNames.add(student.getElective1());
-		
-		if(student.getElective2()!=null&&(!student.getElective2().isEmpty())) electiveNames.add(student.getElective2());
-		
-		if(student.getElective3()!=null&&(!student.getElective3().isEmpty())) electiveNames.add(student.getElective3());
-		
-		if(student.getElective4()!=null&&(!student.getElective4().isEmpty())) electiveNames.add(student.getElective4());
-		
-		List<Electives> allElectives = electivesRepo.findAll();
-		List<Electives> studentElectives = new ArrayList<Electives>(); 
-		for (Electives elective	 : allElectives) {
-			if(electiveNames.contains(elective.getElectiveName())) {
-				studentElectives.add(elective);
+		try{
+			Student student = studentRepo.find((Integer)session.getAttribute("validuser")); 
+			
+			System.out.println(student.getStudentId());
+			
+			System.out.println(student.getElective1());
+			List<String> electiveNames = java.util.Collections.checkedList(new ArrayList<String>(), String.class);
+			
+			
+			if(student.getElective1()!=null&&(!student.getElective1().isEmpty())) electiveNames.add(student.getElective1());
+			
+			if(student.getElective2()!=null&&(!student.getElective2().isEmpty())) electiveNames.add(student.getElective2());
+			
+			if(student.getElective3()!=null&&(!student.getElective3().isEmpty())) electiveNames.add(student.getElective3());
+			
+			if(student.getElective4()!=null&&(!student.getElective4().isEmpty())) electiveNames.add(student.getElective4());
+			
+			List<Electives> allElectives = electivesRepo.findAll();
+			List<Electives> studentElectives = new ArrayList<Electives>(); 
+			for (Electives elective	 : allElectives) {
+				if(electiveNames.contains(elective.getElectiveName())) {
+					studentElectives.add(elective);
+				}
 			}
-		}
-		//ok till here
-		System.out.println(studentElectives.size());
-		List<ElectiveRoomTimings> allERTimings = ertRepository.findAll();
-		List<ElectiveRoomTimings> studentERTimings = new ArrayList<ElectiveRoomTimings>(); 
-		for (ElectiveRoomTimings erTimings : allERTimings) {
-			if(studentElectives.contains(erTimings.getElectives()) ) {
-				studentERTimings.add(erTimings);
+			//ok till here
+			System.out.println(studentElectives.size());
+			List<ElectiveRoomTimings> allERTimings = ertRepository.findAll();
+			List<ElectiveRoomTimings> studentERTimings = new ArrayList<ElectiveRoomTimings>(); 
+			for (ElectiveRoomTimings erTimings : allERTimings) {
+				if(studentElectives.contains(erTimings.getElectives()) ) {
+					studentERTimings.add(erTimings);
+				}
+				
 			}
+			
+			List<RoomTimings> allRoomTimings = rtRepository.findAll();
+			List<RoomTimings> studentRTimings = new ArrayList<RoomTimings>(); 
+			for (RoomTimings rTimings : allRoomTimings) {
+				for(ElectiveRoomTimings studentERTiming : studentERTimings ) {
+					if(studentERTiming.getRoomTimings().getRtId() == rTimings.getRtId()) {
+						studentRTimings.add(rTimings);
+					}
+				}
+				
+			}
+			
+			List<Room> allRooms = roomRepository.findAll();
+			List<Timings> allTimings = timingRepository.findAll();
+			List<Room> studentRooms = new ArrayList<Room>(); 
+			List<Timings> studentTimings = new ArrayList<Timings>(); 
+			for(RoomTimings rt:studentRTimings) {
+				for(Room r:allRooms ) {
+					if(r.getRoomId() == rt.getRoom().getRoomId()) {
+						studentRooms.add(r);
+					}
+				}
+				for(Timings t:allTimings ) {
+					if(t.getTimeId() == rt.getTimings().getTimeId()) {
+						studentTimings.add(t);
+					}
+				}
+			}
+			List<StudentScheduleModel> studentScheduleList = new ArrayList<StudentScheduleModel>();
+			for(int i=0;i<studentElectives.size();i++) {
+				StudentScheduleModel ssm =new StudentScheduleModel();
+				ssm.setCourseName(studentElectives.get(i).getElectiveName());
+				ssm.setRoomName(studentRooms.get(i).getRoomName());
+				ssm.setTimings(studentTimings.get(i).getTimeSlot());
+				studentScheduleList.add(ssm);
+				}
+			
+			session.setAttribute("scheduleList", studentScheduleList);
+			return "studentSchedule";
 			
 		}
 		
-		List<RoomTimings> allRoomTimings = rtRepository.findAll();
-		List<RoomTimings> studentRTimings = new ArrayList<RoomTimings>(); 
-		for (RoomTimings rTimings : allRoomTimings) {
-			for(ElectiveRoomTimings studentERTiming : studentERTimings ) {
-				if(studentERTiming.getRoomTimings().getRtId() == rTimings.getRtId()) {
-					studentRTimings.add(rTimings);
-				}
-			}
+		catch(NullPointerException ne){
 			
+			LOG.info("SessionTimeOut: ",(Integer)session.getAttribute("validuser") );
+			session.setAttribute("loginexpired", "Unfortunately, your session has been expired. please login again!");
+			return "login";
 		}
 		
-		List<Room> allRooms = roomRepository.findAll();
-		List<Timings> allTimings = timingRepository.findAll();
-		List<Room> studentRooms = new ArrayList<Room>(); 
-		List<Timings> studentTimings = new ArrayList<Timings>(); 
-		for(RoomTimings rt:studentRTimings) {
-			for(Room r:allRooms ) {
-				if(r.getRoomId() == rt.getRoom().getRoomId()) {
-					studentRooms.add(r);
-				}
-			}
-			for(Timings t:allTimings ) {
-				if(t.getTimeId() == rt.getTimings().getTimeId()) {
-					studentTimings.add(t);
-				}
-			}
-		}
-		List<StudentScheduleModel> studentScheduleList = new ArrayList<StudentScheduleModel>();
-		for(int i=0;i<studentElectives.size();i++) {
-			StudentScheduleModel ssm =new StudentScheduleModel();
-			ssm.setCourseName(studentElectives.get(i).getElectiveName());
-			ssm.setRoomName(studentRooms.get(i).getRoomName());
-			ssm.setTimings(studentTimings.get(i).getTimeSlot());
-			studentScheduleList.add(ssm);
-			}
-		
-		session.setAttribute("scheduleList", studentScheduleList);
-		return "studentSchedule";
 	}
 }
