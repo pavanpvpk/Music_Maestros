@@ -65,32 +65,21 @@
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse"
+			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="viewStudentDetails"
-					>View Student Details <span class="sr-only">(current)</span></a></li>
-					<li><a href="uploadStudentDetails">Upload Student Details <span
-							class="sr-only">(current)</span></a></li>
-
-					<li class="dropdown masterSchedule"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						data-toggle="collapse" data-target=".navbar-collapse">Master
-							Schedule <span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu ">
-							<li><a th:href="viewMasterSchedule">View Master Schedule</a></li>
-							<li><a href="editMasterSchedule">Edit Master Schedule</a></li>
-
-						</ul></li>
-					<li><a href="addAdministrators">Add Administrators<span
+					<li><a href="studentSchedule"
+					>My Schedule <span class="sr-only">(current)</span></a></li>
+					<li><a href="aboutUs">About Us <span
 							class="sr-only">(current)</span></a></li>
 					<li><a href="contact">Contact <span class="sr-only">(current)</span></a></li>
+					<li><a href="faq">FAQ's<span
+							class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Welcome Admin</a></li>
+					<li><a href="#">Welcome User</a></li>
 					<li class="dropdown">
-						<a href="logout"><button type="button" class="btn btn-success btn-lg">
+						<a href="logout"><button type="button" class="btn btn-success btn-lg logout">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							Logout
 						</button>
