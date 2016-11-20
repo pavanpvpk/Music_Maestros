@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/music_maestros</property>
-        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-04.cleardb.net:3306/heroku_7b4777e8f09fefb?reconnect=true</property>
+        <property name="hibernate.connection.username">be9131585729ee</property>
+        <property name="hibernate.connection.password">f4ad01cf</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <mapping class="com.musiccamp.entities.Electives" />
