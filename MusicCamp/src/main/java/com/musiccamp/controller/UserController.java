@@ -37,7 +37,7 @@ import com.musiccamp.entities.UserLogin;
 
 @Scope(value="session")
 @Controller
-@RequestMapping("/home")
+@RequestMapping(value={"/","/adminhome","/userhome"})
 @SessionAttributes({"validuser"})
 public class UserController {
 

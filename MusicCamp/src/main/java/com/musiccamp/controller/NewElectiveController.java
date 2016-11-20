@@ -32,6 +32,13 @@ public class NewElectiveController {
 				return "redirect:/addElectives";
 				
 			}
+			
+			else if(newElective.isEmpty()){
+				
+				model.put("failure", "something went wrong");
+				return "redirect:/addElectives";
+				
+			}
 			else{
 				
 				model.put("failure", "something went wrong");
