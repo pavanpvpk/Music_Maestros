@@ -245,7 +245,7 @@ img { max-width: 100%; }
 	border-width: 0;
 }
 
-.navbar-default .navbar-nav>li>a,.navbar-default .navbar-brand,.masterSchedule h1{
+.navbar-default .navbar-nav>li>a,.navbar-default .navbar-brand,.masterScheduleContent h1,.editSchedule h1{
 	color: #fff;
 }
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover,
@@ -441,7 +441,7 @@ table.responsive td, table.responsive th { position: relative; white-space: nowr
 table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
 .pinned table tr th,.pinned table tr td{ display: none;}
 .pinned table tr th:first-child,.pinned table tr td:first-child{ display: block; border-bottom: 0; border-left: 0;}
-.pinned table tr td{ padding: 9px 8px;}
+.pinned table tr td{ padding: 8px;}
 .editSchedule .pinned table tr td{ padding: 15px 8px;}
 #accordion{
 	text-align: left;
@@ -456,10 +456,20 @@ button.editbtn{
 	background-color: #337ab7;
 	
 }
-.masterSchedule{
+.masterScheduleContent,.editSchedule{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 90%;
 	color: #000;
+}
+.masterScheduleContent .scrollable table{
+	background: #fff;
+	opacity:0.8;
+}
+.editSchedule .scrollable table{
+	background: #fff;
+}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+	font-family: cursive;
 }
 .navbar-right li.dropdown a{
 	padding: 0;
@@ -476,4 +486,21 @@ button.logout {
 }
 button.upload{
 	margin-top: 40px;
+}
+button.generateSchedule{
+	background-color: #337ab7;
+	font-weight: 500;
+	margin-top: 50px;
+}
+.studentDetails{
+	width: 80%;
+	margin: 0 auto;
+}
+.studentDetails a{
+	color:#f7d908;
+}
+.aboutus{
+	width: 80%;
+	margin: 0 auto;
+	font-size: 16px;
 }

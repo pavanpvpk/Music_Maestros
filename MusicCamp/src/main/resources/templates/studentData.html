@@ -74,8 +74,7 @@
 					<li><a href="uploadStudentDetails">Upload Student Details
 							<span class="sr-only"></span>
 					</a></li>
-					<li><a href="addElectives">Add New Electives<span
-							class="sr-only"></span></a></li>
+					
 
 					<li class="dropdown masterSchedule"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
@@ -89,7 +88,8 @@
 						</ul></li>
 						<li><a href="addAdministrators">Add Administrators<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="#">Contact <span class="sr-only">(current)</span></a></li>
+						<li><a href="addElectives">Add New Electives<span
+							class="sr-only"></span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome Admin</a></li>
@@ -110,7 +110,7 @@
 	<br />
 	<!-- Author--Manasa Bojja -->
 	<div class="mainContent">
-		<h1>Student Details</h1>
+		<h1 style="text-align: center;">Student Details</h1>
 			<div class="studentDetails">
 				<div class="studentDetailsrow">
 					<div>
@@ -153,13 +153,15 @@
 					</div>
 				</div>
 			</div>
+			<div style="text-align: center">
 			<a th:href="@{/generateSchedule?(sid=${session.student.studentId},
 			name=${session.student.sname},grade=${session.student.grade},
 			track=${session.student.track},priInstrument=${session.student.primaryInstrument},secInstrument=${session.student.secondaryInstrument},
 			elec1=${session.student.elective1},
 			elec2=${session.student.elective2},
 			elec3=${session.student.elective3},elec4=${session.student.elective4})}">
-				<input type="submit" value="Generate Schedule" class="generate"></a>
+				<button class="btn btn-primary generateSchedule">Generate Schedule</button></a>
+				</div>
 		
 	</div>
 </body>
