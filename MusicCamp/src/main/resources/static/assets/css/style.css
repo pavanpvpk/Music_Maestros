@@ -6,9 +6,9 @@ body {
     color: #888;
     line-height: 30px;
     text-align: center;
-    background-image: url("../img/backgrounds/overlay.png");
+    background: url("../img/backgrounds/bg1.jpeg") no-repeat center center fixed;;
     background-size: cover; 
-    background-position: center;
+ 
     
 }
 
@@ -26,8 +26,7 @@ a, a:hover, a:focus {
 h1, h2 {
 	margin-top: 10px;
 	font-size: 38px;
-    font-weight: 100;
-    color: #555;
+    font-weight: 400;
     line-height: 50px;
 }
 
@@ -95,8 +94,6 @@ img { max-width: 100%; }
 .top-content .text {
 	color: #fff;
 }
-
-.top-content .text h1 { color: green; }
 
 .top-content .description {
 	margin: 20px 0 10px 0;
@@ -224,9 +221,8 @@ img { max-width: 100%; }
   border-color: #222;
 }
 .uploadelementcontainer{
-	float: left;
-	width: 50%;
-	position: left;
+	width: 55%;
+	margin: 0 auto;
 }
 .dragfile{
 	float: right;
@@ -244,6 +240,17 @@ img { max-width: 100%; }
 }
 .navbar{
 	margin-bottom: 0;
+	background-color: #aa4f19;
+	color: #fff;
+	border-width: 0;
+}
+
+.navbar-default .navbar-nav>li>a,.navbar-default .navbar-brand,.masterSchedule h1{
+	color: #fff;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+	color: #efe6e6;
 }
 .panel-heading1{
 	border-color:transparent;
@@ -255,7 +262,7 @@ img { max-width: 100%; }
 	text-align:left;
 	margin: 0 auto;
 	margin-top:50px;
-	color:#000;
+	color:#fff;
 }
 .description{
 	font-size:20px;
@@ -435,16 +442,19 @@ table.responsive th:first-child, table.responsive td:first-child, table.responsi
 .pinned table tr th,.pinned table tr td{ display: none;}
 .pinned table tr th:first-child,.pinned table tr td:first-child{ display: block; border-bottom: 0; border-left: 0;}
 .pinned table tr td{ padding: 9px 8px;}
+.editSchedule .pinned table tr td{ padding: 15px 8px;}
 #accordion{
 	text-align: left;
 	width: 70%;
 	margin: 0 auto;
 }
 
-.editbtn{
-	border-width: 1px;
-	line-height: 18px;
+button.editbtn{
+	height: 34px;
+	line-height: 34px;
 	border-radius: 5px;
+	background-color: #337ab7;
+	
 }
 .masterSchedule{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -453,4 +463,17 @@ table.responsive th:first-child, table.responsive td:first-child, table.responsi
 }
 .navbar-right li.dropdown a{
 	padding: 0;
+}
+button.logout {
+    background: #fff;
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0;
+}
+.form-inline{
+	text-align: center;
+}
+button.upload{
+	margin-top: 40px;
 }

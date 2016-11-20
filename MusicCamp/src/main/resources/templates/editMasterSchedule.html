@@ -89,15 +89,15 @@
 						</ul></li>
 						<li><a href="addAdministrators">Add Administrators<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="#">Contact <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome Admin</a></li>
-					<li class="dropdown"><a th:href="@{/logout}"><button
-								type="button" class="btn btn-success btn-lg">
-								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-								Logout
-							</button> </a></li>
+
+					<li class="dropdown"><a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg logout">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							Logout
+						</button>
+						</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -106,7 +106,7 @@
 
 
 	</nav>
-	<div class="bodyContent masterSchedule">
+	<div class="bodyContent masterSchedule editSchedule">
 		<h1>Master Schedule</h1>
 		<div class="table-wrapper">
 			<div class="scrollable">
@@ -123,7 +123,7 @@
 						<tr th:each="timeID:${session.tablerooms}">
 							<td th:text="${timeID.key}"></td>
 							<td th:each="index:${timeID.value.ElectiveName}"><select
-								class="enable" th:object="${elect}" disabled="disabled">
+								class="enable form-control" th:object="${elect}" disabled="disabled">
 
 									<option th:value="${index}" th:text="${index}"></option>
 
@@ -131,7 +131,7 @@
 										th:value="${elect.electiveName}"
 										th:text="${elect.electiveName}"></option>
 							</select></td>
-							<td th:label="edit"><button class="btn-primary editbtn">Edit</button></td>
+							<td th:label="edit"><button class="btn-primary btn editbtn">Edit</button></td>
 						</tr>
 					</tbody>
 				</table>

@@ -92,12 +92,11 @@
 						</ul></li>
 					<li><a href="addAdministrators">Add Administrators<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="contact">Contact <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome Admin</a></li>
 					<li class="dropdown">
-						<a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg">
+						<a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg logout">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							Logout
 						</button>
@@ -108,23 +107,24 @@
 			<!-- /.navbar-collapse -->
 		</div>
 		</nav>
-		<div class="bodyContent">
+		<div class="mainContent">
 		<!-- /.container-fluid -->
 <!-- Implementation of Upload in Admin Home Page -->
 	<div class="uploadcontainer">
       <div class="panel panel-default">
-        <div class="panel-heading1"><strong>Upload Files</strong> <small>Upload Student Enrollment Files</small></div>
+        <div class="panel-heading1"></div>
         <div class="panel-body">
          <div class="uploadelementcontainer">
           <!-- Standard Form -->
           <div class="fileselect"></div>
+          <h1>Upload Student Enrollment Files</h1> 
           <h4>Select files from your computer</h4>
           <form name="submitsheet" action="/viewStudentData" method="POST" enctype="multipart/form-data" id="js-upload-form" onsubmit="return buttonClick()">
             <div class="form-inline">
-              <div class="form-group">
+              <div class="">
                 <input type="file" name="file" id="inpfile" method="POST" onchange="validate_fileupload(this.value);">
               </div>
-              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+              <button type="submit" class="btn btn-sm btn-primary upload" id="js-upload-submit">Upload files</button>
               <script>             
               function buttonClick()
 {

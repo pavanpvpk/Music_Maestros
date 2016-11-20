@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script src="../assets/js/jquery-1.11.1.min.js"
-        th:href="@{js/jquery-1.11.1.min.js}"></script>
+	th:href="@{js/jquery-1.11.1.min.js}"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"
-         th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
+	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
 
 <!-- CSS -->
 <link rel="stylesheet"
@@ -67,17 +67,16 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="studentSchedule"
-					>My Schedule <span class="sr-only">(current)</span></a></li>
-					<li><a href="aboutUs">About Us <span
+					<li><a href="studentSchedule">My Schedule <span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="faq">FAQ's<span
-							class="sr-only">(current)</span></a></li>
+					<li><a href="aboutUs">About Us <span class="sr-only">(current)</span></a></li>
+					<li><a href="contact">Contact <span class="sr-only">(current)</span></a></li>
+					<li><a href="faq">FAQ's<span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome User</a></li>
 					<li class="dropdown">
-						<a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg">
+						<a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg logout">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							Logout
 						</button>
@@ -89,5 +88,55 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	<div class="mainContent">
+		<ul>
+			<li>In addition to musical activities, Summer Music Camp
+				students will participate in recreational activities in the
+				evenings. Some popular activities include movies, camp parties, ice
+				cream socials, and others. All activities are supervised by Music
+				Camp staff.</li>
+			<li>Each band student is expected to have his or her own
+				instrument and bring a folding metal music stand. A limited number
+				of musical instruments such as concert percussion equipment and
+				guitars will be available from the Department of Music. Students
+				will also need to provide all necessary accessories for their
+				instrument including oils, reeds, sticks & mallets, neck straps,
+				etc. A camp store will be available to purchase some accessories if
+				needed.</li>
+			<li>You may cancel your application for Summer Music Camp two
+				weeks prior to the first day of camp and receive a refund of camp
+				costs less a $50.00 non-refundable registration fee, which is
+				included in the full cost of the camp. No money will be refunded for
+				any reason after the two-week deadline. Students arriving late for
+				camp or leaving early are not eligible for refunds. The Camp
+				Membership is not transferable to anyone else.</li>
+			<li>Camp students, except day campers, will be housed in air
+				conditioned Northwest dormitories and will eat all meals on campus.
+				Campers must bring their own sheets, towels, and pillow from home.
+				Camp students will be housed two per room. You may wish to find a
+				roommate who is also attending camp. Housing for Friday night, at
+				the end of camp, is not provided. Meals begin with dinner on Sunday
+				and end with lunch on Friday (15 meals). While staying in the
+				Northwest dormitories, all camp students will be under the
+				supervision of the Music Camp Staff. Staff counselors will live in
+				the dormitories with the campers and monitor all aspects of camp
+				life.</li>
+			<li>In the event of an illness or injury to a student at camp, a
+				staff member will promptly escort that student to the Summer Music
+				Camp office to determine the severity of the illness or injury. In
+				the unlikely event that a student would need to see a physician or
+				visit a hospital, immediate transportation and an escort will be
+				provided. Parents will be notified accordingly. Costs resulting from
+				a doctor visit, prescription medication, x-rays, lab work or
+				hospital treatments are the responsibility of the parent.</li>
+			<li>After your application has been received and accepted, we
+				will forward additional material to you. This will include when and
+				where to come, what to bring, a medical history/permission for
+				treatment form, a map, a sample schedule, and all the other
+				information needed to plan your stay at Northwest.</li>
+		</ul>
+	</div>
 </body>
+
+
 </html>
