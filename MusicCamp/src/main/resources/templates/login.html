@@ -56,10 +56,10 @@
                         		<div class="form-top-left" th:border="2" >
                         			<h3>Login to view your Summer Schedule</h3>
                                   	<p>Enter your 919# and password to log on:</p>
-                                  	<p th:text="${session.error}"></p>
-                                  	<p th:text="${session.username}"></p>
+                                  	<p th:if="${invaliduser}" th:text="${invaliduser}"></p>
+<!--                                   	<p th:text="${session.validuser}"></p> -->
                                   	<p th:text="${session.loginexpired}"></p>
-<!--                                   	<p th:if="${invaliduser}" th:text="${invaliduser}"></p> -->
+                                  	
                         		</div>
                         		
                         		<div class="form-top-right">
