@@ -144,7 +144,6 @@ public class MasterDataController {
 		
 		else{
 			
-
 			Integer newelectiveID=ers.findbyelectiveID(electiveName);
 			
 			System.out.println(rtId);
