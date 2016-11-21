@@ -81,7 +81,7 @@ public class UserController {
 				if (users.getRole()==0){
 					LOG.info(username+" logged in successfully as admin");
 					session.setAttribute("validuser", username);
-					return "/adminhome";
+					return "adminhome";
 				
 					
 				}
@@ -89,7 +89,7 @@ public class UserController {
 					LOG.info(username+" logged in successfully as user");
 					model.addAttribute("username",username);
 					session.setAttribute("validuser", username);
-					return "/userhome";
+					return "userhome";
 				}
 				
 				

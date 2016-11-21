@@ -29,20 +29,20 @@ public class NewElectiveController {
 			if(!(newelect==0)){
 				
 				model.put("success", "New Elective Added");
-				return "redirect:/addElectives";
+				return "successElective";
 				
 			}
 			
 			else if(newElective.isEmpty()){
 				
 				model.put("failure", "something went wrong");
-				return "redirect:/addElectives";
+				return "failedelective";
 				
 			}
 			else{
 				
 				model.put("failure", "something went wrong");
-				return "redirect:/addElectives";
+				return "failedelective";
 			}
 		
 	}

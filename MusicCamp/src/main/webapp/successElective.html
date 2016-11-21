@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<title>Northwest Music Camp Schedule</title>
+<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"></link>
+<link rel="stylesheet"
+	href="../static/assets/bootstrap/css/bootstrap.min.css"
+	th:href="@{assets/bootstrap/css/bootstrap.min.css}"></link>
+<link rel="stylesheet"
+	href="../static/assets/font-awesome/css/font-awesome.min.css"
+	th:href="@{assets/font-awesome/css/font-awesome.min.css}"></link>
+<link rel="stylesheet" href="../static/assets/css/form-elements.css"
+	th:href="@{assets/css/form-elements.css}"></link>
+<link rel="stylesheet" href="../static/assets/css/style.css"
+	th:href="@{assets/css/style.css}"></link>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="../static/assets/ico/favicon.png"
+	th:href="@{assets/ico/favicon.png}"></link>
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="../static/assets/ico/apple-touch-icon-144-precomposed.png"
+	th:href="@{assets/ico/apple-touch-icon-144-precomposed.png}"></link>
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="../static/assets/ico/apple-touch-icon-114-precomposed.png"
+	th:href="@{assets/ico/apple-touch-icon-114-precomposed.png}"></link>
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="../static/assets/ico/apple-touch-icon-72-precomposed.png"
+	th:href="@{assets/ico/apple-touch-icon-72-precomposed.png}"></link>
+<link rel="apple-touch-icon-precomposed"
+	href="../static/assets/ico/apple-touch-icon-57-precomposed.png"
+	th:href="@{assets/ico/apple-touch-icon-57-precomposed.png}"></link>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="adminhome">Home</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="viewStudentDetails">View Student Details <span class="sr-only">(current)</span></a></li>
+					<li><a href="uploadStudentDetails">Upload Student Details <span
+							class="sr-only">(current)</span></a></li>
+						<li><a href="addElectives">Add New Electives<span
+							class="sr-only"></span></a></li>
+					<li class="dropdown masterSchedule"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						data-toggle="collapse" data-target=".navbar-collapse">Master
+							Schedule <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu ">
+							<li><a  th:href="@{/viewMasterData}" >View Master Schedule</a></li>
+							<li><a href="editMasterSchedule">Edit Master Schedule</a></li>
+
+						</ul></li>
+					<li><a href="#">Contact <span class="sr-only">(current)</span></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Welcome Admin</a></li>
+					<li class="dropdown">
+						<a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg logout">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							Logout
+						</button>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	
+	<h1><span style="color:red;">Elective Added Successfully! You can add it to Master Schedule using Edit Master Schedule</span></h1>
+
+</body>
+</html>

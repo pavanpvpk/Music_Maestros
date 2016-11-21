@@ -27,8 +27,8 @@ public class MVCConfig extends WebMvcAutoConfigurationAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 	registry.addViewController("/login").setViewName("login");
-	registry.addViewController("/adminhome").setViewName("adminhome");
-	registry.addViewController("/userhome").setViewName("userhome");
+//	registry.addViewController("/adminhome").setViewName("adminhome");
+//	registry.addViewController("/userhome").setViewName("userhome");
 	registry.addViewController("/viewStudentDetails").setViewName("viewStudentDetails");
 	registry.addViewController("/uploadStudentDetails").setViewName("uploadStudentDetails");
 	registry.addViewController("/viewMasterSchedule").setViewName("viewMasterSchedule");
