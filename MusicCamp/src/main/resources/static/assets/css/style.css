@@ -184,6 +184,16 @@ img { max-width: 100%; }
 	.masterSchedule:hover .dropdown-menu{
 		width: 100%;
 	}
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a{
+		color: #fff;
+	}
+	.studentDetails .studentDetailsrow .elective{
+		width: 100%;
+	}
+	.studentDetails .studentDetailsrow:first-child div{
+		width: 100%;
+		margin-left: 0;
+	}
 
 }
 
@@ -193,8 +203,9 @@ img { max-width: 100%; }
 
 }
 
-.masterSchedule:hover .dropdown-menu{
-	display:block;
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	color: inherit;
+	background-color: inherit;
 }
 
 .uploadcontainer{
