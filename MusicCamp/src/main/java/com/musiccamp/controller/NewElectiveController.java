@@ -21,7 +21,7 @@ public class NewElectiveController {
 	private ElectiveRepository ers;
 	
 	
-	@RequestMapping(value="/addElective",method=RequestMethod.POST )
+	@RequestMapping(value="/addElectives",method=RequestMethod.POST )
 	public String AddNewElective(@RequestParam("newElective") String newElective, ModelMap model){
 		
 		
