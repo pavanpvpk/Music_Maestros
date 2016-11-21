@@ -20,11 +20,11 @@ public interface ElectiveRepository extends JpaRepository<Electives, Integer> {
 	
 
 	@Query(value="select e.electiveId from Electives e where e.electiveName=?1")
-	public int findbyelectiveID(String electivenName);
+	public Integer findbyelectiveID(String electivenName);
 
 	@Transactional
 	@Modifying
 	@Query(value="insert into electives(elective_name) values (?1)",nativeQuery=true)
-	public int InsertnewElective(String newelectiveName);
+	public Integer InsertnewElective(String newelectiveName);
 	
 }

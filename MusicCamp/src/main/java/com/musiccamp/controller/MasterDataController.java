@@ -126,8 +126,8 @@ public class MasterDataController {
 		int rtId=rts.findrtID(roomID, timeId);
 		if(!(oldelective.isEmpty()||oldelective.equals("---"))){
 			
-			int oldelectiveID=ers.findbyelectiveID(oldelective);
-			int newelectiveID=ers.findbyelectiveID(electiveName);
+			Integer oldelectiveID=ers.findbyelectiveID(oldelective);
+			Integer newelectiveID=ers.findbyelectiveID(electiveName);
 			
 			Integer ertIdFinal=erts.findElectivertID(oldelectiveID, rtId);
 			if(!(ertIdFinal==null)){
@@ -144,11 +144,10 @@ public class MasterDataController {
 		
 		else{
 			
-			int oldelectiveID=ers.findbyelectiveID(oldelective);
-			int newelectiveID=ers.findbyelectiveID(electiveName);
+			Integer newelectiveID=ers.findbyelectiveID(electiveName);
 			
 			System.out.println(rtId);
-			System.out.println(oldelectiveID);
+			
 			System.out.println(newelectiveID);
 
 			erts.InsertertID(newelectiveID, rtId);
