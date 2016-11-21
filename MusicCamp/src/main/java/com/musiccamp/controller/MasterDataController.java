@@ -135,7 +135,6 @@ public class MasterDataController {
 				erts.UpdatertID(newelectiveID,ertIdFinal);
 				
 			}
-			
 			System.out.println(roomID);
 			System.out.println(timeId);
 			System.out.println(rtId);
