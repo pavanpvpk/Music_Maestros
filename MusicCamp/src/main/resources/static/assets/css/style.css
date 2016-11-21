@@ -504,3 +504,16 @@ button.generateSchedule{
 	margin: 0 auto;
 	font-size: 16px;
 }
+.navbar-brand{
+	font-size: 16px;
+}
+.studentSchedule table{
+	width: 50%;
+	margin: 0 auto;
+}
+.studentSchedule{
+	margin-top: 50px;
+}
+.faq h3{
+	color: #c1ac1b;
+}

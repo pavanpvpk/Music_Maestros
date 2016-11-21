@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Northwest Music Camp Schedule</title>
 <script src="../assets/js/jquery-1.11.1.min.js"
-        th:href="@{js/jquery-1.11.1.min.js}"></script>
+	th:href="@{js/jquery-1.11.1.min.js}"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"
-         th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
+	th:href="@{js/bootstrap.min.js}" type="text/javascript"></script>
 
 
 <!-- CSS -->
@@ -68,75 +68,70 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="studentSchedule"
-					>My Schedule <span class="sr-only">(current)</span></a></li>
-					<li><a href="aboutUs">About Us <span
+					<li><a href="studentSchedule">My Schedule <span
 							class="sr-only">(current)</span></a></li>
+					<li><a href="aboutUs">About Us <span class="sr-only">(current)</span></a></li>
 					<li><a href="contact">Contact <span class="sr-only">(current)</span></a></li>
-					<li><a href="faq">FAQ's<span
-							class="sr-only">(current)</span></a></li>
+					<li><a href="faq">FAQ's<span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome User</a></li>
-					<li class="dropdown">
-
-						<a th:href="@{/logout}"><button type="button" class="btn btn-success btn-lg logout">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							Logout
-						</button>
-						</a>
-					</li>
+					<li class="dropdown"><a th:href="@{/logout}"><button
+								type="button" class="btn btn-success btn-lg logout">
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								Logout
+							</button> </a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-	
-	<div class="bodyContent">
-	<h1>Student Details</h1>
-	<table class="table table-responsive table-bordered" id="myTable">
-                <thead>
-                <tr>
-                    <th>Elective Name</th>
-                    <th>Location  </th>
-                    <th>Timings</th>
-                   </tr>
-                </thead>
-              <tbody>
-          <tr th:each="studentschedule:${session.scheduleList}">
-         
-       		<td th:text="${studentschedule.courseName}"></td>
-      		<td th:text="${studentschedule.roomName}"></td>
-      		<td th:text="${studentschedule.timings}"></td>
-        </tr>  
-     </tbody>
- 
-</table>
- <br/> <br/>
- 
- <table  class="table table-responsive table-bordered fa-align-center" id="myTable2">
-                <thead>
-                <tr>
-                    <th>Grade</th>
-                    <th>Track</th>
-                    <th>Primary Instrument</th>
-                    <th>Secondary Instrument</th>
-                   </tr>
-                </thead>
-               <tbody>
-               <tr th:each="secondaryschedule:${session.Secondaryschedule}">
-         
-       		<td th:text="${secondaryschedule.grade}"></td>
-       		<td th:text="${secondaryschedule.track}"></td>
-      		<td th:text="${secondaryschedule.primaryInstrument}"></td>
-       		<td th:text="${secondaryschedule.secondaryInstrument}"></td>
-        </tr>  
-               
-               </tbody> 
- </table>
 
-</div>
-	
+	<div class="bodyContent mainContent studentSchedule">
+		<h1 class="text-center">Student Details</h1>
+		<table class="table table-responsive table-bordered" id="myTable">
+			<thead>
+				<tr>
+					<th>Elective Name</th>
+					<th>Location</th>
+					<th>Timings</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="studentschedule:${session.scheduleList}">
+
+					<td th:text="${studentschedule.courseName}"></td>
+					<td th:text="${studentschedule.roomName}"></td>
+					<td th:text="${studentschedule.timings}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+		<br /> <br />
+
+		<table class="table table-responsive table-bordered" id="myTable2">
+			<thead>
+				<tr>
+					<th>Grade</th>
+					<th>Track</th>
+					<th>Primary Instrument</th>
+					<th>Secondary Instrument</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="secondaryschedule:${session.Secondaryschedule}">
+
+					<td th:text="${secondaryschedule.grade}"></td>
+					<td th:text="${secondaryschedule.track}"></td>
+					<td th:text="${secondaryschedule.primaryInstrument}"></td>
+					<td th:text="${secondaryschedule.secondaryInstrument}"></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+
 </body>
 </html>
