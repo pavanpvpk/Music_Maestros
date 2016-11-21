@@ -120,7 +120,7 @@
 
 							<div class="form-top-left" th:border="2">
 							<h3><strong>Enter the Elective Name</strong></h3>
-							<p th:text="${session.error}"></p>
+							
 							</div>
 							<div class="form-top-right">
 								<i class="fa fa-key"></i>
@@ -131,8 +131,7 @@
 							<form role="form" th:action="/addElective" method="post"
 								class="login-form">
 								<div class="form-group">
-								<p th:if="${success}" th:text="${success}"></p>
-								<p th:if="${failure}" th:text="${failure}"></p>
+								
 									<label class="sr-only" for="form-username">919#</label> <input
 										type="text" name="newElective" placeholder="Elective Name.."
 										class="form-username form-control" id="newElective"
