@@ -144,6 +144,7 @@ public class MasterDataController {
 		
 		else{
 			
+			Integer oldelectiveID=ers.findbyelectiveID(oldelective);
 			Integer newelectiveID=ers.findbyelectiveID(electiveName);
 			
 			System.out.println(rtId);
